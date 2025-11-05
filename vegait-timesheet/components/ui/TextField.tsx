@@ -21,7 +21,7 @@ export default function TextField({
 	leftIcon,
 }: Props) {
 	const [isFocused, setIsFocused] = useState(false);
-	const [showPassword, setShowPassword] = useState(false);
+	const [showPassword, setShowPassword] = useState(!isPassword);
 
 	return (
 		<div className="w-[340px] h-[74px] flex flex-col">
@@ -29,7 +29,7 @@ export default function TextField({
 				{leftIcon && <Icon name={leftIcon} fullOpacity={isFocused} />}
 				<input
 					id={name}
-					type={showPassword ? "password" : "text"}
+					type={showPassword ? "text" : "password"}
 					name={name}
 					placeholder={placeholder}
 					className="pt-[12px] pb-[12px] pr-[24px] w-full outline-none"
