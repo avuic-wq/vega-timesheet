@@ -4,7 +4,7 @@ export type LogoSize = "sm" | "md";
 
 interface LogoProps {
 	size?: LogoSize;
-	spacing?: number;
+	spacing?: { top?: number; right?: number; bottom?: number; left?: number };
 }
 
 const logoConfig = {
@@ -20,11 +20,18 @@ const logoConfig = {
 	},
 };
 
-export function Logo({ size = "md", spacing = 0 }: LogoProps) {
+export function Logo({ size = "md", spacing }: LogoProps) {
 	const config = logoConfig[size];
 
+	const logoSpacing = {
+		marginLeft: spacing?.left ?? 0,
+		marginRight: spacing?.right ?? 0,
+		marginTop: spacing?.top ?? 0,
+		marginBottom: spacing?.bottom ?? 0,
+	};
+
 	return (
-		<div style={{ margin: `${spacing}px` }}>
+		<div style={logoSpacing}>
 			<Image
 				src={config.src}
 				alt="logo"
