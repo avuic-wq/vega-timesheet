@@ -1,0 +1,55 @@
+"use client";
+
+import { useState } from "react";
+import { Icon, type IconName } from "../Icon";
+
+interface Props {
+	name: string;
+	placeholder: string;
+	error?: string;
+	isPassword?: boolean;
+	rightIcon?: IconName;
+	leftIcon?: IconName;
+}
+
+export default function TextField({
+	name,
+	placeholder,
+	error,
+	isPassword = false,
+	rightIcon,
+	leftIcon,
+}: Props) {
+	const [isFocused, setIsFocused] = useState(false);
+	const [showPassword, setShowPassword] = useState(false);
+
+	return (
+		<div className="w-[340px] h-[74px] flex flex-col">
+			<div className="border-[2px] border-grey-500 rounded-[24px] focus-within:border-black flex items-center px-[24px]">
+				{leftIcon && <Icon name={leftIcon} fullOpacity={isFocused} />}
+				<input
+					id={name}
+					type={showPassword ? "password" : "text"}
+					name={name}
+					placeholder={placeholder}
+					className="peer pl-[12px] pt-[12px] pb-[12px] w-full outline-none"
+					autoComplete="off"
+					onFocus={() => setIsFocused(true)}
+					onBlur={() => setIsFocused(false)}
+				/>
+				{isPassword && (
+					<button type="button" onClick={() => setShowPassword(!showPassword)}>
+						<Icon
+							name={showPassword ? "eye-off" : "eye"}
+							fullOpacity={isFocused}
+						/>
+					</button>
+				)}
+				{!isPassword && rightIcon && (
+					<Icon name={rightIcon} fullOpacity={isFocused} />
+				)}
+			</div>
+			{error && <p className="text-red text-sm">{error}</p>}
+		</div>
+	);
+}

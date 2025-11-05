@@ -1,40 +1,34 @@
-import Image from "next/image"
+import Image from "next/image";
 
 export type IconName =
-    | "calendar"
-    | "check"
-    | "chevron-down"
-    | "chevron-left"
-    | "chevron-right"
-    | "close"
-    | "download"
-    | "eye-off"
-    | "eye"
-    | "menu"
-    | "plus"
-    | "search"
+	| "calendar"
+	| "check"
+	| "chevron-down"
+	| "chevron-left"
+	| "chevron-right"
+	| "close"
+	| "download"
+	| "eye-off"
+	| "eye"
+	| "menu"
+	| "plus"
+	| "search";
 
-
-interface IconProps {
-    name: IconName
-    size?: number
-    className?: string
-    alt?: string
+export interface IconProps {
+	name: IconName;
+	size?: number;
+	alt?: string;
+	fullOpacity?: boolean;
 }
 
-export function Icon({
-    name,
-    size = 24,
-    className = "",
-    alt
-}: IconProps) {
-    return (
-        <Image
-            src={`/icons/${name}.svg`}
-            alt={alt || `${name} icon`}
-            width={size}
-            height={size}
-            className={className}
-        />
-    )
+export function Icon({ name, size = 24, alt, fullOpacity = false }: IconProps) {
+	return (
+		<Image
+			src={`/icons/${name}.svg`}
+			alt={alt || `${name} icon`}
+			width={size}
+			height={size}
+			style={{ opacity: fullOpacity ? 1 : 0.5 }}
+		/>
+	);
 }
