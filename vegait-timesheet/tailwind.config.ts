@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { colors } from "./lib/colors";
 
 export default {
 	content: [
@@ -6,7 +7,9 @@ export default {
 		"./components/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	theme: {
-		extend: {},
+		extend: {
+			colors,
+		},
 	},
 	plugins: [],
 } satisfies Config;
