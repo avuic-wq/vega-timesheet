@@ -182,52 +182,52 @@ async function main() {
 
 	const projectData = [
 		{
-			name: "E-Commerce Platform Redesign",
+			name: "Pinnacle",
 			clientId: clients[0].id,
 			industryId: industries[3].id,
 		},
 		{
-			name: "Mobile Banking App",
+			name: "Aurora",
 			clientId: clients[1].id,
 			industryId: industries[1].id,
 		},
 		{
-			name: "Patient Management System",
+			name: "Nova Management System",
 			clientId: clients[2].id,
 			industryId: industries[2].id,
 		},
 		{
-			name: "ERP System Migration",
+			name: "ERP Zephyr",
 			clientId: clients[3].id,
 			industryId: industries[0].id,
 		},
 		{
-			name: "Inventory Management Portal",
+			name: "IMP Summit",
 			clientId: clients[4].id,
 			industryId: industries[3].id,
 		},
 		{
-			name: "Marketing Automation Tool",
+			name: "Orion Automation Tool",
 			clientId: clients[5].id,
 			industryId: industries[9].id,
 		},
 		{
-			name: "Cloud Infrastructure Setup",
+			name: "Momentum - Cloud Infrastructure",
 			clientId: clients[6].id,
 			industryId: industries[0].id,
 		},
 		{
-			name: "iOS App Development",
+			name: "Catalyst iOS",
 			clientId: clients[7].id,
 			industryId: industries[0].id,
 		},
 		{
-			name: "Machine Learning Pipeline",
+			name: "Nebula Pipeline",
 			clientId: clients[8].id,
 			industryId: industries[0].id,
 		},
 		{
-			name: "Startup MVP Development",
+			name: "Startup Falcon",
 			clientId: clients[9].id,
 			industryId: industries[0].id,
 		},
