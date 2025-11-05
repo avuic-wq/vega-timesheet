@@ -13,8 +13,6 @@ export type IconName =
     | "menu"
     | "plus"
     | "search"
-    | "logoMD"
-    | "logoSM"
 
 // TO-DO: Make logo separate component?
 interface IconProps {
