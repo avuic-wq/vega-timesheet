@@ -14,7 +14,7 @@ export type IconName =
     | "plus"
     | "search"
 
-// TO-DO: Make logo separate component?
+
 interface IconProps {
     name: IconName
     size?: number
