@@ -32,7 +32,7 @@ export default function TextField({
 					type={showPassword ? "password" : "text"}
 					name={name}
 					placeholder={placeholder}
-					className="peer pl-[12px] pt-[12px] pb-[12px] w-full outline-none"
+					className="pt-[12px] pb-[12px] pr-[24px] w-full outline-none"
 					autoComplete="off"
 					onFocus={() => setIsFocused(true)}
 					onBlur={() => setIsFocused(false)}
