@@ -1,21 +1,14 @@
-import { validatePassword } from "../lib/utils/validatePassword";
-import { prisma } from "../prisma/prisma";
+import { findUserByUsername } from "@/lib/services/userService";
+import { validatePassword } from "@/lib/utils/validatePassword";
 
 export const authenticateUser = async (username: string, password: string) => {
-	const user = await prisma.user.findUnique({
-		where: {
-			username,
-		},
-		select: {
-			id: true,
-			username: true,
-			password: true,
-		},
-	});
+	const user = await findUserByUsername(username);
 
 	if (!user) {
 		return null;
 	}
 
-	return (await validatePassword(password, user.password)) ? user : null;
+	const isValidPassword = await validatePassword(password, user.password);
+
+	return isValidPassword ? user : null;
 };
