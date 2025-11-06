@@ -9,7 +9,6 @@ export default auth((req) => {
 	const isPublicRoute = publicRoutes.includes(pathname);
 
 	if (!isLoggedIn && !isPublicRoute) {
-		console.log("1");
 		const loginUrl = new URL("/login", req.url);
 		loginUrl.searchParams.set("callbackUrl", pathname);
 		return NextResponse.redirect(loginUrl);
