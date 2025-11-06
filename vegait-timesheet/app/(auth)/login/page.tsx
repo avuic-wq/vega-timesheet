@@ -4,6 +4,7 @@ interface Props {
 	searchParams: { callbackUrl?: string };
 }
 
-export default function LoginPage({ searchParams }: Props) {
-	return <LoginForm callbackUrl={searchParams?.callbackUrl} />;
+export default async function LoginPage({ searchParams }: Props) {
+	const params = await searchParams;
+	return <LoginForm callbackUrl={params?.callbackUrl} />;
 }
