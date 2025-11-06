@@ -4,7 +4,13 @@ import { ZodError } from "zod";
 import { signInSchema } from "../lib/validators/zod";
 import { authenticateUser } from "./authenticateUser";
 
+const oneHourInSeconds = 3600;
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
+	session: {
+		strategy: "jwt",
+		maxAge: oneHourInSeconds,
+	},
 	providers: [
 		Credentials({
 			credentials: {
