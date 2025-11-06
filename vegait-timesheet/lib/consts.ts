@@ -1,15 +1,15 @@
-import { AuthErrorKey } from "./types";
+import type { AuthErrorKey } from "./types";
 
-export const DEFAULT_SALT_ROUNDS: number = 10
+export const DEFAULT_SALT_ROUNDS: number = 10;
 
 export const AUTH_PROVIDERS = {
-    CREDENTIALS: "credentials"
-}
+	CREDENTIALS: "credentials",
+};
 
 export const AUTH_ERRORS_KEYS: Record<string, string> = {
-    INVALID_CREDENTIALS: "CredentialsSigninsasdasd"
+	INVALID_CREDENTIALS: "CredentialsSignin",
 } as const;
 
 export const AUTH_ERRORS_VALUES: Record<AuthErrorKey, string> = {
-  CredentialsSignin: "Invalid username or password", 
+	CredentialsSignin: "Invalid username or password",
 };
