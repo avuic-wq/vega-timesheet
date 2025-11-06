@@ -17,7 +17,7 @@ export default function Button({
 		<button
 			type={type}
 			onClick={onClick}
-			className={`bg-black text-white rounded-[24px] pt-4 pb-4 pl-13 pr-13 flex items-center justify-center m-auto ${className}`}
+			className={`bg-black text-white rounded-[24px] pt-3 pb-3 pl-13 pr-13 flex items-center justify-center m-auto ${className}`}
 			disabled={isDisabled}
 		>
 			{text}
