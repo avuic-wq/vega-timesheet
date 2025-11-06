@@ -1,7 +1,7 @@
 "use server";
 
 import { AuthError } from "next-auth";
-import { signIn } from "@/lib/auth/auth";
+import { signIn } from "@/auth/auth";
 import { AUTH_ERRORS_KEYS, AUTH_PROVIDERS } from "@/lib/consts";
 
 export async function authenticate(
