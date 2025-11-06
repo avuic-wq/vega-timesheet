@@ -10,6 +10,7 @@ interface Props {
 	isPassword?: boolean;
 	rightIcon?: IconName;
 	leftIcon?: IconName;
+	isDisabled?: boolean;
 }
 
 export default function TextField({
@@ -19,6 +20,7 @@ export default function TextField({
 	isPassword = false,
 	rightIcon,
 	leftIcon,
+	isDisabled = false,
 }: Props) {
 	const [isFocused, setIsFocused] = useState(false);
 	const [showPassword, setShowPassword] = useState(!isPassword);
@@ -36,17 +38,18 @@ export default function TextField({
 					autoComplete="off"
 					onFocus={() => setIsFocused(true)}
 					onBlur={() => setIsFocused(false)}
+					disabled={isDisabled}
 				/>
 				{isPassword && (
 					<button type="button" onClick={() => setShowPassword(!showPassword)}>
 						<Icon
 							name={showPassword ? "eye-off" : "eye"}
-							fullOpacity={isFocused}
+							fullOpacity={isFocused && !isDisabled}
 						/>
 					</button>
 				)}
 				{!isPassword && rightIcon && (
-					<Icon name={rightIcon} fullOpacity={isFocused} />
+					<Icon name={rightIcon} fullOpacity={isFocused && !isDisabled} />
 				)}
 			</div>
 			{error && <p className="text-red text-sm">{error}</p>}
