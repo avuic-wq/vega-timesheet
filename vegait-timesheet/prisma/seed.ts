@@ -1,6 +1,6 @@
-import { DEFAULT_SALT_ROUNDS } from "@/lib/consts";
-import { saltAndHashPassword } from "@/lib/saltAndHasPassword";
 import { PrismaClient, UserRole } from "@prisma/client";
+import { DEFAULT_SALT_ROUNDS } from "@/lib/consts";
+import { saltAndHashPassword } from "@/lib/utils/saltAndHasPassword";
 
 const prisma = new PrismaClient();
 
@@ -11,7 +11,10 @@ async function main() {
 	// 1. CREATE USERS
 	// ==================================================
 
-	const hashedPassword = await saltAndHashPassword("a.vuic", DEFAULT_SALT_ROUNDS);
+	const hashedPassword = await saltAndHashPassword(
+		"a.vuic",
+		DEFAULT_SALT_ROUNDS,
+	);
 
 	const adminUser = await prisma.user.upsert({
 		where: { username: "a.vuic" },
@@ -40,7 +43,10 @@ async function main() {
 	];
 
 	const users = [adminUser];
-	const defaultPassword = await saltAndHashPassword("password123", DEFAULT_SALT_ROUNDS);
+	const defaultPassword = await saltAndHashPassword(
+		"password123",
+		DEFAULT_SALT_ROUNDS,
+	);
 
 	for (const emp of employeeUsersData) {
 		const user = await prisma.user.upsert({

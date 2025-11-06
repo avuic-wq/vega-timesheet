@@ -1,4 +1,4 @@
-import { validatePassword } from "../lib/validatePassword";
+import { validatePassword } from "../lib/utils/validatePassword";
 import { prisma } from "../prisma/prisma";
 
 export const authenticateUser = async (username: string, password: string) => {
