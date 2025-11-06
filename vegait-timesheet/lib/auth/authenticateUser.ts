@@ -1,16 +1,21 @@
 import { prisma } from "../prisma/prisma";
+import { validatePassword } from "../validatePassword";
 
 export const authenticateUser = async (username: string, password: string) => {
-	const user = await prisma.user.findFirst({
+	const user = await prisma.user.findUnique({
 		where: {
 			username,
-			password,
 		},
 		select: {
 			id: true,
 			username: true,
+			password: true,
 		},
 	});
 
-	return user || null;
+	if (!user) {
+		return null;
+	}
+
+	return validatePassword(password, user.password);
 };
