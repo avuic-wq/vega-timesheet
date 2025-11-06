@@ -1,5 +1,5 @@
-import { prisma } from "../../prisma/prisma";
-import { validatePassword } from "../validatePassword";
+import { validatePassword } from "../lib/validatePassword";
+import { prisma } from "../prisma/prisma";
 
 export const authenticateUser = async (username: string, password: string) => {
 	const user = await prisma.user.findUnique({
@@ -17,5 +17,5 @@ export const authenticateUser = async (username: string, password: string) => {
 		return null;
 	}
 
-	return validatePassword(password, user.password);
+	return (await validatePassword(password, user.password)) ? user : null;
 };
