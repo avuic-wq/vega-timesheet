@@ -1,10 +1,6 @@
 import LoginForm from "@/components/ui/LoginForm";
 
 interface Props {
-	callbackUrl?: string;
-}
-
-interface Props {
 	searchParams: { callbackUrl?: string };
 }
 
