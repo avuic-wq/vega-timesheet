@@ -41,7 +41,7 @@ export default function LoginForm({ callbackUrl }: Props) {
 			) : null}
 
 			<Button
-				text={"Login"}
+				text="Login"
 				type="submit"
 				isDisabled={isPending}
 				className={buttonStyle}
