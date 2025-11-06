@@ -6,17 +6,19 @@ import {
 	AUTH_ERRORS_KEYS,
 	AUTH_ERRORS_VALUES,
 	AUTH_PROVIDERS,
+	HOME_PAGE_ROUTE,
 } from "@/lib/consts";
 
 export async function authenticate(
 	_prevState: string | undefined,
 	formData: FormData,
 ) {
+	const callbackUrl = String(formData.get("callbackUrl")) || HOME_PAGE_ROUTE;
 	try {
 		await signIn(AUTH_PROVIDERS.CREDENTIALS, {
 			username: formData.get("username"),
 			password: formData.get("password"),
-			redirectTo: "/clients",
+			redirectTo: callbackUrl,
 		});
 	} catch (error) {
 		if (error instanceof AuthError) {

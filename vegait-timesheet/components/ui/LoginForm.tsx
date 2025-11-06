@@ -5,7 +5,11 @@ import { authenticate } from "@/app/actions/auth";
 import Button from "@/components/ui/Button";
 import TextField from "@/components/ui/TextField";
 
-export default function LoginForm() {
+interface Props {
+	callbackUrl?: string;
+}
+
+export default function LoginForm({ callbackUrl }: Props) {
 	const [errorMessage, formAction, isPending] = useActionState(
 		authenticate,
 		undefined,
@@ -19,7 +23,6 @@ export default function LoginForm() {
 				error={errorMessage}
 				isDisabled={isPending}
 			/>
-
 			<TextField
 				name="password"
 				placeholder="Password"
@@ -27,6 +30,8 @@ export default function LoginForm() {
 				isDisabled={isPending}
 				isPassword
 			/>
+
+			<input type="hidden" name="callbackUrl" value={callbackUrl} />
 
 			<Button
 				text={isPending ? "Logging in..." : "Login"}
