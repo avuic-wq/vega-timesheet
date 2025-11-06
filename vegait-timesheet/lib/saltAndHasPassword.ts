@@ -8,9 +8,3 @@ export async function saltAndHashPassword(
 	return hashedPassword;
 }
 
-export async function verifyPassword(
-	password: string,
-	hash: string,
-): Promise<boolean> {
-	return await bcrypt.compare(password, hash);
-}
