@@ -1,6 +1,8 @@
-import { findUserByUsername } from "@/lib/services/userService";
-import { validatePassword } from "@/lib/utils/validatePassword";
+import { findUserByUsername } from "@/src/lib/services/userService";
+import { validatePassword } from "@/src/lib/utils/validatePassword";
 
+
+// CHECK: is this valid function? In auth folder and calls prisma/db
 export const authenticateUser = async (username: string, password: string) => {
 	const user = await findUserByUsername(username);
 

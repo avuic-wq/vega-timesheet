@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { authenticate } from "@/app/actions/auth";
+import { authenticate } from "@/src/app/actions/auth";
 import Button from "./Button";
 import Text from "./Text";
 import TextField from "./TextField";

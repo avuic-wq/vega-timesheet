@@ -7,7 +7,7 @@ import {
 	AUTH_ERRORS_VALUES,
 	AUTH_PROVIDERS,
 	HOME_PAGE_ROUTE,
-} from "@/lib/consts";
+} from "@/src/lib/consts";
 
 export async function authenticate(
 	_prevState: string | undefined,
