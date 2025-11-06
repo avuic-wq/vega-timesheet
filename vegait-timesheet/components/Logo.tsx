@@ -11,7 +11,7 @@ const logoConfig = {
 	sm: {
 		width: 100,
 		height: 25,
-		src: "/logos/logoSM.png",
+		src: "/logos/logoSm.png",
 	},
 	md: {
 		width: 184,
@@ -37,7 +37,6 @@ export function Logo({ size = "md", spacing }: LogoProps) {
 				alt="logo"
 				width={config.width}
 				height={config.height}
-				priority
 			/>
 		</div>
 	);
