@@ -32,6 +32,7 @@ export default function LoginForm() {
 				text={isPending ? "Logging in..." : "Login"}
 				type="submit"
 				isDisabled={isPending}
+				className="pl-20 pr-20"
 			/>
 		</form>
 	);
