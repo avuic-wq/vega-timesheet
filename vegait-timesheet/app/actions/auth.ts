@@ -2,7 +2,11 @@
 
 import { AuthError } from "next-auth";
 import { signIn } from "@/auth/auth";
-import { AUTH_ERRORS_KEYS, AUTH_PROVIDERS } from "@/lib/consts";
+import {
+	AUTH_ERRORS_KEYS,
+	AUTH_ERRORS_VALUES,
+	AUTH_PROVIDERS,
+} from "@/lib/consts";
 
 export async function authenticate(
 	_prevState: string | undefined,
@@ -18,7 +22,7 @@ export async function authenticate(
 		if (error instanceof AuthError) {
 			switch (error.type) {
 				case AUTH_ERRORS_KEYS.INVALID_CREDENTIALS:
-					return "Invalid username or password";
+					return AUTH_ERRORS_VALUES.CredentialsSignin;
 				default:
 					return "Something went wrong";
 			}

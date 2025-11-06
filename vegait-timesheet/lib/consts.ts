@@ -11,5 +11,5 @@ export const AUTH_ERRORS_KEYS: Record<string, string> = {
 } as const;
 
 export const AUTH_ERRORS_VALUES: Record<AuthErrorKey, string> = {
-	CredentialsSignin: "Invalid username or password",
+	CredentialsSignin: "Invalid credentials",
 };
