@@ -1,5 +1,5 @@
 import type React from "react";
-import { Logo } from "@/components/Logo";
+import { Logo } from "@/components/ui/Logo";
 
 export default function layout({ children }: { children: React.ReactNode }) {
 	return (
