@@ -12,12 +12,11 @@ export async function authenticate(
 	_prevState: string | undefined,
 	formData: FormData,
 ) {
-	const callbackUrl = String(formData.get("callbackUrl")) || "/clients";
 	try {
 		await signIn(AUTH_PROVIDERS.CREDENTIALS, {
 			username: formData.get("username"),
 			password: formData.get("password"),
-			redirectTo: callbackUrl,
+			redirectTo: "/clients",
 		});
 	} catch (error) {
 		if (error instanceof AuthError) {
