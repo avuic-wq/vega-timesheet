@@ -13,12 +13,6 @@ export default function LoginForm() {
 
 	return (
 		<form action={formAction} className="space-y-4">
-			{errorMessage && (
-				<div className="text-red-500 bg-red-50 p-3 rounded-md text-sm">
-					{errorMessage}
-				</div>
-			)}
-
 			<TextField
 				name="username"
 				placeholder="Username"
