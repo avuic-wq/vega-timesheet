@@ -26,7 +26,7 @@ export default function TextField({
 	const [showPassword, setShowPassword] = useState(!isPassword);
 
 	return (
-		<div className="w-[340px] h-[74px] flex flex-col">
+		<div className="flex flex-col">
 			<div className="border-[2px] border-grey-500 rounded-[24px] focus-within:border-black flex items-center px-[24px]">
 				{leftIcon && <Icon name={leftIcon} fullOpacity={isFocused} />}
 				<input
