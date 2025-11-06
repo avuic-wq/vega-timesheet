@@ -21,10 +21,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
 					const user = await authenticateUser(username, hashedPassword);
 
-					if (!user) {
-						throw new Error("Invalid credentials!");
-					}
-
 					return user;
 				} catch (error) {
 					if (error instanceof ZodError) {
@@ -35,8 +31,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 			},
 		}),
 	],
-	pages: {
-		signIn: "/login",
-		error: "/login"
-	}
+
 });
