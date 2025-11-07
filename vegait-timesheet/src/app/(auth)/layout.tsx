@@ -9,7 +9,7 @@ export default function AuthLayout({
 	return (
 		<div className="bg-grey-100 flex items-center justify-center flex-col h-screen">
 			<Logo className="mb-5" />
-			<div className="bg-white rounded-[16px] p-8 flex items-center justify-center">
+			<div className="bg-white rounded-[16px] p-10 flex items-center justify-center w-98">
 				{children}
 			</div>
 		</div>
