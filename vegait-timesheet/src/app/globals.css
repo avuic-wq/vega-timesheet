@@ -1,16 +1,34 @@
 @import "tailwindcss";
 
 @theme {
-  --color-black: #000000;
-  --color-grey-600: #3c3c3b;
-  --color-grey-500: #81817e;
-  --color-grey-200: #e6e6e6;
-  --color-grey-100: #f2f2f2;
-  --color-white: #ffffff;
-  --color-primary: #cde966;
-  --color-red: #95120b;
-  --color-orange: #ff590b;
-  --color-green: #005344;
-  --color-purple: #b99fea;
-  --color-orange-light: #ec9f7e;
+	--color-black: #000000;
+	--color-grey-600: #3c3c3b;
+	--color-grey-500: #81817e;
+	--color-grey-200: #e6e6e6;
+	--color-grey-100: #f2f2f2;
+	--color-white: #ffffff;
+	--color-primary: #cde966;
+	--color-red: #95120b;
+	--color-orange: #ff590b;
+	--color-green: #005344;
+	--color-purple: #b99fea;
+	--color-orange-light: #ec9f7e;
+}
+
+@layer components {
+	.heading-xl {
+		@apply text-[36px] leading-[36px];
+	}
+	.heading-lg {
+		@apply text-[24px] leading-[24px];
+	}
+	.body-md {
+		@apply text-[14px] leading-[14px];
+	}
+	.text-lg {
+		@apply text-[14px] leading-[21px];
+	}
+	.text-md {
+		@apply text-[12px] leading-[18px];
+	}
 }
