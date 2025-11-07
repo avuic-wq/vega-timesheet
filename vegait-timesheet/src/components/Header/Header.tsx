@@ -18,7 +18,7 @@ export default function Header() {
 				<Text value={title} className="font-bold" />
 				<Text value={description} />
 				{actionHandler && (
-					<div className="flex justify-left align-center gap-2">
+					<div className="flex justify-left align-center gap-2 cursor-pointer w-fit">
 						<Icon name="plus" onClick={actionHandler} />
 						<Text value={actionText} />
 					</div>
