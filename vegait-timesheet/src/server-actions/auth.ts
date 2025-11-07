@@ -3,6 +3,7 @@
 import { AuthError } from "next-auth";
 import { signIn, signOut } from "@/auth/auth";
 import {
+	APP_ROUTES,
 	AUTH_ERRORS_KEYS,
 	AUTH_ERRORS_MESSAGES,
 	AUTH_PROVIDERS,
@@ -34,5 +35,5 @@ export async function loginAction(
 }
 
 export async function logoutAction() {
-	await signOut();
+	await signOut({ redirectTo: APP_ROUTES.LOGIN, redirect: true });
 }
