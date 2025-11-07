@@ -43,12 +43,11 @@ export default function TextField({
 					disabled={isDisabled}
 				/>
 				{isPassword && (
-					<button type="button" onClick={() => setShowPassword(!showPassword)}>
-						<Icon
-							name={showPassword ? "eye-off" : "eye"}
-							fullOpacity={isFocused && !isDisabled}
-						/>
-					</button>
+					<Icon
+						onClick={() => setShowPassword(!showPassword)}
+						name={showPassword ? "eye-off" : "eye"}
+						fullOpacity={isFocused && !isDisabled}
+					/>
 				)}
 				{!isPassword && rightIcon && (
 					<Icon name={rightIcon} fullOpacity={isFocused && !isDisabled} />
