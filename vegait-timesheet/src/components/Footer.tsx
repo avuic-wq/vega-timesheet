@@ -1,3 +1,3 @@
 export default function Footer() {
-	return <div>Footer</div>;
+	return <div className="bg-white rounded-[16px]">Footer</div>;
 }

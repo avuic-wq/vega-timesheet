@@ -22,7 +22,12 @@ export interface IconProps {
 	fullOpacity?: boolean;
 }
 
-export function Icon({ name, size = 24, alt, fullOpacity = false }: IconProps) {
+export default function Icon({
+	name,
+	size = 24,
+	alt,
+	fullOpacity = false,
+}: IconProps) {
 	return (
 		<Image
 			src={`/icons/${name}.svg`}

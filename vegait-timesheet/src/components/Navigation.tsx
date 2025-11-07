@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Button from "@/src/components/Button";
-import { Icon } from "@/src/components/Icon";
-import { Logo } from "@/src/components/Logo";
+import Icon from "@/src/components/Icon";
+import Logo from "@/src/components/Logo";
 import { logoutAction } from "@/src/server-actions/auth";
 
 const pages = [
