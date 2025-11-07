@@ -10,6 +10,7 @@ export default {
 		extend: {
 			colors,
 		},
+		// TO-DO: screens: { sm: "...px", etc }
 	},
 	plugins: [],
 } satisfies Config;
