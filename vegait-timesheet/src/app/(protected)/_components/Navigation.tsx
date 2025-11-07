@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Button from "@/src/components/Button";
+import { Icon } from "@/src/components/Icon";
 import { Logo } from "@/src/components/Logo";
 import { logoutAction } from "@/src/server-actions/auth";
 
@@ -30,10 +31,11 @@ export default function Navigation() {
 					);
 				})}
 			</div>
-			<div>
+			<div className="flex justify-between gap-5">
 				<form action={logoutAction}>
 					<Button type="submit" text="Logout" />
 				</form>
+				<Icon name="menu" fullOpacity />
 			</div>
 		</nav>
 	);
