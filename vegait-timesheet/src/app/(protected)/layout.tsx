@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/auth/auth";
 import Navigation from "@/src/components/Navigation";
+import { APP_ROUTES } from "@/src/lib/consts";
 
 export default async function ProtectedLayout({
 	children,
@@ -10,7 +11,7 @@ export default async function ProtectedLayout({
 	const session = await auth();
 
 	if (!session) {
-		redirect("/login");
+		redirect(APP_ROUTES.LOGIN);
 	}
 
 	return (

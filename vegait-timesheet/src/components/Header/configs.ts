@@ -1,3 +1,4 @@
+import { APP_ROUTES } from "@/src/lib/consts";
 import type { IconProps } from "../Icon";
 
 type ConfigProps = {
@@ -8,14 +9,14 @@ type ConfigProps = {
 };
 
 export const configs: Record<string, ConfigProps> = {
-	"/timesheet": {
+	[APP_ROUTES.TIMESHEET]: {
 		title: "Timesheet",
 		description:
 			"What did you work on today? Don't forget to add all working and overtime hours for each client. ",
 		actionText: "Create time log",
 		actionHandler: undefined,
 	},
-	"/clients": {
+	[APP_ROUTES.CLIENTS]: {
 		title: "Clients",
 		description: "Manage clients",
 		actionText: "Action",
@@ -23,7 +24,7 @@ export const configs: Record<string, ConfigProps> = {
 			console.log("Take action - clients");
 		},
 	},
-	"/projects": {
+	[APP_ROUTES.PROJECTS]: {
 		title: "Projects",
 		description:
 			"Here, you have full control over your project database, empowering you to efficiently organise and maintain your client.",
@@ -32,7 +33,7 @@ export const configs: Record<string, ConfigProps> = {
 			console.log("Take action - projects");
 		},
 	},
-	"/reports": {
+	[APP_ROUTES.REPORTS]: {
 		title: "Reports",
 		description:
 			"Choose from a range of criteria including date range, client, project, category, employee, and more to tailor your reports exactly as required. ",

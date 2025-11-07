@@ -3,12 +3,13 @@ import Button from "@/src/components/Button";
 import Icon from "@/src/components/Icon";
 import Logo from "@/src/components/Logo";
 import { logoutAction } from "@/src/server-actions/auth";
+import { APP_ROUTES } from "../lib/consts";
 
 const pages = [
-	{ name: "Timesheet", route: "/timesheet" },
-	{ name: "Clients", route: "/clients" },
-	{ name: "Projects", route: "/projects" },
-	{ name: "Reports", route: "/reports" },
+	{ name: "Timesheet", route: APP_ROUTES.TIMESHEET },
+	{ name: "Clients", route: APP_ROUTES.CLIENTS },
+	{ name: "Projects", route: APP_ROUTES.PROJECTS },
+	{ name: "Reports", route: APP_ROUTES.REPORTS },
 ];
 
 export default function Navigation() {

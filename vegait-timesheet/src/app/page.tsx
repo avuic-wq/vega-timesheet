@@ -1,12 +1,13 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/auth/auth";
+import { APP_ROUTES } from "../lib/consts";
 
 export default async function Home() {
 	const session = await auth();
 
 	if (session) {
-		redirect("/clients");
+		redirect(APP_ROUTES.CLIENTS);
 	}
 
-	redirect("/login");
+	redirect(APP_ROUTES.LOGIN);
 }
