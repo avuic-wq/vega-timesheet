@@ -17,18 +17,18 @@
 
 @layer components {
 	.heading-xl {
-		@apply text-[36px] leading-[36px];
+		@apply text-[36px];
 	}
 	.heading-lg {
-		@apply text-[24px] leading-[24px];
+		@apply text-[24px];
 	}
 	.body-md {
-		@apply text-[14px] leading-[14px];
+		@apply text-[14px];
 	}
 	.text-lg {
-		@apply text-[14px] leading-[21px];
+		@apply text-[14px];
 	}
 	.text-md {
-		@apply text-[12px] leading-[18px];
+		@apply text-[12px];
 	}
 }
