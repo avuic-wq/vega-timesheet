@@ -1,5 +1,5 @@
 interface Props {
-	value: string;
+	value?: string;
 	className?: string;
 }
 

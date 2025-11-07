@@ -1,5 +1,5 @@
 import Footer from "@/src/components/Footer";
-import Header from "@/src/components/Header";
+import Header from "@/src/components/Header/Header";
 
 export default function WithFooterLayout({
 	children,
