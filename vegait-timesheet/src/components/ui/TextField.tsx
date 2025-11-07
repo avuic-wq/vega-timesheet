@@ -13,7 +13,7 @@ interface Props {
 	isDisabled?: boolean;
 }
 
-const staticStyles = "pt-[12px] pb-[12px] pr-[24px] w-full outline-none";
+const staticStyles = "py-3 pr-3 w-full outline-none";
 
 export default function TextField({
 	name,
@@ -29,7 +29,7 @@ export default function TextField({
 
 	return (
 		<div className="flex flex-col">
-			<div className="border-[2px] border-grey-500 rounded-[24px] focus-within:border-black flex items-center px-[24px]">
+			<div className="flex items-center border-[2px] border-grey-500 rounded-[24px] focus-within:border-black px-6">
 				{leftIcon && <Icon name={leftIcon} fullOpacity={isFocused} />}
 				<input
 					id={name}

@@ -12,7 +12,7 @@ const pages = [
 
 export default function Navigation() {
 	return (
-		<nav className="bg-white flex items-center justify-between gap-6 pt-[16px] pb-[16px] pl-[48px] pr-[48px] gap-[24px]">
+		<nav className="flex items-center justify-between bg-white gap-6 py-4 px-12">
 			<div>
 				<Logo size="sm" />
 			</div>
