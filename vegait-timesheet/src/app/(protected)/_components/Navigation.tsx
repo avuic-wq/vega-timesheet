@@ -1,7 +1,7 @@
 import Link from "next/link";
+import Button from "@/src/components/ui/Button";
+import { Logo } from "@/src/components/ui/Logo";
 import { logoutAction } from "@/src/server-actions/auth";
-import Button from "../../../components/ui/Button";
-import { Logo } from "../../../components/ui/Logo";
 
 const pages = [
 	{ name: "Timesheet", route: "/timesheet" },
