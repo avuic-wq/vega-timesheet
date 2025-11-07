@@ -13,6 +13,8 @@ interface Props {
 	isDisabled?: boolean;
 }
 
+const staticStyles = "pt-[12px] pb-[12px] pr-[24px] w-full outline-none";
+
 export default function TextField({
 	name,
 	placeholder,
@@ -34,7 +36,7 @@ export default function TextField({
 					type={showPassword ? "text" : "password"}
 					name={name}
 					placeholder={placeholder}
-					className="pt-[12px] pb-[12px] pr-[24px] w-full outline-none"
+					className={staticStyles}
 					autoComplete="off"
 					onFocus={() => setIsFocused(true)}
 					onBlur={() => setIsFocused(false)}
