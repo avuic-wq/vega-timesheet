@@ -11,7 +11,7 @@ interface ButtonProps {
 }
 
 const staticStyles =
-	"bg-black text-white rounded-[24px] pt-3 pb-3 pl-9 pr-9 flex items-center justify-center m-auto";
+	"bg-black text-white rounded-[24px] pt-3 pb-3 pl-9 pr-9 flex items-center justify-center m-auto cursor-pointer";
 
 export default function Button({
 	text,
