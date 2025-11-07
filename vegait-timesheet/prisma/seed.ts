@@ -9,6 +9,14 @@ async function main() {
 	console.log("🌱 Starting seed...");
 
 	// ==================================================
+	// 0. WIPE SOME TABLES
+	// ==================================================
+	await prisma.timeLog.deleteMany({});
+	await prisma.project.deleteMany({});
+	await prisma.client.deleteMany({});
+	await prisma.user.deleteMany({});
+
+	// ==================================================
 	// 1. CREATE USERS
 	// ==================================================
 
@@ -176,9 +184,6 @@ async function main() {
 		},
 	];
 
-	// Delete existing clients
-	await prisma.client.deleteMany({});
-
 	const clients = await prisma.client.createManyAndReturn({
 		data: clientData,
 	});
@@ -240,9 +245,6 @@ async function main() {
 			industryId: industries[0].id,
 		},
 	];
-
-	// Delete existing projects
-	await prisma.project.deleteMany({});
 
 	const projects = await prisma.project.createManyAndReturn({
 		data: projectData,
@@ -345,9 +347,6 @@ async function main() {
 			categoryId: categories[2].id,
 		},
 	];
-
-	// Delete existing time logs
-	await prisma.timeLog.deleteMany({});
 
 	await prisma.timeLog.createMany({
 		data: timeLogData,
