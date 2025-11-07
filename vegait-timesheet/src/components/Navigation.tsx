@@ -2,8 +2,8 @@ import Link from "next/link";
 import Button from "@/src/components/Button";
 import Icon from "@/src/components/Icon";
 import Logo from "@/src/components/Logo";
+import { APP_ROUTES } from "@/src/lib/consts";
 import { logoutAction } from "@/src/server-actions/auth";
-import { APP_ROUTES } from "../lib/consts";
 
 const pages = [
 	{ name: "Timesheet", route: APP_ROUTES.TIMESHEET },
