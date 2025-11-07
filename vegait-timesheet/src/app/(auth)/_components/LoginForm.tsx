@@ -16,9 +16,7 @@ export default function LoginForm({ callbackUrl }: Props) {
 		undefined,
 	);
 
-	const buttonStyle = errorMessage
-		? "pl-20 pr-20 mt-[25px]"
-		: "pl-20 pr-20 mt-[45px]";
+	const buttonStyle = errorMessage ? "pl-20 pr-20 mt-[20px]" : "pl-20 pr-20";
 
 	return (
 		<form action={formAction} className="space-y-4">
@@ -33,12 +31,11 @@ export default function LoginForm({ callbackUrl }: Props) {
 				isDisabled={isPending}
 				isPassword
 			/>
-
 			<input type="hidden" name="callbackUrl" value={callbackUrl} />
 
-			{errorMessage ? (
+			{errorMessage && (
 				<Text value={errorMessage} className="text-red text-center" />
-			) : null}
+			)}
 
 			<Button
 				text="Login"
