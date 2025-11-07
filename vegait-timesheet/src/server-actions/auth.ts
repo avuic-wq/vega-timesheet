@@ -1,7 +1,7 @@
 "use server";
 
 import { AuthError } from "next-auth";
-import { signIn } from "@/auth/auth";
+import { signIn, signOut } from "@/auth/auth";
 import {
 	AUTH_ERRORS_KEYS,
 	AUTH_ERRORS_MESSAGES,
@@ -9,7 +9,7 @@ import {
 	HOME_PAGE_ROUTE,
 } from "@/src/lib/consts";
 
-export async function authenticate(
+export async function loginAction(
 	_prevState: string | undefined,
 	formData: FormData,
 ) {
@@ -31,4 +31,8 @@ export async function authenticate(
 		}
 		throw error;
 	}
+}
+
+export async function logoutAction() {
+	await signOut();
 }

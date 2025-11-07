@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import Button from "@/src/components/ui/Button";
 import Text from "@/src/components/ui/Text";
 import TextField from "@/src/components/ui/TextField";
-import { authenticate } from "@/src/server-actions/User/authenticate";
+import { loginAction } from "@/src/server-actions/auth";
 
 interface Props {
 	callbackUrl?: string;
@@ -12,7 +12,7 @@ interface Props {
 
 export default function LoginForm({ callbackUrl }: Props) {
 	const [errorMessage, formAction, isPending] = useActionState(
-		authenticate,
+		loginAction,
 		undefined,
 	);
 
