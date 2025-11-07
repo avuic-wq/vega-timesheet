@@ -16,7 +16,7 @@ export default function LoginForm({ callbackUrl }: Props) {
 		undefined,
 	);
 
-	const buttonStyle = errorMessage ? "pl-20 pr-20 mt-[20px]" : "pl-20 pr-20";
+	const buttonStyle = errorMessage ? "px-20 mt-[20px]" : "px-20";
 
 	return (
 		<form action={formAction} className="space-y-4">
