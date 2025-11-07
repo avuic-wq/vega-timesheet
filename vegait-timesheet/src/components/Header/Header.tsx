@@ -1,8 +1,8 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import Icon from "@/src/components/Icon";
 import Text from "@/src/components/Text";
-import Icon from "../Icon";
 import { configs as headerConfigs } from "./configs";
 
 export default function Header() {
@@ -14,13 +14,13 @@ export default function Header() {
 
 	return (
 		<div className="flex justify-center bg-white rounded-[16px] p-6">
-			<div className="flex-1 flex flex-col gap-6 border-1">
-				<Text value={title} className="font-bold" />
-				<Text value={description} />
+			<div className="flex-1 flex flex-col gap-6">
+				<Text value={title} className="font-bold heading-lg" />
+				<Text value={description} className="text-lg" />
 				{actionHandler && (
 					<div className="flex justify-left align-center gap-2 cursor-pointer w-fit">
 						<Icon name="plus" onClick={actionHandler} />
-						<Text value={actionText} />
+						<Text value={actionText} className="body-md" />
 					</div>
 				)}
 			</div>

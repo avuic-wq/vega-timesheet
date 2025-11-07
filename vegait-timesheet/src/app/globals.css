@@ -14,7 +14,7 @@
 	--color-purple: #b99fea;
 	--color-orange-light: #ec9f7e;
 }
-
+/* TODO: Add line height, but looks ugly and cant position(center) text with icons then? */
 @layer components {
 	.heading-xl {
 		@apply text-[36px];
