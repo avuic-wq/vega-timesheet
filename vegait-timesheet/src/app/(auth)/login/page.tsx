@@ -1,4 +1,4 @@
-import LoginForm from "@/src/components/ui/LoginForm";
+import LoginForm from "@/src/app/(auth)/login/_components/LoginForm";
 
 interface Props {
 	searchParams: Promise<{ callbackUrl?: string }>;
