@@ -12,7 +12,7 @@ const pages = [
 
 export default function Navigation() {
 	return (
-		<nav className="border-[1px] flex items-center justify-between gap-6 pt-[16px] pb-[16px] pl-[48px] pr-[48px] gap-[24px]">
+		<nav className="bg-white flex items-center justify-between gap-6 pt-[16px] pb-[16px] pl-[48px] pr-[48px] gap-[24px]">
 			<div>
 				<Logo size="sm" />
 			</div>
