@@ -1,7 +1,11 @@
 import type React from "react";
-import { Logo } from "@/src/components/ui/Logo";
+import { Logo } from "@/src/components/Logo";
 
-export default function AuthLayout({ children }: { children: React.ReactNode }) {
+export default function AuthLayout({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
 	return (
 		<div className="bg-grey-100 flex items-center justify-center flex-col h-screen">
 			<Logo className="mb-5" />

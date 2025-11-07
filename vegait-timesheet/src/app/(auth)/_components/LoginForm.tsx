@@ -1,9 +1,9 @@
 "use client";
 
 import { useActionState } from "react";
-import Button from "@/src/components/ui/Button";
-import Text from "@/src/components/ui/Text";
-import TextField from "@/src/components/ui/TextField";
+import Button from "@/src/components/Button";
+import Text from "@/src/components/Text";
+import TextField from "@/src/components/TextField";
 import { loginAction } from "@/src/server-actions/auth";
 
 interface Props {

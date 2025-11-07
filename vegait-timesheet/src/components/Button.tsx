@@ -1,6 +1,6 @@
 "use client";
 
-import Text from "./Text";
+import Text from "@/src/components/Text";
 
 interface ButtonProps {
 	text: string;

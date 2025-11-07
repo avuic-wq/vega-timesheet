@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Button from "@/src/components/ui/Button";
-import { Logo } from "@/src/components/ui/Logo";
+import Button from "@/src/components/Button";
+import { Logo } from "@/src/components/Logo";
 import { logoutAction } from "@/src/server-actions/auth";
 
 const pages = [
