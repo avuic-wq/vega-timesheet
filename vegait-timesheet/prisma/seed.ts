@@ -13,7 +13,7 @@ async function main() {
 	// ==================================================
 
 	const hashedPassword = await saltAndHashPassword(
-		"a.vuic",
+		"admin",
 		DEFAULT_SALT_ROUNDS,
 	);
 
