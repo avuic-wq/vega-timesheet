@@ -36,7 +36,7 @@ export default function Navigation() {
 				<form action={logoutAction}>
 					<Button type="submit" text="Logout" />
 				</form>
-				<Icon name="menu" fullOpacity />
+				<Icon name="menu" />
 			</div>
 		</nav>
 	);
