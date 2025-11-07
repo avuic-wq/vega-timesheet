@@ -4,7 +4,7 @@ import { AuthError } from "next-auth";
 import { signIn } from "@/auth/auth";
 import {
 	AUTH_ERRORS_KEYS,
-	AUTH_ERRORS_VALUES,
+	AUTH_ERRORS_MESSAGES,
 	AUTH_PROVIDERS,
 	HOME_PAGE_ROUTE,
 } from "@/src/lib/consts";
@@ -24,7 +24,7 @@ export async function authenticate(
 		if (error instanceof AuthError) {
 			switch (error.type) {
 				case AUTH_ERRORS_KEYS.INVALID_CREDENTIALS:
-					return AUTH_ERRORS_VALUES.CredentialsSignin;
+					return AUTH_ERRORS_MESSAGES.CredentialsSignin;
 				default:
 					return "Something went wrong";
 			}

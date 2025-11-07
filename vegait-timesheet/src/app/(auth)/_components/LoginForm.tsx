@@ -1,10 +1,10 @@
 "use client";
 
 import { useActionState } from "react";
+import Button from "@/src/components/ui/Button";
+import Text from "@/src/components/ui/Text";
+import TextField from "@/src/components/ui/TextField";
 import { authenticate } from "@/src/server-actions/User/authenticate";
-import Button from "../../../../components/ui/Button";
-import Text from "../../../../components/ui/Text";
-import TextField from "../../../../components/ui/TextField";
 
 interface Props {
 	callbackUrl?: string;
