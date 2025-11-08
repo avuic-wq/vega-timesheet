@@ -6,6 +6,7 @@ type ConfigProps = {
 	description?: string;
 	actionText?: string;
 	actionHandler?: IconProps["onClick"];
+	hasSearch?: boolean;
 };
 
 export const configs: Record<string, ConfigProps> = {
@@ -24,6 +25,7 @@ export const configs: Record<string, ConfigProps> = {
 		actionHandler: () => {
 			console.log("Take action - clients");
 		},
+		hasSearch: true,
 	},
 	[APP_ROUTES.PROJECTS]: {
 		title: "Projects",
@@ -33,6 +35,7 @@ export const configs: Record<string, ConfigProps> = {
 		actionHandler: () => {
 			console.log("Take action - projects");
 		},
+		hasSearch: true,
 	},
 	[APP_ROUTES.REPORTS]: {
 		title: "Reports",
