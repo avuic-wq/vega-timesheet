@@ -6,11 +6,11 @@ import Icon, { type IconName } from "@/src/components/Icon";
 interface Props {
 	name: string;
 	placeholder: string;
+	isDisabled?: boolean;
 	error?: string;
 	isPassword?: boolean;
 	rightIcon?: IconName;
 	leftIcon?: IconName;
-	isDisabled?: boolean;
 }
 
 const staticStyles = "py-3 pr-3 w-full outline-none";
@@ -18,11 +18,11 @@ const staticStyles = "py-3 pr-3 w-full outline-none";
 export default function TextField({
 	name,
 	placeholder,
+	isDisabled = false,
 	error,
 	isPassword = false,
 	rightIcon,
 	leftIcon,
-	isDisabled = false,
 }: Props) {
 	const [isFocused, setIsFocused] = useState(false);
 	const [showPassword, setShowPassword] = useState(!isPassword);
