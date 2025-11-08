@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth/auth";
-import { APP_ROUTES } from "./src/lib/consts";
+import { APP_ROUTES } from "./lib/consts";
 
 export default auth((req) => {
 	const isLoggedIn = !!req.auth;
