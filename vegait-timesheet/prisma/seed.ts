@@ -184,8 +184,12 @@ async function main() {
 		},
 	];
 
+	const expandedClientsData = clientData.flatMap((item) => {
+		return [item, item, item, item, item, item, item, item, item, item];
+	});
+
 	const clients = await prisma.client.createManyAndReturn({
-		data: clientData,
+		data: expandedClientsData,
 	});
 	console.log(`✅ Seeded ${clients.length} clients`);
 
@@ -246,8 +250,12 @@ async function main() {
 		},
 	];
 
+	const expandedPrjectsData = projectData.flatMap((item) => {
+		return [item, item, item, item, item, item, item, item, item, item];
+	});
+
 	const projects = await prisma.project.createManyAndReturn({
-		data: projectData,
+		data: expandedPrjectsData,
 	});
 	console.log(`✅ Seeded ${projects.length} projects`);
 
