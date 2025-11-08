@@ -9,7 +9,7 @@ type ConfigProps = {
 	hasSearch?: boolean;
 };
 
-export const configs: Record<string, ConfigProps> = {
+export const config: Record<string, ConfigProps> = {
 	[APP_ROUTES.TIMESHEET]: {
 		title: "Timesheet",
 		description:

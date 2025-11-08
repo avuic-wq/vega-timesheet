@@ -3,14 +3,14 @@
 import { usePathname } from "next/navigation";
 import Text from "@/src/components/Text";
 import Action from "./Action";
-import { configs as headerConfigs } from "./configs";
+import { config as headerConfig } from "./config";
 import Search from "./Search";
 
 const staticStyles = "flex bg-white rounded-[16px] p-6 gap-2";
 
 export default function Header() {
 	const pathname = usePathname();
-	const config = headerConfigs[pathname] || {};
+	const config = headerConfig[pathname] || {};
 	const { title, description, actionHandler, hasSearch } = config;
 	// CHECK: Its better to have a hook that returns actionHandlers?
 
