@@ -25,12 +25,12 @@ export default function Button({
 	isDisabled = false,
 	classNames = { button: "", text: "" },
 }: ButtonProps) {
-	// TO-DO: Refactor Passing CSS classes
+	// TO-DO: Remove when passing tailwind classes are optimized
 	const hasFixedDimensions =
 		classNames.button?.includes("w-[") && classNames.button?.includes("h-[");
 
 	const dynamicStyles = {
-		button: `${classNames.button} ${isDisabled ? "bg-grey-500" : ""} ${hasFixedDimensions ? "" : "py-3 px-9"}`,
+		button: ` ${isDisabled ? "bg-grey-500" : ""} ${hasFixedDimensions ? "" : "py-3 px-9"} ${classNames.button}`,
 		text: `${classNames.text}`,
 	};
 

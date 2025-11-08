@@ -3,7 +3,7 @@
 import { debounce } from "lodash";
 import { useRouter, useSearchParams } from "next/navigation";
 import TextField from "@/src/components/TextField";
-import { SEARCH_PARAMETERS } from "@/src/lib/consts";
+import { DEBOUNCE_TIME, SEARCH_PARAMETERS } from "@/src/lib/consts";
 
 export default function Search() {
 	const router = useRouter();
@@ -18,7 +18,8 @@ export default function Search() {
 		}
 		router.push(`?${params.toString()}`);
 	};
-	const debouncedSearch = debounce(handleOnSearchChange, 500);
+
+	const debouncedSearch = debounce(handleOnSearchChange, DEBOUNCE_TIME.DEFAULT);
 
 	return (
 		<div>
