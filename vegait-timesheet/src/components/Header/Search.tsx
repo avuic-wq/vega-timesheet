@@ -1,8 +1,7 @@
 "use client";
 
 import { debounce } from "lodash";
-import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/router";
+import { useRouter, useSearchParams } from "next/navigation";
 import TextField from "@/src/components/TextField";
 
 export default function Search() {
