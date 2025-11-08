@@ -5,7 +5,7 @@ import Icon, { type IconName } from "@/src/components/Icon";
 
 interface Props {
 	name: string;
-	placeholder?: string;
+	placeholder: string;
 	error?: string;
 	isPassword?: boolean;
 	rightIcon?: IconName;
@@ -17,7 +17,7 @@ const staticStyles = "py-3 pr-3 w-full outline-none";
 
 export default function TextField({
 	name,
-	placeholder = "Search",
+	placeholder,
 	error,
 	isPassword = false,
 	rightIcon,
