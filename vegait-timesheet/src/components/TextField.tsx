@@ -49,7 +49,7 @@ export default function TextField({
 
 	return (
 		<div className="flex flex-col">
-			<div className="flex items-center border-[2px] border-grey-500 rounded-[24px] focus-within:border-black px-6">
+			<div className="flex items-center border-2 border-grey-500 rounded-[24px] focus-within:border-black px-6">
 				{leftIcon && <Icon name={leftIcon} fullOpacity={isFocused} />}
 				<input
 					id={name}
