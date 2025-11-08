@@ -1,6 +1,7 @@
 import type { AuthErrorKey } from "./types";
 
 export const DEFAULT_SALT_ROUNDS: number = 10;
+export const DEFAULT_DEBOUNCE_TIME: number = 500;
 export const HOME_PAGE_ROUTE = "/clients";
 
 export const APP_ROUTES = {
