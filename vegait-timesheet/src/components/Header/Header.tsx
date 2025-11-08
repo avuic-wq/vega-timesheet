@@ -1,3 +1,5 @@
+"use client";
+
 import { usePathname } from "next/navigation";
 import Text from "@/src/components/Text";
 import Action from "./Action";
@@ -6,7 +8,7 @@ import Search from "./Search";
 
 const staticStyles = "flex bg-white rounded-[16px] p-6 gap-2";
 
-export default async function Header() {
+export default function Header() {
 	const pathname = usePathname();
 
 	const config = headerConfigs[pathname] || {};
