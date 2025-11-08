@@ -13,7 +13,23 @@ interface Props {
 	leftIcon?: IconName;
 }
 
-const staticStyles = "py-3 pr-3 w-full outline-none";
+const staticStyles = "py-3 w-full outline-none";
+
+const getDynamicStyles = (hasRightIcon: boolean, hasLeftIcon: boolean) => {
+	if (hasLeftIcon && hasRightIcon) {
+		return `px-3`;
+	}
+
+	if (hasRightIcon) {
+		return `pr-3`;
+	}
+
+	if (hasLeftIcon) {
+		return `pl-3`;
+	}
+
+	return ``;
+};
 
 export default function TextField({
 	name,
@@ -26,6 +42,10 @@ export default function TextField({
 }: Props) {
 	const [isFocused, setIsFocused] = useState(false);
 	const [showPassword, setShowPassword] = useState(!isPassword);
+	const dynamicStyles = getDynamicStyles(
+		!!rightIcon || !!isPassword,
+		!!leftIcon,
+	);
 
 	return (
 		<div className="flex flex-col">
@@ -36,7 +56,7 @@ export default function TextField({
 					type={showPassword ? "text" : "password"}
 					name={name}
 					placeholder={placeholder}
-					className={staticStyles}
+					className={`${staticStyles} ${dynamicStyles}`}
 					autoComplete="off"
 					onFocus={() => setIsFocused(true)}
 					onBlur={() => setIsFocused(false)}
@@ -50,7 +70,7 @@ export default function TextField({
 					/>
 				)}
 				{!isPassword && rightIcon && (
-					<Icon name={rightIcon} fullOpacity={isFocused && !isDisabled} />
+					<Icon name={rightIcon} fullOpacity={isFocused} />
 				)}
 			</div>
 			{error && <p className="text-red text-sm">{error}</p>}
