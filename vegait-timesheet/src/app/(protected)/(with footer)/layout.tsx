@@ -12,7 +12,7 @@ export default function WithFooterLayout({
 				<Header />
 			</section>
 
-			<section className="mx-75 my-6 border-[1px]">{children}</section>
+			<section className="mx-75 my-6 ">{children}</section>
 
 			<section className="mx-5 my-6">
 				<Footer />
