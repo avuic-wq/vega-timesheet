@@ -12,6 +12,11 @@ export const APP_ROUTES = {
 	REPORTS: "/reports",
 };
 
+export const SEARCH_PARAMETERS = {
+	SEARCH: "search",
+	LETTER_FILTER: "letterFilter",
+};
+
 export const AUTH_PROVIDERS = {
 	CREDENTIALS: "credentials",
 };

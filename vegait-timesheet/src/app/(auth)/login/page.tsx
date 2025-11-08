@@ -1,7 +1,8 @@
 import LoginForm from "@/src/components/LoginForm";
+import type { SearchParams } from "@/src/lib/types";
 
 interface Props {
-	searchParams: Promise<{ callbackUrl?: string }>;
+	searchParams: SearchParams;
 }
 
 export default async function Login({ searchParams }: Props) {

@@ -3,6 +3,7 @@
 import { debounce } from "lodash";
 import { useRouter, useSearchParams } from "next/navigation";
 import TextField from "@/src/components/TextField";
+import { SEARCH_PARAMETERS } from "@/src/lib/consts";
 
 export default function Search() {
 	const router = useRouter();
@@ -11,9 +12,9 @@ export default function Search() {
 	const handleOnSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const params = new URLSearchParams(searchParams);
 		if (e.target.value) {
-			params.set("search", e.target.value);
+			params.set(SEARCH_PARAMETERS.SEARCH, e.target.value);
 		} else {
-			params.delete("search");
+			params.delete(SEARCH_PARAMETERS.SEARCH);
 		}
 		router.push(`?${params.toString()}`);
 	};
