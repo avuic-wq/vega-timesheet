@@ -11,6 +11,7 @@ interface Props {
 	isPassword?: boolean;
 	rightIcon?: IconName;
 	leftIcon?: IconName;
+	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const staticStyles = "py-3 w-full outline-none";
@@ -39,6 +40,7 @@ export default function TextField({
 	isPassword = false,
 	rightIcon,
 	leftIcon,
+	onChange,
 }: Props) {
 	const [isFocused, setIsFocused] = useState(false);
 	const [showPassword, setShowPassword] = useState(!isPassword);
@@ -58,6 +60,7 @@ export default function TextField({
 					placeholder={placeholder}
 					className={`${staticStyles} ${dynamicStyles}`}
 					autoComplete="off"
+					onChange={(e) => onChange?.(e)}
 					onFocus={() => setIsFocused(true)}
 					onBlur={() => setIsFocused(false)}
 					disabled={isDisabled}
