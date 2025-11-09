@@ -11,5 +11,7 @@ export type SearchParams = Promise<{
 	letterFilter?: string;
 }>;
 
+// SAFETY LAYER FOR MODEL/ENTITY objects
+// TO-DO: Add __typename to the DB or inject it in actions/services ?
 export type ClientType = Client & { __typename: "client" };
 export type ProjectType = Project & { __typename: "project" };
