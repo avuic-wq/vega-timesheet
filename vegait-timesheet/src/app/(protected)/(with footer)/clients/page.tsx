@@ -4,7 +4,7 @@ import type { SearchParams } from "@/src/lib/types";
 import {
 	getClientFirstLettersAction,
 	getFilteredClientsAction,
-} from "@/src/server-actions/clients";
+} from "@/src/server-actions/clientsActions";
 
 interface Props {
 	searchParams: SearchParams;
