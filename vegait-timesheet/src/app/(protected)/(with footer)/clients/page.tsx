@@ -1,5 +1,5 @@
 import LetterFilters from "@/src/components/Filters/LetterFilters";
-import List from "@/src/components/List/List";
+import { List as ClientList } from "@/src/components/List/List";
 import type { SearchParams } from "@/src/lib/types";
 import {
 	getClientFirstLettersAction,
@@ -21,7 +21,7 @@ export default async function Clients({ searchParams }: Props) {
 		<div className="flex flex-col gap-4">
 			<LetterFilters letters={filterData} />
 			{/* TO-DO: ADD PLACEHOLDER FOR LIST? (check: suspension?) UNTIL REQUEST FINISHES */}
-			<List data={clients} />
+			<ClientList data={clients} />
 		</div>
 	);
 }

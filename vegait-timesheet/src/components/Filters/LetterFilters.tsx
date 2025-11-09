@@ -18,7 +18,6 @@ export default function LetterFilters({ letters }: Props) {
 	const router = useRouter();
 	const [isPending, startTransition] = useTransition();
 	const selectedFilter = searchParams.get("letterFilter") || null;
-	console.log({ isPending });
 
 	// CHECK: Could use useTransition
 	const handleOnSelectFilter = (filter: string): void => {
