@@ -20,7 +20,7 @@ export interface IconProps {
 	name: IconName;
 	size?: number;
 	alt?: string;
-	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+	onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 	fullOpacity?: boolean;
 }
 
@@ -31,18 +31,18 @@ export default function Icon({
 	onClick,
 	fullOpacity = true,
 }: IconProps) {
+	// TO-DO: Use another approach to avoid <Image ?
 	return (
-		<button type="button" onClick={onClick}>
-			<Image
-				src={`/icons/${name}.svg`}
-				alt={alt || `${name} icon`}
-				width={size}
-				height={size}
-				style={{
-					opacity: fullOpacity ? 1 : 0.5,
-					cursor: onClick ? "pointer" : "",
-				}}
-			/>
-		</button>
+		<Image
+			src={`/icons/${name}.svg`}
+			alt={alt || `${name} icon`}
+			width={size}
+			height={size}
+			style={{
+				opacity: fullOpacity ? 1 : 0.5,
+				cursor: onClick ? "pointer" : "",
+			}}
+			onClick={onClick}
+		/>
 	);
 }
