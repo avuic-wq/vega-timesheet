@@ -75,6 +75,7 @@ model Client {
   updatedAt   DateTime  @updatedAt
 
   @@index([countryCode])
+  @@index([name])
   @@map("clients")
 }
 
