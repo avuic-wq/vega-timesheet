@@ -4,7 +4,7 @@ type ConfigProps = {
 	title: string;
 	description?: string;
 	actionText?: string;
-	showActionButton?: boolean;
+	hasActionButton?: boolean;
 	hasSearch?: boolean;
 };
 
@@ -20,7 +20,7 @@ export const config: Record<string, ConfigProps> = {
 		description:
 			"Here, you have full control over your client database, empowering you to efficiently organise and maintain your client.",
 		actionText: "Action",
-		showActionButton: true,
+		hasActionButton: true,
 		hasSearch: true,
 	},
 	[APP_ROUTES.PROJECTS]: {
@@ -28,7 +28,7 @@ export const config: Record<string, ConfigProps> = {
 		description:
 			"Here, you have full control over your project database, empowering you to efficiently organise and maintain your client.",
 		actionText: "Action",
-		showActionButton: true,
+		hasActionButton: true,
 		hasSearch: true,
 	},
 	[APP_ROUTES.REPORTS]: {
