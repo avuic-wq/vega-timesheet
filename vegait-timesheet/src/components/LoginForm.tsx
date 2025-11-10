@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import Button from "@/src/components/Button";
 import Text from "@/src/components/Text";
 import TextField from "@/src/components/TextField";
-import { loginAction } from "@/src/server-actions/authActions";
+import { loginAction } from "@/src/server-actions/auth/actions";
 
 interface Props {
 	callbackUrl?: string;

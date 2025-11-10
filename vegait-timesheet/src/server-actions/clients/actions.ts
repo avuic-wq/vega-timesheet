@@ -6,9 +6,9 @@ import {
 	fetchAllClients,
 	fetchClientFirstLetters,
 	fetchPaginatedAndFilteredClients,
-} from "@/src/app/db/clientService";
-import type { PaginatedAndFilteredClientsActionResult } from "@/src/lib/types";
-import { ITEMS_PER_PAGE } from "../lib/consts";
+} from "@/src/app/db/ClientsService/service";
+import { ITEMS_PER_PAGE } from "@/src/lib/consts";
+import type { GetPaginatedAndFilteredClientsActionResult } from "./types";
 
 export async function getAllClientsAction(): Promise<Client[]> {
 	const clients = fetchAllClients();
@@ -19,7 +19,7 @@ export async function getPaginatedAndFileterdClientsAction(
 	page: number,
 	searchInput?: string,
 	letterFilter?: string,
-): Promise<PaginatedAndFilteredClientsActionResult> {
+): Promise<GetPaginatedAndFilteredClientsActionResult> {
 	const itemsPerPage = ITEMS_PER_PAGE.DEFAULT;
 
 	const { clients, totalCount } = await fetchPaginatedAndFilteredClients(

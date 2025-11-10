@@ -1,4 +1,3 @@
-import type { Client, Project } from "@prisma/client";
 import type { AUTH_ERRORS_KEYS } from "./consts";
 
 export type AuthErrorKey =
@@ -12,18 +11,5 @@ export type SearchParams = Promise<{
 	page?: string;
 }>;
 
-// SAFETY LAYER FOR MODEL/ENTITY objects
+// TO-DO: Type all actions/service functions (return result)
 // TO-DO LOW-PRIO: Add __typename to the DB or inject it in actions/services ?
-export type ClientType = Client & { __typename: "client" };
-export type ProjectType = Project & { __typename: "project" };
-
-// TO-DO: Type all actions/service function
-export type PaginatedAndFilteredClientsFetchResult = {
-	clients: Client[];
-	totalCount: number;
-};
-
-export type PaginatedAndFilteredClientsActionResult = {
-	clients: Client[];
-	totalPages: number;
-};

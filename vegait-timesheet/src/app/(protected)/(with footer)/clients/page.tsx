@@ -6,7 +6,7 @@ import { clientsParametersSchema } from "@/src/lib/validators/zodSchemas";
 import {
 	getClientFirstLettersAction,
 	getPaginatedAndFileterdClientsAction,
-} from "@/src/server-actions/clientsActions";
+} from "@/src/server-actions/clients/actions";
 
 interface Props {
 	searchParams: SearchParams;
