@@ -11,16 +11,16 @@ interface Props {
 }
 
 export function List({ data, totalPages, currentPage }: Props) {
-	const handleRowClick = () => {};
+	const handleItemClick = () => {};
 
-	const debouncedRowClick = debounce(handleRowClick, DEBOUNCE_TIME.DEFAULT);
+	const debouncedItemClick = debounce(handleItemClick, DEBOUNCE_TIME.DEFAULT);
 
 	return (
 		<div className="flex flex-col gap-6">
 			<ul>
-				{data.map((row) => {
+				{data.map((item) => {
 					return (
-						<ListItem key={row.id} item={row} onClick={debouncedRowClick} />
+						<ListItem key={item.id} item={item} onClick={debouncedItemClick} />
 					);
 				})}
 			</ul>
