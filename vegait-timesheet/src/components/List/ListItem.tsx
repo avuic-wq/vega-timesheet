@@ -10,7 +10,7 @@ interface Props {
 	onClick: React.MouseEventHandler<HTMLDivElement>;
 }
 
-export default function ListItem({ item }: Props) {
+const ListItem = ({ item }: Props) => {
 	const isClient = isClientType(item);
 
 	return (
@@ -27,4 +27,6 @@ export default function ListItem({ item }: Props) {
 			<Icon name="chevron-right" />
 		</button>
 	);
-}
+};
+
+export default ListItem;

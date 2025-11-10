@@ -8,7 +8,7 @@ import Search from "./Search";
 
 const staticStyles = "flex bg-white rounded-[16px] p-6 gap-2";
 
-export default function Header() {
+const Header = () => {
 	const pathname = usePathname();
 	const config = headerConfig[pathname] || {};
 	const { title, description, actionHandler, hasSearch } = config;
@@ -33,4 +33,6 @@ export default function Header() {
 			)}
 		</div>
 	);
-}
+};
+
+export default Header;

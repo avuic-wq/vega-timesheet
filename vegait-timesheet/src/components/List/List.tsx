@@ -10,7 +10,7 @@ interface Props {
 	currentPage: number;
 }
 
-export function List({ data, totalPages, currentPage }: Props) {
+export const List = ({ data, totalPages, currentPage }: Props) => {
 	const handleItemClick = () => {};
 
 	const debouncedItemClick = debounce(handleItemClick, DEBOUNCE_TIME.DEFAULT);
@@ -27,4 +27,4 @@ export function List({ data, totalPages, currentPage }: Props) {
 			<Pagination currentPage={currentPage} totalPages={totalPages} />
 		</div>
 	);
-}
+};

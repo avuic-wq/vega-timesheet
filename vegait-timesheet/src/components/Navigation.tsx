@@ -12,7 +12,7 @@ const pages = [
 	{ name: "Reports", route: APP_ROUTES.REPORTS },
 ];
 
-export default function Navigation() {
+const Navigation = () => {
 	return (
 		<nav className="flex items-center justify-between bg-white gap-6 py-4 px-12">
 			<div>
@@ -40,4 +40,6 @@ export default function Navigation() {
 			</div>
 		</nav>
 	);
-}
+};
+
+export default Navigation;

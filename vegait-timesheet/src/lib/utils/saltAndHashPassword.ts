@@ -1,10 +1,9 @@
 import bcrypt from "bcryptjs";
 
-export async function saltAndHashPassword(
+export const saltAndHashPassword = async (
 	password: string,
 	saltRounds: number,
-): Promise<string> {
+): Promise<string> => {
 	const hashedPassword = await bcrypt.hash(password, saltRounds);
 	return hashedPassword;
-}
-
+};

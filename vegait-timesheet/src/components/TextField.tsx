@@ -32,7 +32,7 @@ const getDynamicStyles = (hasRightIcon: boolean, hasLeftIcon: boolean) => {
 	return ``;
 };
 
-export default function TextField({
+const TextField = ({
 	name,
 	placeholder,
 	isDisabled = false,
@@ -41,7 +41,7 @@ export default function TextField({
 	rightIcon,
 	leftIcon,
 	onChange,
-}: Props) {
+}: Props) => {
 	const [isFocused, setIsFocused] = useState(false);
 	const [showPassword, setShowPassword] = useState(!isPassword);
 	const dynamicStyles = getDynamicStyles(
@@ -79,4 +79,6 @@ export default function TextField({
 			{error && <p className="text-red text-sm">{error}</p>}
 		</div>
 	);
-}
+};
+
+export default TextField;

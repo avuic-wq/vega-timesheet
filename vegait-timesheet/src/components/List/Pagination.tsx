@@ -26,10 +26,7 @@ export const config = {
 } as const;
 
 // TO-DO: Clicking on a page doesnt move viewport
-export default function Pagination({
-	currentPage,
-	totalPages,
-}: PaginationProps) {
+const Pagination = ({ currentPage, totalPages }: PaginationProps) => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 
@@ -96,4 +93,6 @@ export default function Pagination({
 			</button>
 		</div>
 	);
-}
+};
+
+export default Pagination;

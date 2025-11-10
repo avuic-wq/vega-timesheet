@@ -24,13 +24,13 @@ export interface IconProps {
 	fullOpacity?: boolean;
 }
 
-export default function Icon({
+const Icon = ({
 	name,
 	size = 24,
 	alt,
 	onClick,
 	fullOpacity = true,
-}: IconProps) {
+}: IconProps) => {
 	// TO-DO: Use another approach to avoid <Image ?
 	return (
 		<Image
@@ -45,4 +45,6 @@ export default function Icon({
 			onClick={onClick}
 		/>
 	);
-}
+};
+
+export default Icon;

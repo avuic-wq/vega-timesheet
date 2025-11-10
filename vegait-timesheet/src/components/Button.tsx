@@ -18,13 +18,13 @@ interface ButtonProps {
 const staticStyles =
 	"bg-black text-white rounded-[24px] flex items-center justify-center m-auto cursor-pointer";
 
-export default function Button({
+const Button = ({
 	text,
 	type = "button",
 	onClick,
 	isDisabled = false,
 	classNames = { button: "", text: "" },
-}: ButtonProps) {
+}: ButtonProps) => {
 	// TO-DO: Remove when passing tailwind classes are optimized
 	const hasFixedDimensions =
 		classNames.button?.includes("w-[") && classNames.button?.includes("h-[");
@@ -44,4 +44,6 @@ export default function Button({
 			<Text value={text} className={dynamicStyles.text} />
 		</button>
 	);
-}
+};
+
+export default Button;

@@ -7,12 +7,12 @@ interface Props {
 	isDisabled?: boolean;
 }
 
-export default function FilterItem({
+const FilterItem = ({
 	value,
 	isSelected,
 	onClick,
 	isDisabled = false,
-}: Props) {
+}: Props) => {
 	const dynamicStyles = `
 	${isSelected ? "border-[1.5px] border-red" : ""}
 	${isDisabled ? "!bg-grey-200 !cursor-not-allowed" : ""}
@@ -39,4 +39,6 @@ export default function FilterItem({
 			{value}
 		</div>
 	);
-}
+};
+
+export default FilterItem;

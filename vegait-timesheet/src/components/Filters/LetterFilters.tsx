@@ -12,7 +12,7 @@ interface Props {
 	letters: string[];
 }
 
-export default function LetterFilters({ letters }: Props) {
+const LetterFilters = ({ letters }: Props) => {
 	const searchParams = useSearchParams();
 	const router = useRouter();
 
@@ -56,4 +56,6 @@ export default function LetterFilters({ letters }: Props) {
 			))}
 		</div>
 	);
-}
+};
+
+export default LetterFilters;

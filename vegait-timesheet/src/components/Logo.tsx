@@ -20,7 +20,7 @@ const logoConfig = {
 	},
 };
 
-export default function Logo({ size = "md", className }: LogoProps) {
+const Logo = ({ size = "md", className }: LogoProps) => {
 	const config = logoConfig[size];
 
 	return (
@@ -33,4 +33,6 @@ export default function Logo({ size = "md", className }: LogoProps) {
 			/>
 		</div>
 	);
-}
+};
+
+export default Logo;

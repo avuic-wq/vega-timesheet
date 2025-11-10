@@ -10,7 +10,7 @@ interface Props {
 	callbackUrl?: string;
 }
 
-export default function LoginForm({ callbackUrl }: Props) {
+const LoginForm = ({ callbackUrl }: Props) => {
 	const [errorMessage, formAction, isPending] = useActionState(
 		loginAction,
 		undefined,
@@ -46,4 +46,6 @@ export default function LoginForm({ callbackUrl }: Props) {
 			/>
 		</form>
 	);
-}
+};
+
+export default LoginForm;

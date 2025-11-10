@@ -1,8 +1,8 @@
 import bcrypt from "bcryptjs";
 
-export async function validatePassword(
+export const validatePassword = async (
 	rawPassword: string,
 	hashedPassword: string,
-) {
+) => {
 	return await bcrypt.compare(rawPassword, hashedPassword);
-}
+};

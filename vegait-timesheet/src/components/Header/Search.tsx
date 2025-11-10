@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import TextField from "@/src/components/TextField";
 import { DEBOUNCE_TIME, SEARCH_PARAMETERS } from "@/src/lib/consts";
 
-export default function Search() {
+const Search = () => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 
@@ -34,4 +34,6 @@ export default function Search() {
 			/>
 		</div>
 	);
-}
+};
+
+export default Search;
