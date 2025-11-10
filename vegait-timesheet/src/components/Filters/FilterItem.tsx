@@ -15,7 +15,7 @@ export default function FilterItem({
 }: Props) {
 	const dynamicStyles = `
 	${isSelected ? "border-[1.5px] border-red" : ""}
-	${isDisabled ? "!bg-grey-200" : ""}
+	${isDisabled ? "!bg-grey-200 !cursor-not-allowed" : ""}
 	`;
 
 	const handleOnClick = isDisabled ? undefined : onClick;
