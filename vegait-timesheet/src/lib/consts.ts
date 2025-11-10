@@ -6,7 +6,7 @@ export const DEBOUNCE_TIME = {
 	LETTER_FILTER_CLICK: 300,
 };
 
-export const DEFAULT_LIST_PAGE = 1;
+export const INITIAL_LIST_PAGE = 1;
 export const ITEMS_PER_PAGE = {
 	DEFAULT: 10,
 };

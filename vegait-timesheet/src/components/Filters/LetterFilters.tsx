@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useTransition } from "react";
 import { SEARCH_PARAMETERS } from "@/src/lib/consts";
 import FilterItem from "./FilterItem";
 
@@ -16,15 +15,25 @@ interface Props {
 export default function LetterFilters({ letters }: Props) {
 	const searchParams = useSearchParams();
 	const router = useRouter();
-	const [isPending, startTransition] = useTransition();
-	const selectedFilter = searchParams.get("letterFilter") || null;
+
+	const selectedFilter =
+		searchParams.get(SEARCH_PARAMETERS.LETTER_FILTER) || null;
 
 	// CHECK: Could use useTransition
+	// const [isPending, startTransition] = useTransition();
 	const handleOnSelectFilter = (filter: string): void => {
 		const params = new URLSearchParams(searchParams);
 
+		if (filter === selectedFilter) {
+			params.delete(SEARCH_PARAMETERS.LETTER_FILTER);
+			params.delete(SEARCH_PARAMETERS.PAGE);
+			router.push(`?${params.toString()}`);
+			return;
+		}
+
 		if (filter) {
 			params.set(SEARCH_PARAMETERS.LETTER_FILTER, filter);
+			params.delete(SEARCH_PARAMETERS.PAGE);
 			router.push(`?${params.toString()}`);
 
 			return;
