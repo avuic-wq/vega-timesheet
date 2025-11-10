@@ -2,7 +2,7 @@ import type { Prisma } from "@prisma/client";
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/prisma/prisma";
 import type {
-	FetchClientFirstLettersResult,
+	FetchClientsFirstLettersResult,
 	FetchPaginatedAndFilteredClientsResult,
 } from "./types";
 
@@ -50,8 +50,8 @@ export const fetchPaginatedAndFilteredClients = unstable_cache(
 	["clients-filtered"],
 );
 
-export const fetchClientFirstLetters =
-	unstable_cache(async (): Promise<FetchClientFirstLettersResult> => {
+export const fetchClientsFirstLetters =
+	unstable_cache(async (): Promise<FetchClientsFirstLettersResult> => {
 		const letterObjects = await prisma.$queryRaw<{ first_letter: string }[]>`
 		SELECT DISTINCT UPPER(SUBSTRING(name FROM 1 FOR 1)) AS first_letter
 		FROM "clients"

@@ -5,4 +5,4 @@ export type FetchPaginatedAndFilteredClientsResult = {
 	totalCount: number;
 };
 
-export type FetchClientFirstLettersResult = string[];
+export type FetchClientsFirstLettersResult = string[];
