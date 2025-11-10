@@ -16,7 +16,7 @@ export function List({ data, totalPages, currentPage }: Props) {
 	const debouncedRowClick = debounce(handleRowClick, DEBOUNCE_TIME.DEFAULT);
 
 	return (
-		<div>
+		<div className="flex flex-col gap-6">
 			<ul>
 				{data.map((row) => {
 					return (

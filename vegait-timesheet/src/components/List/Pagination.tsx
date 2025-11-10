@@ -77,7 +77,7 @@ export default function Pagination({
 						key={getPaginationElementKey(page, index)}
 						onClick={() => handlePageChange(page)}
 						className={`
-						min-w-[32px] h-[32px] rounded-[16px]
+						min-w-[24px] h-[24px] rounded-[12px]
 						${page === currentPage ? "bg-black text-white" : ""}
 					`}
 					>
