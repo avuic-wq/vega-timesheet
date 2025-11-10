@@ -25,7 +25,7 @@ export const APP_ROUTES = {
 
 export const SEARCH_PARAMETERS = {
 	SEARCH: "search",
-	LETTER_FILTER: "letterFilter",
+	LETTER_FILTER: "startsWith",
 	PAGE: "page",
 };
 

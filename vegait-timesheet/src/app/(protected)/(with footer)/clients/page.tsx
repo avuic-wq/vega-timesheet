@@ -15,7 +15,7 @@ interface Props {
 export default async function Clients({ searchParams }: Props) {
 	const params = await searchParams;
 	const searchInputParam = params?.search || "";
-	const letterFilterParam = params?.letterFilter || "";
+	const letterFilterParam = params?.startsWith || "";
 	const currentPageParam = params?.page || INITIAL_LIST_PAGE;
 
 	const validatedParameters = clientsParametersSchema.parseAsync({
