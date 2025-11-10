@@ -1,18 +1,19 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import Text from "@/src/components/Text";
-import Action from "./Action";
+import ActionButton from "./ActionButton";
 import { config as headerConfig } from "./config";
 import Search from "./Search";
 
 const staticStyles = "flex bg-white rounded-[16px] p-6 gap-2";
 
 const Header = () => {
+	const [isActionModalOn, setIsActionModalOn] = useState<boolean>(false);
 	const pathname = usePathname();
 	const config = headerConfig[pathname] || {};
-	const { title, description, actionHandler, hasSearch } = config;
-	// CHECK: Its better to have a hook that returns actionHandlers?
+	const { title, description, hasActionButton, hasSearch } = config;
 
 	const dynamicStyles = `${hasSearch ? "justify-center" : "justify-left"}`;
 
@@ -21,7 +22,7 @@ const Header = () => {
 			<div className="basis-[45%] flex flex-col gap-6">
 				<Text value={title} className="font-bold heading-lg" />
 				<Text value={description} className="text-lg" />
-				{actionHandler && <Action />}
+				{hasActionButton && <ActionButton />}
 			</div>
 
 			{hasSearch && (
