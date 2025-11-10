@@ -1,6 +1,7 @@
 import type { Client, Prisma } from "@prisma/client";
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/prisma/prisma";
+import type { PaginatedAndFilteredClientsFetchResult } from "@/src/lib/types";
 
 export const fetchAllClients = unstable_cache(async () => {
 	return prisma.client.findMany({
@@ -8,9 +9,13 @@ export const fetchAllClients = unstable_cache(async () => {
 	});
 }, ["clients-all"]);
 
-// CHECK: Cache only on filter change / not on page change (with nav)
-export const fetchClientsWithFilters = unstable_cache(
-	async (searchInput?: string, letterFilter?: string): Promise<Client[]> => {
+export const fetchPaginatedAndFilteredClients = unstable_cache(
+	async (
+		page: number,
+		itemsPerPage: number,
+		searchInput?: string,
+		letterFilter?: string,
+	): Promise<PaginatedAndFilteredClientsFetchResult> => {
 		const conditions: Prisma.ClientWhereInput[] = [];
 
 		if (searchInput) {
@@ -25,12 +30,19 @@ export const fetchClientsWithFilters = unstable_cache(
 			});
 		}
 
-		const results = await prisma.client.findMany({
-			where: conditions.length > 0 ? { AND: conditions } : {},
-			orderBy: { name: "asc" },
-		});
+		const where = conditions.length > 0 ? { AND: conditions } : {};
 
-		return results;
+		const [clients, totalCount] = await Promise.all([
+			prisma.client.findMany({
+				where,
+				orderBy: { name: "asc" },
+				skip: (page - 1) * itemsPerPage,
+				take: itemsPerPage,
+			}),
+			prisma.client.count({ where }),
+		]);
+
+		return { clients, totalCount };
 	},
 	["clients-filtered"],
 );
@@ -44,3 +56,41 @@ export const fetchClientFirstLetters = unstable_cache(async () => {
 
 	return letterObjects.map((obj) => obj.first_letter);
 }, ["filter-all-letters"]);
+
+export async function createClient(data: {
+	name: string;
+	countryCode: string;
+	address?: string;
+}): Promise<Client> {
+	const createdClient = await prisma.client.create({
+		data: {
+			name: data.name,
+			countryCode: data.countryCode,
+			address: data.address,
+		},
+	});
+	return createdClient;
+}
+
+export async function updateClient(
+	id: string,
+	data: Partial<Omit<Client, "id" | "createdAt" | "updatedAt">>,
+): Promise<Client> {
+	const updatedClient = await prisma.client.update({
+		where: { id },
+		data,
+	});
+	return updatedClient;
+}
+
+export async function deleteClient(id: string): Promise<Client> {
+	return prisma.client.delete({
+		where: { id },
+	});
+}
+
+// export async function fetchClientById(id: string): Promise<Client | null> {
+// 	return prisma.client.findUnique({
+// 		where: { id },
+// 	});
+// }

@@ -42,7 +42,7 @@ export default function LoginForm({ callbackUrl }: Props) {
 				text="Login"
 				type="submit"
 				isDisabled={isPending}
-				className={buttonStyle}
+				className={buttonStyle} // TO-DO: When passing tailwind classes are optimized
 			/>
 		</form>
 	);
