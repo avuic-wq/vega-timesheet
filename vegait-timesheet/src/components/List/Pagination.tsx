@@ -50,7 +50,7 @@ const Pagination = ({ currentPage, totalPages }: PaginationProps) => {
 				type="button"
 				onClick={() => handlePageChange(currentPage - 1)}
 				disabled={currentPage === 1}
-				className="disabled:opacity-50 disabled:cursor-not-allowed"
+				className="disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
 			>
 				<Icon name="chevron-left" />
 			</button>
@@ -74,7 +74,7 @@ const Pagination = ({ currentPage, totalPages }: PaginationProps) => {
 						key={getPaginationElementKey(page, index)}
 						onClick={() => handlePageChange(page)}
 						className={`
-						min-w-[24px] h-[24px] rounded-[12px]
+						min-w-[24px] h-[24px] rounded-[12px] cursor-pointer
 						${page === currentPage ? "bg-black text-white" : ""}
 					`}
 					>
@@ -86,7 +86,7 @@ const Pagination = ({ currentPage, totalPages }: PaginationProps) => {
 				type="button"
 				onClick={() => handlePageChange(currentPage + 1)}
 				disabled={currentPage === totalPages}
-				className="disabled:opacity-50 disabled:cursor-not-allowed"
+				className="disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
 			>
 				{/* className="w-4 h-4" */}
 				<Icon name="chevron-right" />
