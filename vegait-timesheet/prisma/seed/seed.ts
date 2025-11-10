@@ -1,7 +1,8 @@
 import { PrismaClient, UserRole } from "@prisma/client";
 import { DEFAULT_SALT_ROUNDS } from "@/src/lib/consts";
 import { saltAndHashPassword } from "@/src/lib/utils/saltAndHashPassword";
-import clientsData from "./clients";
+import clientsData from "./clientsData";
+import { getPojectsData } from "./projectsData";
 
 // CHECK: const and utils function from src/lib seems weird or not?
 const prisma = new PrismaClient();
@@ -145,60 +146,8 @@ async function main() {
 	// 5. SEED PROJECTS
 	// ==================================================
 
-	const projectData = [
-		{
-			name: "Pinnacle",
-			clientId: clients[0].id,
-			industryId: industries[3].id,
-		},
-		{
-			name: "Aurora",
-			clientId: clients[1].id,
-			industryId: industries[1].id,
-		},
-		{
-			name: "Nova Management System",
-			clientId: clients[2].id,
-			industryId: industries[2].id,
-		},
-		{
-			name: "ERP Zephyr",
-			clientId: clients[3].id,
-			industryId: industries[0].id,
-		},
-		{
-			name: "IMP Summit",
-			clientId: clients[4].id,
-			industryId: industries[3].id,
-		},
-		{
-			name: "Orion Automation Tool",
-			clientId: clients[5].id,
-			industryId: industries[9].id,
-		},
-		{
-			name: "Momentum - Cloud Infrastructure",
-			clientId: clients[6].id,
-			industryId: industries[0].id,
-		},
-		{
-			name: "Catalyst iOS",
-			clientId: clients[7].id,
-			industryId: industries[0].id,
-		},
-		{
-			name: "Nebula Pipeline",
-			clientId: clients[8].id,
-			industryId: industries[0].id,
-		},
-		{
-			name: "Startup Falcon",
-			clientId: clients[9].id,
-			industryId: industries[0].id,
-		},
-	];
-
-	const expandedPrjectsData = projectData.flatMap((item) => {
+	const projectsData = getPojectsData(clients, industries);
+	const expandedPrjectsData = projectsData.flatMap((item) => {
 		return [item, item, item, item, item, item, item, item, item, item];
 	});
 
