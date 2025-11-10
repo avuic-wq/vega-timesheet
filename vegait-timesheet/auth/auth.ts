@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { ZodError } from "zod";
-import { signInSchema } from "@/src/lib/validators/zod";
+import { signInSchema } from "@/src/lib/validators/zodSchemas";
 
 import { authenticateUser } from "./authenticateUser";
 
