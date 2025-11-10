@@ -14,15 +14,17 @@ export default function ListItem({ item }: Props) {
 	const isClient = isClientType(item);
 
 	return (
-		<div className="flex justify-between px-6 py-3 bg-primary rounded-[16px] mt-2">
-			{/* // TO-DO: Change to button and add cursor:pointer */}
-			<div className="flex flex-row gap-2">
+		<button
+			type="button"
+			className="flex justify-between px-6 py-3 bg-primary rounded-[16px] mt-2 w-full cursor-pointer"
+		>
+			<div className="flex gap-2">
 				<Text value={item.name} />
 				{isClient && (
 					<Text value={item.countryCode} className="text-grey-500" />
 				)}
 			</div>
 			<Icon name="chevron-right" />
-		</div>
+		</button>
 	);
 }

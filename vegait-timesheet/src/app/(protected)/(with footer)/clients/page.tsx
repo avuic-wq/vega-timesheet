@@ -1,6 +1,5 @@
 import LetterFilters from "@/src/components/Filters/LetterFilters";
 import { List as ClientList } from "@/src/components/List/List";
-import Pagination from "@/src/components/List/Pagination";
 import { INITIAL_LIST_PAGE } from "@/src/lib/consts";
 import type { SearchParams } from "@/src/lib/types";
 import { clientsParametersSchema } from "@/src/lib/validators/zodSchemas";
@@ -39,8 +38,11 @@ export default async function Clients({ searchParams }: Props) {
 		<div className="flex flex-col gap-4">
 			<LetterFilters letters={filterData} />
 			{/* TO-DO: ADD PLACEHOLDER FOR LIST? (check: suspension?) UNTIL REQUEST FINISHES */}
-			<ClientList data={clients} />
-			<Pagination currentPage={currentPage} totalPages={totalPages} />
+			<ClientList
+				data={clients}
+				currentPage={currentPage}
+				totalPages={totalPages}
+			/>
 		</div>
 	);
 }
