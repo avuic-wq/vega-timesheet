@@ -6,12 +6,19 @@ import {
 	fetchPaginatedAndFilteredProjects,
 	fetchProjectsFirstLetters,
 } from "@/src/app/db/ProjectsService/service";
-import { ITEMS_PER_PAGE } from "@/src/lib/consts";
+import { ITEMS_PER_PAGE, SEARCH_PARAMETERS } from "@/src/lib/consts";
 import type {
 	GetAllProjectsActionResult,
 	GetPaginatedAndFilteredProjectsActionResult,
 	GetProjectsFirstLettersActionResult,
 } from "./types";
+
+const getPageOutOfBoundsRedirectUrl = (
+	searchInput?: string,
+	letterFilter?: string,
+) => {
+	return `?${SEARCH_PARAMETERS.PAGE}=1${searchInput ? `&search=${searchInput}` : ""}${letterFilter ? `&letterFilter=${letterFilter}` : ""}`;
+};
 
 export async function getAllProjectsAction(): GetAllProjectsActionResult {
 	const projects = fetchAllProjects();
@@ -33,12 +40,11 @@ export async function getPaginatedAndFilteredProjectsAction(
 	);
 
 	const totalPages = Math.ceil(totalCount / itemsPerPage);
+
 	if (page > totalPages && totalPages > 0) {
 		// Redirect to page 1 if page is out of bounds
 		// TO-DO: TEST!!! This feels odd
-		redirect(
-			`?page=1${searchInput ? `&search=${searchInput}` : ""}${letterFilter ? `&letterFilter=${letterFilter}` : ""}`,
-		);
+		redirect(getPageOutOfBoundsRedirectUrl(searchInput, letterFilter));
 	}
 
 	return {
