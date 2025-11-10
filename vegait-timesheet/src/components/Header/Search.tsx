@@ -13,9 +13,11 @@ export default function Search() {
 		const params = new URLSearchParams(searchParams);
 		if (e.target.value) {
 			params.set(SEARCH_PARAMETERS.SEARCH, e.target.value);
-		} else {
-			params.delete(SEARCH_PARAMETERS.SEARCH);
+			router.push(`?${params.toString()}`);
+			return;
 		}
+
+		params.delete(SEARCH_PARAMETERS.SEARCH);
 		router.push(`?${params.toString()}`);
 	};
 
