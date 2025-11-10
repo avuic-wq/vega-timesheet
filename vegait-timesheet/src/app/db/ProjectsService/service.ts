@@ -7,50 +7,46 @@ import type {
 	FetchProjectsFirstLettersResult,
 } from "./types";
 
-export const fetchAllProjects =
-	unstable_cache(async (): Promise<FetchAllProjcetsResult> => {
-		return prisma.project.findMany({
-			orderBy: { name: "asc" },
+export const fetchAllProjects = async (): Promise<FetchAllProjcetsResult> => {
+	return prisma.project.findMany({
+		orderBy: { name: "asc" },
+	});
+};
+
+export const fetchPaginatedAndFilteredProjects = async (
+	page: number,
+	itemsPerPage: number,
+	searchInput?: string,
+	letterFilter?: string,
+): Promise<FetchPaginatedAndFilteredProjectsResult> => {
+	const conditions: Prisma.ProjectWhereInput[] = [];
+
+	if (searchInput) {
+		conditions.push({
+			name: { contains: searchInput, mode: "insensitive" },
 		});
-	}, ["projects-all"]);
+	}
 
-export const fetchPaginatedAndFilteredProjects = unstable_cache(
-	async (
-		page: number,
-		itemsPerPage: number,
-		searchInput?: string,
-		letterFilter?: string,
-	): Promise<FetchPaginatedAndFilteredProjectsResult> => {
-		const conditions: Prisma.ProjectWhereInput[] = [];
+	if (letterFilter) {
+		conditions.push({
+			name: { startsWith: letterFilter, mode: "insensitive" },
+		});
+	}
 
-		if (searchInput) {
-			conditions.push({
-				name: { contains: searchInput, mode: "insensitive" },
-			});
-		}
+	const where = conditions.length > 0 ? { AND: conditions } : {};
 
-		if (letterFilter) {
-			conditions.push({
-				name: { startsWith: letterFilter, mode: "insensitive" },
-			});
-		}
+	const [projects, totalCount] = await Promise.all([
+		prisma.project.findMany({
+			where,
+			orderBy: { name: "asc" },
+			skip: (page - 1) * itemsPerPage,
+			take: itemsPerPage,
+		}),
+		prisma.project.count({ where }),
+	]);
 
-		const where = conditions.length > 0 ? { AND: conditions } : {};
-
-		const [projects, totalCount] = await Promise.all([
-			prisma.project.findMany({
-				where,
-				orderBy: { name: "asc" },
-				skip: (page - 1) * itemsPerPage,
-				take: itemsPerPage,
-			}),
-			prisma.project.count({ where }),
-		]);
-
-		return { projects, totalCount };
-	},
-	["projects-filtered"],
-);
+	return { projects, totalCount };
+};
 
 export const fetchProjectsFirstLetters =
 	unstable_cache(async (): Promise<FetchProjectsFirstLettersResult> => {

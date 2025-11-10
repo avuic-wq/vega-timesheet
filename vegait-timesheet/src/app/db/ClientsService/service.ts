@@ -8,50 +8,46 @@ import type {
 	FetchPaginatedAndFilteredClientsResult,
 } from "./types";
 
-export const fetchAllClients =
-	unstable_cache(async (): FetchAllClientsResult => {
-		return prisma.client.findMany({
-			orderBy: { name: "asc" },
+export const fetchAllClients = async (): FetchAllClientsResult => {
+	return prisma.client.findMany({
+		orderBy: { name: "asc" },
+	});
+};
+
+export const fetchPaginatedAndFilteredClients = async (
+	page: number,
+	itemsPerPage: number,
+	searchInput?: string,
+	letterFilter?: string,
+): FetchPaginatedAndFilteredClientsResult => {
+	const conditions: Prisma.ClientWhereInput[] = [];
+
+	if (searchInput) {
+		conditions.push({
+			name: { contains: searchInput, mode: "insensitive" },
 		});
-	}, ["clients-all"]);
+	}
 
-export const fetchPaginatedAndFilteredClients = unstable_cache(
-	async (
-		page: number,
-		itemsPerPage: number,
-		searchInput?: string,
-		letterFilter?: string,
-	): FetchPaginatedAndFilteredClientsResult => {
-		const conditions: Prisma.ClientWhereInput[] = [];
+	if (letterFilter) {
+		conditions.push({
+			name: { startsWith: letterFilter, mode: "insensitive" },
+		});
+	}
 
-		if (searchInput) {
-			conditions.push({
-				name: { contains: searchInput, mode: "insensitive" },
-			});
-		}
+	const where = conditions.length > 0 ? { AND: conditions } : {};
 
-		if (letterFilter) {
-			conditions.push({
-				name: { startsWith: letterFilter, mode: "insensitive" },
-			});
-		}
+	const [clients, totalCount] = await Promise.all([
+		prisma.client.findMany({
+			where,
+			orderBy: { name: "asc" },
+			skip: (page - 1) * itemsPerPage,
+			take: itemsPerPage,
+		}),
+		prisma.client.count({ where }),
+	]);
 
-		const where = conditions.length > 0 ? { AND: conditions } : {};
-
-		const [clients, totalCount] = await Promise.all([
-			prisma.client.findMany({
-				where,
-				orderBy: { name: "asc" },
-				skip: (page - 1) * itemsPerPage,
-				take: itemsPerPage,
-			}),
-			prisma.client.count({ where }),
-		]);
-
-		return { clients, totalCount };
-	},
-	["clients-filtered"],
-);
+	return { clients, totalCount };
+};
 
 export const fetchClientsFirstLetters =
 	unstable_cache(async (): FetchClientsFirstLettersResult => {
