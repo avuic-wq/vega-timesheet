@@ -1,10 +1,10 @@
 import type { Client } from "@prisma/client";
 
-export type GetAllClientsActionResult = Client[];
+export type GetAllClientsActionResult = Promise<Client[]>;
 
-export type GetPaginatedAndFilteredClientsActionResult = {
+export type GetPaginatedAndFilteredClientsActionResult = Promise<{
 	clients: Client[];
 	totalPages: number;
-};
+}>;
 
-export type GetClientsFirstLettersActionResult = string[];
+export type GetClientsFirstLettersActionResult = Promise<string[]>;

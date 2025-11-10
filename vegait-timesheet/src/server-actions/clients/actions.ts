@@ -13,7 +13,7 @@ import type {
 	GetPaginatedAndFilteredClientsActionResult,
 } from "./types";
 
-export async function getAllClientsAction(): Promise<GetAllClientsActionResult> {
+export async function getAllClientsAction(): GetAllClientsActionResult {
 	const clients = fetchAllClients();
 	return clients;
 }
@@ -22,7 +22,7 @@ export async function getPaginatedAndFileterdClientsAction(
 	page: number,
 	searchInput?: string,
 	letterFilter?: string,
-): Promise<GetPaginatedAndFilteredClientsActionResult> {
+): GetPaginatedAndFilteredClientsActionResult {
 	const itemsPerPage = ITEMS_PER_PAGE.DEFAULT;
 
 	const { clients, totalCount } = await fetchPaginatedAndFilteredClients(
@@ -47,6 +47,6 @@ export async function getPaginatedAndFileterdClientsAction(
 	};
 }
 
-export async function getClientsFirstLettersAction(): Promise<GetClientsFirstLettersActionResult> {
+export async function getClientsFirstLettersAction(): GetClientsFirstLettersActionResult {
 	return fetchClientsFirstLetters();
 }
