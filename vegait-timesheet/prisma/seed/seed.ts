@@ -148,7 +148,7 @@ async function main() {
 
 	const projectsData = getPojectsData(clients, industries);
 	const expandedPrjectsData = projectsData.flatMap((item) => {
-		return [item, item, item, item, item, item, item, item, item, item];
+		return [item, item, item, item, item, item];
 	});
 
 	const projects = await prisma.project.createManyAndReturn({
