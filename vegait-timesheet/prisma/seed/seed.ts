@@ -131,61 +131,8 @@ async function main() {
 	// 4. SEED CLIENTS (with ISO country codes)
 	// ==================================================
 
-	const clientData = [
-		{
-			name: "TechCorp Solutions",
-			address: "123 Silicon Valley Blvd",
-			countryCode: "USA",
-		},
-		{
-			name: "Global Finance Ltd",
-			address: "45 Canary Wharf",
-			countryCode: "GBR",
-		},
-		{
-			name: "HealthCare Plus",
-			address: "789 Medical Center Dr",
-			countryCode: "USA",
-		},
-		{
-			name: "EuroTech GmbH",
-			address: "Berliner Straße 100",
-			countryCode: "DEU",
-		},
-		{
-			name: "Retail Innovations",
-			address: "321 Commerce Street",
-			countryCode: "CAN",
-		},
-		{
-			name: "Digital Marketing Pro",
-			address: "Terazije 25",
-			countryCode: "SRB",
-		},
-		{
-			name: "CloudSystems AG",
-			address: "Zürich Hauptbahnhof 5",
-			countryCode: "CHE",
-		},
-		{
-			name: "Mobile Apps Inc",
-			address: "Amsterdam Central 42",
-			countryCode: "NLD",
-		},
-		{
-			name: "AI Research Lab",
-			address: "Stockholm Tech Park 15",
-			countryCode: "SWE",
-		},
-		{
-			name: "Startup Accelerator",
-			address: "Oslo Innovation Hub 8",
-			countryCode: "NOR",
-		},
-	];
-
-	const expandedClientsData = clientData.flatMap((item) => {
-		return [item, item, item, item, item, item, item, item, item, item];
+	const expandedClientsData = clientsData.flatMap((item) => {
+		return [item, item, item, item, item, item];
 	});
 
 	const clients = await prisma.client.createManyAndReturn({
