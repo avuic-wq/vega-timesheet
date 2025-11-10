@@ -4,7 +4,7 @@ import { INITIAL_LIST_PAGE } from "@/src/lib/consts";
 import type { SearchParams } from "@/src/lib/types";
 import { clientsParametersSchema } from "@/src/lib/validators/zodSchemas";
 import {
-	getClientFirstLettersAction,
+	getClientsFirstLettersAction,
 	getPaginatedAndFileterdClientsAction,
 } from "@/src/server-actions/clients/actions";
 
@@ -32,7 +32,7 @@ export default async function Clients({ searchParams }: Props) {
 		letterFilter,
 	);
 
-	const filterData = await getClientFirstLettersAction();
+	const filterData = await getClientsFirstLettersAction();
 
 	return (
 		<div className="flex flex-col gap-4">

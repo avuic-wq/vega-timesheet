@@ -1,6 +1,5 @@
 "use server";
 
-import type { Client } from "@prisma/client";
 import { redirect } from "next/navigation";
 import {
 	fetchAllClients,
@@ -8,10 +7,13 @@ import {
 	fetchPaginatedAndFilteredClients,
 } from "@/src/app/db/ClientsService/service";
 import { ITEMS_PER_PAGE } from "@/src/lib/consts";
-import type { GetPaginatedAndFilteredClientsActionResult } from "./types";
+import type {
+	GetAllClientsActionResult,
+	GetClientsFirstLettersActionResult,
+	GetPaginatedAndFilteredClientsActionResult,
+} from "./types";
 
-// TO-DO: Type return results
-export async function getAllClientsAction(): Promise<Client[]> {
+export async function getAllClientsAction(): Promise<GetAllClientsActionResult> {
 	const clients = fetchAllClients();
 	return clients;
 }
@@ -45,6 +47,6 @@ export async function getPaginatedAndFileterdClientsAction(
 	};
 }
 
-export async function getClientFirstLettersAction(): Promise<string[]> {
+export async function getClientsFirstLettersAction(): Promise<GetClientsFirstLettersActionResult> {
 	return fetchClientsFirstLetters();
 }

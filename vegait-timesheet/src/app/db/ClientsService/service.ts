@@ -1,16 +1,19 @@
 import type { Prisma } from "@prisma/client";
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/prisma/prisma";
+
 import type {
+	FetchAllClientsResult,
 	FetchClientsFirstLettersResult,
 	FetchPaginatedAndFilteredClientsResult,
 } from "./types";
 
-export const fetchAllClients = unstable_cache(async () => {
-	return prisma.client.findMany({
-		orderBy: { name: "asc" },
-	});
-}, ["clients-all"]);
+export const fetchAllClients =
+	unstable_cache(async (): FetchAllClientsResult => {
+		return prisma.client.findMany({
+			orderBy: { name: "asc" },
+		});
+	}, ["clients-all"]);
 
 export const fetchPaginatedAndFilteredClients = unstable_cache(
 	async (
@@ -18,7 +21,7 @@ export const fetchPaginatedAndFilteredClients = unstable_cache(
 		itemsPerPage: number,
 		searchInput?: string,
 		letterFilter?: string,
-	): Promise<FetchPaginatedAndFilteredClientsResult> => {
+	): FetchPaginatedAndFilteredClientsResult => {
 		const conditions: Prisma.ClientWhereInput[] = [];
 
 		if (searchInput) {
@@ -51,7 +54,7 @@ export const fetchPaginatedAndFilteredClients = unstable_cache(
 );
 
 export const fetchClientsFirstLetters =
-	unstable_cache(async (): Promise<FetchClientsFirstLettersResult> => {
+	unstable_cache(async (): FetchClientsFirstLettersResult => {
 		const letterObjects = await prisma.$queryRaw<{ first_letter: string }[]>`
 		SELECT DISTINCT UPPER(SUBSTRING(name FROM 1 FOR 1)) AS first_letter
 		FROM "clients"
