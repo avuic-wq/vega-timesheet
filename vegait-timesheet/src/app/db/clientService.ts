@@ -47,7 +47,6 @@ export const fetchPaginatedAndFilteredClients = unstable_cache(
 	["clients-filtered"],
 );
 
-// TO-DO: CACHE once and always read from cache
 export const fetchClientFirstLetters = unstable_cache(async () => {
 	const letterObjects = await prisma.$queryRaw<{ first_letter: string }[]>`
 		SELECT DISTINCT UPPER(SUBSTRING(name FROM 1 FOR 1)) AS first_letter
@@ -57,6 +56,7 @@ export const fetchClientFirstLetters = unstable_cache(async () => {
 	return letterObjects.map((obj) => obj.first_letter);
 }, ["filter-all-letters"]);
 
+// NOTE: VALIDATE the data with zod
 export async function createClient(data: {
 	name: string;
 	countryCode: string;
@@ -72,6 +72,7 @@ export async function createClient(data: {
 	return createdClient;
 }
 
+// NOTE: VALIDATE the data with zod
 export async function updateClient(
 	id: string,
 	data: Partial<Omit<Client, "id" | "createdAt" | "updatedAt">>,
