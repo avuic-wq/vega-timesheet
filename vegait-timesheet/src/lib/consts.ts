@@ -26,6 +26,7 @@ export const APP_ROUTES = {
 export const SEARCH_PARAMETERS = {
 	SEARCH: "search",
 	LETTER_FILTER: "letterFilter",
+	PAGE: "page",
 };
 
 export const AUTH_PROVIDERS = {
