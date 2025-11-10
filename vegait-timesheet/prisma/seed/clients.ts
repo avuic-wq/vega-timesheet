@@ -1,4 +1,4 @@
-const clientsData = [
+export default [
 	{
 		name: "TechCorp Solutions",
 		address: "123 Silicon Valley Blvd",
