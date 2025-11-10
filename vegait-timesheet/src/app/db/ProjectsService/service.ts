@@ -7,7 +7,6 @@ import type {
 	FetchProjectsFirstLettersResult,
 } from "./types";
 
-// TO-DO: Type return results
 export const fetchAllProjects =
 	unstable_cache(async (): Promise<FetchAllProjcetsResult> => {
 		return prisma.project.findMany({
