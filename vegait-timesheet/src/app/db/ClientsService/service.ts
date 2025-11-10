@@ -58,4 +58,4 @@ export const fetchClientFirstLetters =
 		ORDER BY first_letter ASC;`;
 
 		return letterObjects.map((obj) => obj.first_letter);
-	}, ["filter-all-letters"]);
+	}, ["clients-filters-all-letters"]);
