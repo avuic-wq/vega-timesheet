@@ -8,5 +8,10 @@ export const signInSchema = object({
 export const clientsParametersSchema = z.object({
 	searchInput: z.string().optional(),
 	letterFilter: z.string().optional(),
-	currentPage: z.coerce.number().int().min(1).default(1),
+	currentPage: z.coerce
+		.number()
+		.int()
+		.min(1)
+		.default(1)
+		.transform((val) => (Number.isNaN(val) || val < 1 ? 1 : val)),
 });

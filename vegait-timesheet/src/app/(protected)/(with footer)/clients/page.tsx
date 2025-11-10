@@ -16,7 +16,7 @@ export default async function Clients({ searchParams }: Props) {
 	const params = await searchParams;
 	const searchInputParam = params?.search || "";
 	const letterFilterParam = params?.letterFilter || "";
-	const currentPageParam = params?.page || INITIAL_LIST_PAGE; // CHECK: Number(params?.page) or not neccessary?
+	const currentPageParam = params?.page || INITIAL_LIST_PAGE;
 
 	const validatedParameters = clientsParametersSchema.parseAsync({
 		searchInput: searchInputParam,
