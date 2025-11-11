@@ -33,7 +33,7 @@ const Pagination = ({ currentPage, totalPages }: PaginationProps) => {
 	const handlePageChange = (page: number) => {
 		if (page < 1 || page > totalPages) return;
 		const pageParams = createPageParams(page, searchParams);
-		router.push(pageParams);
+		router.push(pageParams, { scroll: false });
 	};
 
 	const pagingationElements = useMemo(
@@ -88,7 +88,6 @@ const Pagination = ({ currentPage, totalPages }: PaginationProps) => {
 				disabled={currentPage === totalPages}
 				className="disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
 			>
-				{/* className="w-4 h-4" */}
 				<Icon name="chevron-right" />
 			</button>
 		</div>
