@@ -27,7 +27,7 @@ export async function loginAction(
 				case AUTH_ERRORS_KEYS.INVALID_CREDENTIALS:
 					return AUTH_ERRORS_MESSAGES.CredentialsSignin;
 				default:
-					return "Something went wrong";
+					return AUTH_ERRORS_MESSAGES.DEFAULT;
 			}
 		}
 		throw error;

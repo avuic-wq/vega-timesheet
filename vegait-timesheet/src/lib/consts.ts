@@ -38,5 +38,6 @@ export const AUTH_ERRORS_KEYS: Record<string, string> = {
 } as const;
 
 export const AUTH_ERRORS_MESSAGES: Record<AuthErrorKey, string> = {
+	Default: "Something went wrong",
 	CredentialsSignin: "Invalid credentials",
 };
