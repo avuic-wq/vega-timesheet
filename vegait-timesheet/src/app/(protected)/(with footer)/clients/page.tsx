@@ -1,6 +1,7 @@
 import LetterFilters from "@/src/components/Filters/LetterFilters";
+import Header from "@/src/components/Header/Header";
 import { List as ClientList } from "@/src/components/List/List";
-import { INITIAL_LIST_PAGE } from "@/src/lib/consts";
+import { APP_ROUTES, INITIAL_LIST_PAGE } from "@/src/lib/consts";
 import type { SearchParams } from "@/src/lib/types";
 import { clientsParametersSchema } from "@/src/lib/validators/zodSchemas";
 import {
@@ -36,6 +37,7 @@ export default async function Clients({ searchParams }: Props) {
 
 	return (
 		<div className="flex flex-col gap-4">
+			<Header pathname={APP_ROUTES.CLIENTS} />
 			<LetterFilters letters={filterData} />
 			{/* TO-DO: ADD PLACEHOLDER FOR LIST? (check: suspension?) UNTIL REQUEST FINISHES */}
 			<ClientList
