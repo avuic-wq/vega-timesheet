@@ -2,7 +2,7 @@ import { debounce } from "lodash";
 import { DEBOUNCE_TIME } from "@/src/lib/consts";
 import type { ListItem as ListItemType } from "./ListItem";
 import ListItem from "./ListItem";
-import Pagination from "./Pagination";
+import Pagination from "./Pagination/Pagination";
 
 interface Props {
 	data: ListItemType[];

@@ -22,7 +22,7 @@ const Header = ({ pathname }: Props) => {
 			<div className="basis-[45%] flex flex-col gap-6">
 				<Text value={title} className="font-bold heading-lg" />
 				<Text value={description} className="text-lg" />
-				{hasActionButton && <ActionButton show={hasActionButton} />}
+				{hasActionButton && <ActionButton />}
 			</div>
 
 			{hasSearch && (
