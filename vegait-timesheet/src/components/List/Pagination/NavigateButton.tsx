@@ -31,6 +31,7 @@ const NavigateButton = ({ orientation, currentPage, totalPages }: Props) => {
 		router.push(pageParams, { scroll: false });
 	};
 
+	// TO-DO: Can I use my button component when tailwind is handled?
 	return (
 		<button
 			type="button"

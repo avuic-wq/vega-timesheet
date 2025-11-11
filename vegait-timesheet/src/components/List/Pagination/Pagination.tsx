@@ -31,7 +31,6 @@ const Pagination = ({ currentPage, totalPages }: Props) => {
 
 	if (totalPages <= 1) return null;
 
-	// TO-DO: Can I use my button component?
 	return (
 		<div className="flex items-center justify-center space-x-1">
 			<NavigateButton
