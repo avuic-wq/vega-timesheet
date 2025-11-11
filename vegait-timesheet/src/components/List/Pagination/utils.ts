@@ -7,7 +7,7 @@ export const createPageParams = (
 	searchParams: ReadonlyURLSearchParams,
 ) => {
 	const params = new URLSearchParams(searchParams);
-	params.set(SEARCH_PARAMETERS.PAGE, pageNumber.toString());
+	params.set(SEARCH_PARAMETERS.PAGINATION, pageNumber.toString());
 	return `?${params.toString()}`;
 };
 

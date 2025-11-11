@@ -13,7 +13,7 @@ const Search = () => {
 		const params = new URLSearchParams(searchParams);
 		if (e.target.value) {
 			params.set(SEARCH_PARAMETERS.SEARCH, e.target.value);
-			params.delete(SEARCH_PARAMETERS.PAGE);
+			params.delete(SEARCH_PARAMETERS.PAGINATION);
 			router.push(`?${params.toString()}`);
 			return;
 		}

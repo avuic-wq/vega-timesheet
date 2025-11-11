@@ -26,7 +26,7 @@ export const APP_ROUTES = {
 export const SEARCH_PARAMETERS = {
 	SEARCH: "search",
 	LETTER_FILTER: "startsWith",
-	PAGE: "page",
+	PAGINATION: "page",
 };
 
 export const AUTH_PROVIDERS = {

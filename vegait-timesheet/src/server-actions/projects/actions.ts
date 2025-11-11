@@ -17,7 +17,7 @@ const getPageOutOfBoundsRedirectUrl = (
 	searchInput?: string,
 	letterFilter?: string,
 ) => {
-	return `?${SEARCH_PARAMETERS.PAGE}=1${searchInput ? `&search=${searchInput}` : ""}${letterFilter ? `&letterFilter=${letterFilter}` : ""}`;
+	return `?${SEARCH_PARAMETERS.PAGINATION}=1${searchInput ? `&search=${searchInput}` : ""}${letterFilter ? `&letterFilter=${letterFilter}` : ""}`;
 };
 
 export async function getAllProjectsAction(): GetAllProjectsActionResult {
@@ -44,7 +44,8 @@ export async function getPaginatedAndFilteredProjectsAction(
 	if (page > totalPages && totalPages > 0) {
 		// Redirect to page 1 if page is out of bounds
 		// TO-DO: TEST!!! This feels odd
-		redirect(getPageOutOfBoundsRedirectUrl(searchInput, letterFilter));
+		const url = getPageOutOfBoundsRedirectUrl(searchInput, letterFilter);
+		redirect(url);
 	}
 
 	return {
