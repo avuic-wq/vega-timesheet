@@ -19,7 +19,7 @@ export const config: Record<string, ConfigProps> = {
 		title: "Clients",
 		description:
 			"Here, you have full control over your client database, empowering you to efficiently organise and maintain your client.",
-		actionText: "Action",
+		actionText: "Add client",
 		hasActionButton: true,
 		hasSearch: true,
 	},
@@ -27,7 +27,7 @@ export const config: Record<string, ConfigProps> = {
 		title: "Projects",
 		description:
 			"Here, you have full control over your project database, empowering you to efficiently organise and maintain your client.",
-		actionText: "Action",
+		actionText: "Add project",
 		hasActionButton: true,
 		hasSearch: true,
 	},

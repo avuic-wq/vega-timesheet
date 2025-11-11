@@ -38,7 +38,7 @@ export default async function Clients({ searchParams }: Props) {
 
 	return (
 		<div className="flex flex-col gap-4">
-			<Header pathname={APP_ROUTES.CLIENTS} />
+			<Header setting={APP_ROUTES.CLIENTS} />
 			<LetterFilters letters={filterData} />
 			{/* TO-DO: ADD PLACEHOLDER FOR LIST? (check: suspension?) UNTIL REQUEST FINISHES */}
 			<ClientList

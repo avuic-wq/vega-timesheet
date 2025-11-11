@@ -8,11 +8,11 @@ import Search from "./Search";
 const staticStyles = "flex bg-white rounded-[16px] p-6 gap-2";
 
 interface Props {
-	pathname: string;
+	setting: string;
 }
 
-const Header = ({ pathname }: Props) => {
-	const config = headerConfig[pathname] || {};
+const Header = ({ setting }: Props) => {
+	const config = headerConfig[setting] || {};
 	const { title, description, hasActionButton, hasSearch } = config;
 
 	const dynamicStyles = `${hasSearch ? "justify-center" : "justify-left"}`;
@@ -22,7 +22,7 @@ const Header = ({ pathname }: Props) => {
 			<div className="basis-[45%] flex flex-col gap-6">
 				<Text value={title} className="font-bold heading-lg" />
 				<Text value={description} className="text-lg" />
-				{hasActionButton && <ActionButton />}
+				{hasActionButton && <ActionButton setting={setting} />}
 			</div>
 
 			{hasSearch && (

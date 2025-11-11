@@ -1,21 +1,27 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 import Icon from "@/src/components/Icon";
 import Text from "@/src/components/Text";
 import { config } from "./config";
 
-const ActionButton = () => {
-	const [isActionModalOn, setIsActionModalOn] = useState<boolean>(false);
+interface Props {
+	setting: string;
+}
+
+const ActionButton = ({ setting }: Props) => {
 	const pathname = usePathname();
-	const { actionText } = config[pathname];
+	const { actionText } = config[setting];
 
 	return (
-		<div className="flex justify-left align-center gap-2 cursor-pointer w-fit">
-			<Icon name="plus" onClick={() => {}} />
+		<Link
+			href={`${pathname}/create`}
+			className="flex justify-left align-center gap-2 cursor-pointer w-fit"
+		>
+			<Icon name="plus" />
 			<Text value={actionText} className="body-md" />
-		</div>
+		</Link>
 	);
 };
 
