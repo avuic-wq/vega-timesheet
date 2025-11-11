@@ -17,6 +17,7 @@ const ActionButton = ({ setting }: Props) => {
 	return (
 		<Link
 			href={`${pathname}/create`}
+			scroll={false}
 			className="flex justify-left align-center gap-2 cursor-pointer w-fit"
 		>
 			<Icon name="plus" />

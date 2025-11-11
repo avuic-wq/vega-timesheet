@@ -18,7 +18,7 @@ const ListItem = ({ item }: Props) => {
 	const isClient = isClientType(item);
 
 	return (
-		<Link href={`${pathname}/edit/${item.id}`}>
+		<Link href={`${pathname}/edit/${item.id}`} scroll={false}>
 			<div className="flex justify-between px-6 py-3 bg-primary rounded-[16px] mt-2 w-full cursor-pointer">
 				<div className="flex gap-2">
 					<Text value={item.name} />

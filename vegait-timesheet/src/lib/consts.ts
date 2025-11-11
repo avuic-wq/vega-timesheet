@@ -14,7 +14,7 @@ export const ITEMS_PER_PAGE = {
 export const HOME_PAGE_ROUTE = "/clients";
 
 // TO-DO: APP_ROUTES { PRIVATE: {...}, PUBLIC: {...} }
-// CHECK: SAFE TYPE ROUTES?
+// CHECK: HOW TO MAKE THEM TYPE SAVE?
 export const APP_ROUTES = {
 	LOGIN: "/login",
 	CLIENTS: HOME_PAGE_ROUTE,
