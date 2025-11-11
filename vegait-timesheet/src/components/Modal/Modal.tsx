@@ -5,24 +5,21 @@ import { type ReactNode, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
 interface Props {
-	isOpen: boolean;
 	returnUrl: string;
 	children: ReactNode;
 }
 
-const Modal = ({ isOpen, returnUrl, children }: Props) => {
+const Modal = ({ children }: Props) => {
 	const modalRef = useRef<HTMLDivElement>(null);
 	const router = useRouter();
 
 	useEffect(() => {
-		if (!isOpen) return;
-
 		const handleClickOutside = (event: MouseEvent) => {
 			if (
 				modalRef.current &&
 				!modalRef.current.contains(event.target as Node)
 			) {
-				router.push(returnUrl);
+				router.back();
 			}
 		};
 
@@ -31,14 +28,12 @@ const Modal = ({ isOpen, returnUrl, children }: Props) => {
 		return () => {
 			document.removeEventListener("mousedown", handleClickOutside);
 		};
-	}, [isOpen, returnUrl, router.push]);
+	}, [router.back]);
 
 	useEffect(() => {
-		if (!isOpen) return;
-
 		const handleEscKey = (event: KeyboardEvent) => {
 			if (event.key === "Escape") {
-				router.push(returnUrl);
+				router.back();
 			}
 		};
 
@@ -47,9 +42,7 @@ const Modal = ({ isOpen, returnUrl, children }: Props) => {
 		return () => {
 			document.removeEventListener("keydown", handleEscKey);
 		};
-	}, [isOpen, returnUrl, router.push]);
-
-	if (!isOpen) return null;
+	}, [router.back]);
 
 	return createPortal(
 		<div className="fixed inset-0 z-50 flex items-center justify-center p-4">

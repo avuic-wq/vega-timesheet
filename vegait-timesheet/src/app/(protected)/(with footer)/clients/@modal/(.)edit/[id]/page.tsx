@@ -1,10 +1,10 @@
+import Modal from "@/src/components/Modal/Modal";
+import { APP_ROUTES } from "@/src/lib/consts";
+
 export default async function UpdateClientModal() {
 	return (
-		<div>TEST</div>
-		// <ModalWrapper>
-		// 	<Modal isOpen={true} returnUrl={APP_ROUTES.CLIENTS}>
-		// 		<h2>Update existing Client</h2>
-		// 	</Modal>
-		// </ModalWrapper>
+		<Modal returnUrl={APP_ROUTES.CLIENTS}>
+			<h2>Update existing Client</h2>
+		</Modal>
 	);
 }
