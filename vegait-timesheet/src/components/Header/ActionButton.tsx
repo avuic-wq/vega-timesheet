@@ -18,10 +18,12 @@ const ActionButton = ({ show }: Props) => {
 
 	return (
 		<>
-			<div className="flex justify-left align-center gap-2 cursor-pointer w-fit">
-				<Icon name="plus" onClick={() => {}} />
-				<Text value={actionText} className="body-md" />
-			</div>
+			{show && (
+				<div className="flex justify-left align-center gap-2 cursor-pointer w-fit">
+					<Icon name="plus" onClick={() => {}} />
+					<Text value={actionText} className="body-md" />
+				</div>
+			)}
 			<Modal isOpen={isActionModalOn} onClose={() => setIsActionModalOn(false)}>
 				TEST CONTENT
 				{/* <CreateClientForm /> */}
