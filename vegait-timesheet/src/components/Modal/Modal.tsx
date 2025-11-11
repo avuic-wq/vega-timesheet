@@ -5,7 +5,6 @@ import { type ReactNode, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
 interface Props {
-	returnUrl: string;
 	children: ReactNode;
 }
 
