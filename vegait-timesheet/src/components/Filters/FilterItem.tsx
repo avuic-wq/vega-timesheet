@@ -40,8 +40,6 @@ const FilterItem = ({ value, isDisabled = false }: Props) => {
 		router.push(`?${params.toString()}`);
 	};
 
-	const onSelectFilter = isDisabled ? undefined : handleOnSelectFilter;
-
 	const dynamicStyles = `
 	${isSelected ? "border-[1.5px] border-red" : ""}
 	${isDisabled ? "!bg-grey-200 !cursor-not-allowed" : ""}
@@ -59,12 +57,16 @@ const FilterItem = ({ value, isDisabled = false }: Props) => {
 		// />
 		// TO-DO: Change style on hover (!isDisabled & !isSelected) (when tailwind clases are optimized)
 
-		<div
-			onClick={(_e) => onSelectFilter(value)}
+		<button
+			type="button"
+			onClick={(_e) => {
+				if (isDisabled) return;
+				handleOnSelectFilter(value);
+			}}
 			className={`flex justify-center items-center rounded-[16px] bg-primary w-[40px] h-[40px] cursor-pointer ${dynamicStyles}`}
 		>
 			{value}
-		</div>
+		</button>
 	);
 };
 
