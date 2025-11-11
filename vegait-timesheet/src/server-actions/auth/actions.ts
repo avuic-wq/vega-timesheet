@@ -10,6 +10,9 @@ import {
 	HOME_PAGE_ROUTE,
 } from "@/src/lib/consts";
 
+const usernameField = "username";
+const passwordField = "password";
+
 export async function loginAction(
 	_prevState: string | undefined,
 	formData: FormData,
@@ -17,8 +20,8 @@ export async function loginAction(
 	const callbackUrl = String(formData.get("callbackUrl")) || HOME_PAGE_ROUTE;
 	try {
 		await signIn(AUTH_PROVIDERS.CREDENTIALS, {
-			username: formData.get("username"),
-			password: formData.get("password"),
+			username: formData.get(usernameField),
+			password: formData.get(passwordField),
 			redirectTo: callbackUrl,
 		});
 	} catch (error) {
