@@ -3,12 +3,15 @@
 import { useRouter } from "next/navigation";
 import { type ReactNode, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import Icon from "@/src/components/Icon";
+import Text from "@/src/components/Text";
 
 interface Props {
 	children: ReactNode;
+	title: string;
 }
 
-const Modal = ({ children }: Props) => {
+const Modal = ({ children, title }: Props) => {
 	const modalRef = useRef<HTMLDivElement>(null);
 	const router = useRouter();
 
@@ -44,12 +47,18 @@ const Modal = ({ children }: Props) => {
 	}, [router.back]);
 
 	return createPortal(
-		<div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+		<div className="fixed inset-0 z-50 flex items-center justify-center">
 			<div className="absolute inset-0 bg-black opacity-50 transition-opacity" />
 			<div
 				ref={modalRef}
-				className="relative bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto z-10"
+				className="relative bg-white rounded-[16px] shadow-xl max-w-[400px] w-full max-h-[90vh] overflow-y-auto z-10 p-6
+				           flex flex-col gap-8"
 			>
+				<div className="flex justify-between">
+					<Text value={title} className="text-2xl" />
+					<Icon name="close" />
+				</div>
+
 				{children}
 			</div>
 		</div>,
