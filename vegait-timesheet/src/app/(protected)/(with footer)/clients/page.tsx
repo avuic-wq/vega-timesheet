@@ -27,13 +27,14 @@ export default async function Clients({ searchParams }: Props) {
 
 	const { searchInput, letterFilter, currentPage } = await validatedParameters;
 
-	const { clients, totalPages } = await getPaginatedAndFileterdClientsAction(
-		currentPage,
-		searchInput,
-		letterFilter,
-	);
-
-	const filterData = await getClientsFirstLettersAction();
+	const [{ clients, totalPages }, filterData] = await Promise.all([
+		getPaginatedAndFileterdClientsAction(
+			currentPage,
+			searchInput,
+			letterFilter,
+		),
+		getClientsFirstLettersAction(),
+	]);
 
 	return (
 		<div className="flex flex-col gap-4">
