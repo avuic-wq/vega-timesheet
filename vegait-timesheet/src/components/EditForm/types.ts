@@ -20,6 +20,7 @@ export type Button = {
 	text: string;
 	variant: ButtonVariant;
 	onClick: () => void;
+	isDisabled?: boolean;
 };
 
 export type FormConfig = {

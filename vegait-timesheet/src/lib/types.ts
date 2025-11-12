@@ -12,7 +12,7 @@ export type SearchParams = Promise<{
 	page?: string;
 }>;
 
-export type ButtonVariant = "primary" | "secondary" | "danger";
+export type ButtonVariant = "primary" | "secondary" | "danger" | "custom";
 
 // TO-DO: Type all actions/service functions (return result)
 // TO-DO LOW-PRIO: Add __typename to the DB or inject it in actions/services ?

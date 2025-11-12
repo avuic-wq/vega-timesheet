@@ -2,7 +2,7 @@ import EditForm from "@/src/components/EditForm/EditForm";
 import type { FormConfig } from "@/src/components/EditForm/types";
 import Modal from "@/src/components/Modal/Modal";
 
-const modalTitle = "Update client";
+const modalTitle = "Client";
 
 interface Props {
 	params: { id: string };
@@ -38,8 +38,17 @@ export default async function UpdateClientModal({ params }: Props) {
 			},
 		],
 		buttons: [
-			{ text: "Save", onClick: updateClient },
-			{ text: "Delete", onClick: deleteClient },
+			{
+				text: "Save",
+				variant: "primary",
+				isDisabled: false,
+				onClick: updateClient,
+			},
+			{
+				text: "Delete",
+				variant: "danger",
+				onClick: deleteClient,
+			},
 		],
 	};
 

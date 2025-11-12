@@ -23,7 +23,10 @@ const Button = ({
 	className,
 }: Props) => {
 	const variantStyle = getButtonStyle(variant, isDisabled);
-	const style = twMerge(variantStyle, className);
+	const style =
+		variant === "custom"
+			? twMerge("cursor-pointer", className)
+			: twMerge(variantStyle, className);
 
 	return (
 		<button

@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { type ReactNode, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import Button from "@/src/components/Button/Button";
 import Icon from "@/src/components/Icon";
 import Text from "@/src/components/Text";
 
@@ -54,9 +55,11 @@ const Modal = ({ children, title }: Props) => {
 				className="relative bg-white rounded-[16px] shadow-xl max-w-[400px] w-full max-h-[90vh] overflow-y-auto z-10 p-6
 				           flex flex-col gap-8"
 			>
-				<div className="flex justify-between">
+				<div className="flex justify-between mb-4">
 					<Text value={title} className="text-2xl" />
-					<Icon name="close" />
+					<Button variant="custom" onClick={() => router.back()}>
+						<Icon name="close" />
+					</Button>
 				</div>
 
 				{children}
