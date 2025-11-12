@@ -1,4 +1,5 @@
 import Button from "@/src/components/Button/Button";
+import Text from "@/src/components/Text";
 import { renderField } from "./renderField";
 import type { FormConfig } from "./types";
 
@@ -13,7 +14,16 @@ const EditForm = ({ config }: Props) => {
 		<div className="flex flex-col justify-center gap-4 mb-3">
 			<form className="flex flex-col gap-4 w-full mb-4">
 				{config?.fields?.map((field) => {
-					return renderField(field);
+					return (
+						<div key={field.name} className="flex justify-between">
+							<div className="w-full">{renderField(field)}</div>
+							<div className="min-w-3">
+								{field.isRequired && (
+									<Text value="*" className="ml-1 font-bold text-red" />
+								)}
+							</div>
+						</div>
+					);
 				})}
 			</form>
 			<div className="flex justify-center flex-col items-center gap-3">

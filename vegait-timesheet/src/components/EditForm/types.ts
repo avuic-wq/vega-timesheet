@@ -5,6 +5,7 @@ export type TextField = {
 	name: string;
 	placeholder: string;
 	value: string;
+	isRequired?: boolean;
 };
 
 export type DropdownField = {
@@ -13,6 +14,7 @@ export type DropdownField = {
 	placeholder: string;
 	value: string;
 	options: { label: string; value: string }[];
+	isRequired?: boolean;
 };
 
 export type FormField = TextField | DropdownField;

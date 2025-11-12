@@ -8,7 +8,7 @@ const defaultInputStyle = "py-3 w-full outline-none";
 export const renderField = (field: FormField): JSX.Element | null => {
 	if (field.type === "text") {
 		return (
-			<div key={field.name} className={defaultContainerStyle}>
+			<div className={defaultContainerStyle}>
 				{/* // TO-DO: Change to <TextField when text field is refactored */}
 				<input
 					key={field.name}
@@ -26,8 +26,8 @@ export const renderField = (field: FormField): JSX.Element | null => {
 
 	if (field.type === "dropdown") {
 		return (
-			<div key={field.name} className={defaultContainerStyle}>
-				{/* // TO-DO: Change to <DropdownField when text field is refactored */}
+			<div className={defaultContainerStyle}>
+				{/* // TO-DO: Change to <DropdownField (create) */}
 				<select key={field.name} name={field.name} defaultValue={field.value}>
 					<option value="">{field.placeholder}</option>
 
