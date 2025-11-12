@@ -27,20 +27,20 @@ const FilterItem = ({ value, isDisabled = false }: Props) => {
 		if (filter === selectedFilter) {
 			params.delete(SEARCH_PARAMETERS.LETTER_FILTER);
 			params.delete(SEARCH_PARAMETERS.PAGINATION);
-			router.push(`?${params.toString()}`);
+			router.push(`?${params.toString()}`, { scroll: false });
 			return;
 		}
 
 		if (filter) {
 			params.set(SEARCH_PARAMETERS.LETTER_FILTER, filter);
 			params.delete(SEARCH_PARAMETERS.PAGINATION);
-			router.push(`?${params.toString()}`);
+			router.push(`?${params.toString()}`, { scroll: false });
 
 			return;
 		}
 
 		params.delete(SEARCH_PARAMETERS.LETTER_FILTER);
-		router.push(`?${params.toString()}`);
+		router.push(`?${params.toString()}`, { scroll: false });
 	};
 
 	return (

@@ -14,12 +14,12 @@ const Search = () => {
 		if (e.target.value) {
 			params.set(SEARCH_PARAMETERS.SEARCH, e.target.value);
 			params.delete(SEARCH_PARAMETERS.PAGINATION);
-			router.push(`?${params.toString()}`);
+			router.push(`?${params.toString()}`, { scroll: false });
 			return;
 		}
 
 		params.delete(SEARCH_PARAMETERS.SEARCH);
-		router.push(`?${params.toString()}`);
+		router.push(`?${params.toString()}`, { scroll: false });
 	};
 
 	const debouncedSearch = debounce(handleOnSearchChange, DEBOUNCE_TIME.DEFAULT);
