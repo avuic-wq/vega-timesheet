@@ -34,7 +34,7 @@ const EditForm = ({ config }: Props) => {
 							key={button.text}
 							variant={button.variant}
 							isDisabled={button.isDisabled}
-							className="w-3/5"
+							className="w-2/5"
 						>
 							{button.text}
 						</Button>
