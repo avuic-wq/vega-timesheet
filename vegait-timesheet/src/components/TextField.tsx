@@ -52,7 +52,9 @@ const TextField = ({
 	return (
 		<div className="flex flex-col">
 			<div className="flex items-center border-2 border-grey-500 rounded-[24px] focus-within:border-black px-6">
-				{leftIcon && <Icon name={leftIcon} fullOpacity={isFocused} />}
+				{leftIcon && (
+					<Icon name={leftIcon} style={{ opacity: isFocused ? 1 : 0.5 }} />
+				)}
 				<input
 					id={name}
 					type={showPassword ? "text" : "password"}
@@ -69,11 +71,11 @@ const TextField = ({
 					<Icon
 						onClick={() => setShowPassword(!showPassword)}
 						name={showPassword ? "eye" : "eye-off"}
-						fullOpacity={isFocused && !isDisabled}
+						style={{ opacity: isFocused && !isDisabled ? 1 : 0.5 }}
 					/>
 				)}
 				{!isPassword && rightIcon && (
-					<Icon name={rightIcon} fullOpacity={isFocused} />
+					<Icon name={rightIcon} style={{ opacity: isFocused ? 1 : 0.5 }} />
 				)}
 			</div>
 			{error && <p className="text-red text-sm">{error}</p>}

@@ -11,12 +11,14 @@ export const getButtonStyle = (
 		primary: "bg-black",
 		secondary: "",
 		danger: "bg-red",
+		custom: undefined,
 	};
 
 	const disabledStyle = {
 		primary: "bg-grey-500 cursor-not-allowed",
 		secondary: ``,
 		danger: "bg-grey-200 cursor-not-allowed",
+		custom: undefined,
 	};
 
 	return twMerge(

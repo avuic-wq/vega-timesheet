@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import type { CSSProperties } from "react";
 
 export type IconName =
 	| "calendar"
@@ -21,17 +22,17 @@ export interface IconProps {
 	size?: number;
 	alt?: string;
 	onClick?: (e: React.MouseEvent<HTMLElement>) => void;
-	fullOpacity?: boolean;
+	style?: CSSProperties; // Done since <Image tag isn't accepting Tailwind classes
 }
 
-const Icon = ({
-	name,
-	size = 24,
-	alt,
-	onClick,
-	fullOpacity = true,
-}: IconProps) => {
+const Icon = ({ name, size = 24, alt, onClick, style }: IconProps) => {
 	// TO-DO: Use another approach to avoid <Image ?
+	console.log({
+		final: {
+			...style,
+			cursor: onClick ? "pointer" : "",
+		},
+	});
 	return (
 		<Image
 			src={`/icons/${name}.svg`}
@@ -39,7 +40,7 @@ const Icon = ({
 			width={size}
 			height={size}
 			style={{
-				opacity: fullOpacity ? 1 : 0.5,
+				...style,
 				cursor: onClick ? "pointer" : "",
 			}}
 			onClick={onClick}
