@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import Button from "@/src/components/Button/Button";
 import Icon from "@/src/components/Icon";
 import type { NAVIGATE_BUTTON_ORIENTATION } from "./Pagination";
 import { createPageParams } from "./utils";
@@ -31,16 +32,15 @@ const NavigateButton = ({ orientation, currentPage, totalPages }: Props) => {
 		router.push(pageParams, { scroll: false });
 	};
 
-	// TO-DO: Can I use my button component when tailwind is handled?
 	return (
-		<button
-			type="button"
+		<Button
+			variant="custom"
 			onClick={() => handlePageChange(pageToNavigateTo)}
-			disabled={isDisabled}
-			className="disabled:opacity-20 disabled:cursor-not-allowed cursor-pointer"
+			isDisabled={isDisabled}
+			className="disabled:opacity-20"
 		>
 			<Icon name={isLeftNavigationButton ? "chevron-left" : "chevron-right"} />
-		</button>
+		</Button>
 	);
 };
 

@@ -17,7 +17,7 @@ interface Props {
 const Button = ({
 	children,
 	type = "button",
-	variant = "primary", // TO-DO: Add custom variant which uses (only) className to style?
+	variant = "primary",
 	onClick,
 	isDisabled = false,
 	className,
@@ -25,7 +25,7 @@ const Button = ({
 	const variantStyle = getButtonStyle(variant, isDisabled);
 	const style =
 		variant === "custom"
-			? twMerge("cursor-pointer", className)
+			? twMerge(isDisabled ? "cursor-not-allowed" : "cursor-pointer", className)
 			: twMerge(variantStyle, className);
 
 	return (
