@@ -1,3 +1,3 @@
-import { countries } from "countries-list";
+import { getCountryDataList } from "countries-list";
 
-export const countriesData = countries;
+export const countriesData = getCountryDataList();
