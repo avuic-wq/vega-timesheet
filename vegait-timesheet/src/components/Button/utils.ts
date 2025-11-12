@@ -1,20 +1,27 @@
+import { twMerge } from "tailwind-merge";
 import type { ButtonVariant } from "@/src/lib/types";
-
-type ButtonStyle = {
-	primary: string;
-	secondary: string;
-	danger: string;
-};
 
 export const getButtonStyle = (
 	variant: ButtonVariant,
 	isDisabled = false,
 ): string => {
-	const styles: ButtonStyle = {
-		primary: `flex items-center justify-center m-auto px-20 py-3 rounded-[24px] ${isDisabled ? "bg-grey-500" : "bg-black"} text-white cursor-pointer`,
+	const commonStyle = `flex items-center justify-center m-auto px-20 py-3 rounded-[24px] text-white`;
+
+	const variantSpecificStyle = {
+		primary: "bg-black",
 		secondary: "",
-		danger: "",
+		danger: "bg-red",
 	};
 
-	return styles[variant];
+	const disabledStyle = {
+		primary: "bg-grey-500 cursor-not-allowed",
+		secondary: ``,
+		danger: "bg-grey-200 cursor-not-allowed",
+	};
+
+	return twMerge(
+		commonStyle,
+		variantSpecificStyle[variant],
+		isDisabled ? disabledStyle[variant] : undefined,
+	);
 };
