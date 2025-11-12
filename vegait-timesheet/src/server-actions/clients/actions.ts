@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import {
 	fetchAllClients,
+	fetchClientById,
 	fetchClientsFirstLetters,
 	fetchPaginatedAndFilteredClients,
 } from "@/src/app/db/ClientsService/service";
@@ -16,6 +17,10 @@ import type {
 export async function getAllClientsAction(): GetAllClientsActionResult {
 	const clients = fetchAllClients();
 	return clients;
+}
+
+export async function getClientsFirstLettersAction(): GetClientsFirstLettersActionResult {
+	return fetchClientsFirstLetters();
 }
 
 export async function getPaginatedAndFileterdClientsAction(
@@ -35,7 +40,7 @@ export async function getPaginatedAndFileterdClientsAction(
 	const totalPages = Math.ceil(totalCount / itemsPerPage);
 	if (page > totalPages && totalPages > 0) {
 		// Redirect to page 1 if page is out of bounds
-		// TO-DO: TEST!!! This feels odd
+		// TO-DO: TEST! & This feels odd
 		redirect(
 			`?page=1${searchInput ? `&search=${searchInput}` : ""}${letterFilter ? `&letterFilter=${letterFilter}` : ""}`,
 		);
@@ -47,6 +52,7 @@ export async function getPaginatedAndFileterdClientsAction(
 	};
 }
 
-export async function getClientsFirstLettersAction(): GetClientsFirstLettersActionResult {
-	return fetchClientsFirstLetters();
+export async function getClientById(id: string) {
+	const client = await fetchClientById(id);
+	return client;
 }

@@ -14,6 +14,16 @@ export const fetchAllClients = async (): FetchAllClientsResult => {
 	});
 };
 
+export const fetchClientsFirstLetters =
+	unstable_cache(async (): FetchClientsFirstLettersResult => {
+		const letterObjects = await prisma.$queryRaw<{ first_letter: string }[]>`
+		SELECT DISTINCT UPPER(SUBSTRING(name FROM 1 FOR 1)) AS first_letter
+		FROM "clients"
+		ORDER BY first_letter ASC;`;
+
+		return letterObjects.map((obj) => obj.first_letter);
+	}, ["clients-filters-all-letters"]);
+
 export const fetchPaginatedAndFilteredClients = async (
 	page: number,
 	itemsPerPage: number,
@@ -49,12 +59,9 @@ export const fetchPaginatedAndFilteredClients = async (
 	return { clients, totalCount };
 };
 
-export const fetchClientsFirstLetters =
-	unstable_cache(async (): FetchClientsFirstLettersResult => {
-		const letterObjects = await prisma.$queryRaw<{ first_letter: string }[]>`
-		SELECT DISTINCT UPPER(SUBSTRING(name FROM 1 FOR 1)) AS first_letter
-		FROM "clients"
-		ORDER BY first_letter ASC;`;
-
-		return letterObjects.map((obj) => obj.first_letter);
-	}, ["clients-filters-all-letters"]);
+export const fetchClientById = async (id: string) => {
+	const client = await prisma.client.findUnique({
+		where: { id },
+	});
+	return client;
+};
