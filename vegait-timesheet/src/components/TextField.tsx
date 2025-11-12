@@ -68,7 +68,7 @@ const TextField = ({
 				{isPassword && (
 					<Icon
 						onClick={() => setShowPassword(!showPassword)}
-						name={showPassword ? "eye-off" : "eye"}
+						name={showPassword ? "eye" : "eye-off"}
 						fullOpacity={isFocused && !isDisabled}
 					/>
 				)}
