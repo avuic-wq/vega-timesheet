@@ -63,6 +63,7 @@ const TextField = ({
 					placeholder={placeholder}
 					className={`${staticStyles} ${dynamicStyles}`}
 					autoComplete="off"
+					spellCheck="false"
 					onChange={(e) => onChange?.(e)}
 					onFocus={() => setIsFocused(true)}
 					onBlur={() => setIsFocused(false)}
