@@ -27,12 +27,7 @@ export interface IconProps {
 
 const Icon = ({ name, size = 24, alt, onClick, style }: IconProps) => {
 	// TO-DO: Use another approach to avoid <Image ?
-	console.log({
-		final: {
-			...style,
-			cursor: onClick ? "pointer" : "",
-		},
-	});
+
 	return (
 		<Image
 			src={`/icons/${name}.svg`}
