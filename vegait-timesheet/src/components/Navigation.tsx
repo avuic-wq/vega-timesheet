@@ -1,7 +1,8 @@
 import Link from "next/link";
-import Button from "@/src/components/Button";
+import Button from "@/src/components/Button/Button";
 import Icon from "@/src/components/Icon";
 import Logo from "@/src/components/Logo";
+import Text from "@/src/components/Text";
 import { APP_ROUTES } from "@/src/lib/consts";
 import { logoutAction } from "@/src/server-actions/auth/actions";
 
@@ -34,7 +35,9 @@ const Navigation = () => {
 			</div>
 			<div className="flex justify-between gap-5">
 				<form action={logoutAction}>
-					<Button type="submit" text="Logout" />
+					<Button type="submit" className="px-9">
+						<Text value={"Logout"} />
+					</Button>
 				</form>
 				<Icon name="menu" />
 			</div>

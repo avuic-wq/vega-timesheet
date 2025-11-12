@@ -1,3 +1,4 @@
+import Button from "@/src/components/Button/Button";
 import { renderField } from "./renderField";
 import type { FormConfig } from "./types";
 
@@ -15,12 +16,12 @@ const EditForm = ({ config }: Props) => {
 					return renderField(field);
 				})}
 			</form>
-			<div className="flex justify-center border-1">
+			<div className="flex justify-center flex-col items-center gap-3">
 				{config.buttons.map((button) => {
 					return (
-						<button type="submit" key={button.text}>
+						<Button type="submit" key={button.text} className="w-3/5">
 							{button.text}
-						</button>
+						</Button>
 					);
 				})}
 			</div>

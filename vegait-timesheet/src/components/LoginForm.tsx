@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import Button from "@/src/components/Button";
+import Button from "@/src/components/Button/Button";
 import Text from "@/src/components/Text";
 import TextField from "@/src/components/TextField";
 import { loginAction } from "@/src/server-actions/auth/actions";
@@ -15,8 +15,6 @@ const LoginForm = ({ callbackUrl }: Props) => {
 		loginAction,
 		undefined,
 	);
-
-	const buttonStyle = errorMessage ? "px-20 mt-[20px]" : "px-20";
 
 	return (
 		<form action={formAction} className="space-y-4">
@@ -35,15 +33,12 @@ const LoginForm = ({ callbackUrl }: Props) => {
 			<input type="hidden" name="callbackUrl" value={callbackUrl} />
 
 			{errorMessage && (
-				<Text value={errorMessage} className="text-red text-center" />
+				<Text value={errorMessage} className="text-red text-center mb-5" />
 			)}
 
-			<Button
-				text="Login"
-				type="submit"
-				isDisabled={isPending}
-				className={buttonStyle} // TO-DO: When passing tailwind classes are optimized
-			/>
+			<Button type="submit" isDisabled={isPending}>
+				<Text value="Login" />
+			</Button>
 		</form>
 	);
 };

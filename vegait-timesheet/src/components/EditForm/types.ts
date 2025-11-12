@@ -1,3 +1,5 @@
+import type { ButtonVariant } from "@/src/lib/types";
+
 export type TextField = {
 	type: "text";
 	name: string;
@@ -14,8 +16,11 @@ export type DropdownField = {
 };
 
 export type FormField = TextField | DropdownField;
-export type Button = { text: string; variant: ButtonVariant, onClick: () => void };
-export type ButtonVariant = "primary" | "danger" | "transparent"
+export type Button = {
+	text: string;
+	variant: ButtonVariant;
+	onClick: () => void;
+};
 
 export type FormConfig = {
 	fields: FormField[];
