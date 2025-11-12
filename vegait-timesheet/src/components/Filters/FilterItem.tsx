@@ -1,7 +1,9 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import Button from "@/src/components/Button/Button";
 import { SEARCH_PARAMETERS } from "@/src/lib/consts";
+import { getFilterStyle } from "./utils";
 
 interface Props {
 	value: string;
@@ -15,6 +17,7 @@ const FilterItem = ({ value, isDisabled = false }: Props) => {
 	const selectedFilter =
 		searchParams.get(SEARCH_PARAMETERS.LETTER_FILTER) || null;
 	const isSelected = selectedFilter === value;
+	const filterStyle = getFilterStyle(isDisabled, isSelected);
 
 	// CHECK: Could use useTransition
 	// const [isPending, startTransition] = useTransition();
@@ -40,33 +43,18 @@ const FilterItem = ({ value, isDisabled = false }: Props) => {
 		router.push(`?${params.toString()}`);
 	};
 
-	const dynamicStyles = `
-	${isSelected ? "border-[1.5px] border-red" : ""}
-	${isDisabled ? "!bg-grey-200 !cursor-not-allowed" : ""}
-	`;
-
 	return (
-		// CHECK: padding or fixed width/height?
-
-		// TO-DO: Replace with button (when tailwind clases are optimized)
-		// <Button
-		// 	text={value}
-		// 	onClick={onClick}
-		// 	isDisabled={isDisabled}
-		//	classNames
-		// />
-		// TO-DO: Change style on hover (!isDisabled & !isSelected) (when tailwind clases are optimized)
-
-		<button
-			type="button"
+		<Button
+			variant="custom"
 			onClick={(_e) => {
 				if (isDisabled) return;
 				handleOnSelectFilter(value);
 			}}
-			className={`flex justify-center items-center rounded-[16px] bg-primary w-[40px] h-[40px] cursor-pointer ${dynamicStyles}`}
+			isDisabled={isDisabled}
+			className={filterStyle}
 		>
 			{value}
-		</button>
+		</Button>
 	);
 };
 
