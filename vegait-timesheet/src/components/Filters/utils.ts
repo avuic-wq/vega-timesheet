@@ -12,7 +12,7 @@ export const getFilterStyle = (
 	const disabledStyle =
 		"bg-grey-200 cursor-not-allowed shadow-none hover:shadow-none";
 
-	const selectedStyle = "border-[1.5px] border-red";
+	const selectedStyle = "border-[2px] border-red";
 
 	return twMerge(
 		commonStyle,
