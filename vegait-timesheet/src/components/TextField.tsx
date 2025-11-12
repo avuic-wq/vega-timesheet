@@ -55,6 +55,7 @@ const TextField = ({
 				{leftIcon && (
 					<Icon name={leftIcon} style={{ opacity: isFocused ? 1 : 0.5 }} />
 				)}
+
 				<input
 					id={name}
 					type={showPassword ? "text" : "password"}
@@ -67,6 +68,7 @@ const TextField = ({
 					onBlur={() => setIsFocused(false)}
 					disabled={isDisabled}
 				/>
+
 				{isPassword && (
 					<Icon
 						onClick={() => setShowPassword(!showPassword)}
@@ -74,6 +76,7 @@ const TextField = ({
 						style={{ opacity: isFocused && !isDisabled ? 1 : 0.5 }}
 					/>
 				)}
+
 				{!isPassword && rightIcon && (
 					<Icon name={rightIcon} style={{ opacity: isFocused ? 1 : 0.5 }} />
 				)}
