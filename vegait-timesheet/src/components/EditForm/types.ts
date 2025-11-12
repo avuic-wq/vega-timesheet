@@ -14,7 +14,8 @@ export type DropdownField = {
 };
 
 export type FormField = TextField | DropdownField;
-export type Button = { text: string; onClick: () => void };
+export type Button = { text: string; variant: ButtonVariant, onClick: () => void };
+export type ButtonVariant = "primary" | "danger" | "transparent"
 
 export type FormConfig = {
 	fields: FormField[];
