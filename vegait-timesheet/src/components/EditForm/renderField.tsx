@@ -13,7 +13,7 @@ export const renderField = (field: FormField): JSX.Element | null => {
 				<input
 					key={field.name}
 					type="text"
-					autoComplete="off"
+					autoComplete="off" // TO-DO: Try to disable name/address/etc suggestions
 					name={field.name}
 					placeholder={field.placeholder}
 					defaultValue={field.value}
