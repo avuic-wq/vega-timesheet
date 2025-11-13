@@ -8,20 +8,22 @@ export type TextField = {
 	isRequired?: boolean;
 };
 
-export type DropdownField = {
-	type: "dropdown";
+export type SelectableOption = { label: string; value: string };
+
+export type SelectField = {
+	type: "select";
 	name: string;
 	placeholder: string;
-	value: string;
-	options: { label: string; value: string }[];
+	value: SelectableOption;
+	options: SelectableOption[];
 	isRequired?: boolean;
 };
 
-export type FormField = TextField | DropdownField;
+export type FormField = TextField | SelectField;
 export type Button = {
 	text: string;
 	variant: ButtonVariant;
-	onClick: () => void;
+	action: "UPDATE" | "DELETE";
 	isDisabled?: boolean;
 };
 

@@ -1,15 +1,16 @@
 import type { JSX } from "react";
-import type { FormField } from "./types";
+import type { FormField } from "@/src/components/EditForm/types";
+import SelectField from "@/src/components/SelectField/SelectField";
 
 const defaultContainerStyle =
-	"flex items-center border-2 border-grey-500 rounded-[24px] focus-within:border-black px-6";
-const defaultInputStyle = "py-3 w-full outline-none";
+	"flex items-center border-2 border-grey-500 rounded-[24px] focus-within:border-black px-6 py-3";
+const defaultTextfieldStyle = "w-full h-full outline-none";
 
 export const renderField = (field: FormField): JSX.Element | null => {
 	if (field.type === "text") {
 		return (
 			<div className={defaultContainerStyle}>
-				{/* // TO-DO: Change to <TextField when text field is refactored */}
+				{/* // TO-DO: Change to <TextField when text field is refactored (defaultValue) */}
 				<input
 					key={field.name}
 					type="text"
@@ -18,25 +19,23 @@ export const renderField = (field: FormField): JSX.Element | null => {
 					name={field.name}
 					placeholder={field.placeholder}
 					defaultValue={field.value}
-					className={defaultInputStyle}
+					className={defaultTextfieldStyle}
 				/>
+				{/* <TextField
+					key={field.name}
+					name={field.name}
+					placeholder={field.placeholder}
+					defaultValue={field.value}
+					className={defaultTextfieldStyle}
+				/> */}
 			</div>
 		);
 	}
 
-	if (field.type === "dropdown") {
+	if (field.type === "select") {
 		return (
 			<div className={defaultContainerStyle}>
-				{/* // TO-DO: Change to <DropdownField (create) */}
-				<select key={field.name} name={field.name} defaultValue={field.value}>
-					<option value="">{field.placeholder}</option>
-
-					{field.options.map((option) => (
-						<option key={option.value} value={option.value}>
-							{option.label}
-						</option>
-					))}
-				</select>
+				<SelectField field={field} />
 			</div>
 		);
 	}
