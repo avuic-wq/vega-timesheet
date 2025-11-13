@@ -26,7 +26,6 @@ export const getPagingationElements = (
 
 	const pages: (number | string)[] = [];
 
-	// Calculate when to show ellipsis
 	const leftEllipsisThreshold = PAGES_AROUND_CURRENT + 2;
 	const rightEllipsisThreshold = totalPages - (PAGES_AROUND_CURRENT + 1);
 	const showLeftEllipsis = currentPage > leftEllipsisThreshold;
