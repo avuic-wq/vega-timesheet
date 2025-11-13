@@ -4,7 +4,7 @@ export type TextField = {
 	type: "text";
 	name: string;
 	placeholder: string;
-	value: string;
+	initialValue: string;
 	isRequired?: boolean;
 };
 
@@ -14,7 +14,7 @@ export type SelectField = {
 	type: "select";
 	name: string;
 	placeholder: string;
-	value: SelectableOption;
+	initialValue: SelectableOption;
 	options: SelectableOption[];
 	isRequired?: boolean;
 };

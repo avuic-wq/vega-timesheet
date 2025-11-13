@@ -14,11 +14,11 @@ export const renderField = (field: FormField): JSX.Element | null => {
 				<input
 					key={field.name}
 					type="text"
-					autoComplete="off" // TO-DO: Try to disable name/address/etc suggestions
+					autoComplete="off"
 					spellCheck="false"
 					name={field.name}
 					placeholder={field.placeholder}
-					defaultValue={field.value}
+					defaultValue={field.initialValue}
 					className={defaultTextfieldStyle}
 				/>
 				{/* <TextField
@@ -35,7 +35,10 @@ export const renderField = (field: FormField): JSX.Element | null => {
 	if (field.type === "select") {
 		return (
 			<div className={defaultContainerStyle}>
-				<SelectField field={field} />
+				<SelectField
+					initialSelectedOption={field.initialValue}
+					options={field.options}
+				/>
 			</div>
 		);
 	}

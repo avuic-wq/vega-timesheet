@@ -1,10 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type {
-	SelectableOption,
-	SelectField as SelectFieldType,
-} from "@/src/components/EditForm/types";
+import type { SelectableOption } from "@/src/components/EditForm/types";
 import Icon from "@/src/components/Icon";
 import Text from "@/src/components/Text";
 
@@ -13,21 +10,22 @@ const resultsDropdownStyle =
 const noResultDropdownStyle =
 	"absolute s z-50 w-full mt-2 bg-white border-[1.5px] border-grey-200 shadow-lg px-3 py-2 text-gray-400";
 interface Props {
-	field: SelectFieldType;
+	initialSelectedOption?: SelectableOption;
+	options: SelectableOption[];
 }
 
-const SelectField = ({ field }: Props) => {
+const SelectField = ({ initialSelectedOption, options }: Props) => {
 	const ref = useRef<HTMLDivElement>(null);
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 	const [selectedValue, setSelectedValue] = useState<SelectableOption>({
-		label: field.value.label,
-		value: field.value.value,
+		label: initialSelectedOption?.label || "",
+		value: initialSelectedOption?.value || "",
 	});
 	const [searchText, setSearchText] = useState("");
 
-	const filteredOptions = field.options.filter((option) =>
+	const filteredOptions = options.filter((option) =>
 		option.label.toLowerCase().includes(searchText.toLowerCase()),
 	);
 
