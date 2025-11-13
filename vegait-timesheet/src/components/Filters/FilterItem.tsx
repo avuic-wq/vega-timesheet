@@ -19,7 +19,7 @@ const FilterItem = ({ value, isDisabled = false }: Props) => {
 	const isSelected = selectedFilter === value;
 	const filterStyle = getFilterStyle(isDisabled, isSelected);
 
-	// CHECK: Could use useTransition
+	// CHECK: Could use useTransition?
 	// const [isPending, startTransition] = useTransition();
 	const handleOnSelectFilter = (filter: string): void => {
 		const params = new URLSearchParams(searchParams);

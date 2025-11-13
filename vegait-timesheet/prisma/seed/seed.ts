@@ -4,7 +4,6 @@ import { saltAndHashPassword } from "@/src/lib/utils/saltAndHashPassword";
 import clientsData from "./clientsData";
 import { getPojectsData } from "./projectsData";
 
-// CHECK: const and utils function from src/lib seems weird or not?
 const prisma = new PrismaClient();
 
 async function main() {

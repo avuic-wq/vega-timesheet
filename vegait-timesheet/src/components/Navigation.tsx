@@ -19,7 +19,7 @@ const Navigation = () => {
 			<div>
 				<Logo size="sm" />
 			</div>
-			{/* // CHECK: prefetch={true or false} on link? */}
+
 			<div className="flex items-center justify-between gap-12">
 				{pages.map((page) => {
 					return (

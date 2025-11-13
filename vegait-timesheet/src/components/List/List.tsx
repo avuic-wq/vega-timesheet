@@ -11,7 +11,7 @@ interface Props {
 export const List = ({ data, totalPages, currentPage }: Props) => {
 	return (
 		<div className="flex flex-col gap-6 min">
-			{/* // Check: optimize? */}
+			{/* // TO-DO: Do we want min-h or not? */}
 			<ul className="min-h-[608px]">
 				{data.map((item) => {
 					return <ListItem key={item.id} item={item} />;
