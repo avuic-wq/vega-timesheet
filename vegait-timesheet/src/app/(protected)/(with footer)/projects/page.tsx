@@ -39,7 +39,6 @@ export default async function Projects({ searchParams }: Props) {
 		<div className="flex flex-col gap-4">
 			<Header setting={APP_ROUTES.PROJECTS} />
 			<LetterFilters letters={filterData} />
-			{/* TO-DO: ADD PLACEHOLDER FOR LIST? (check: suspension?) UNTIL REQUEST FINISHES */}
 			<ProjectsList
 				data={projects}
 				currentPage={currentPage}

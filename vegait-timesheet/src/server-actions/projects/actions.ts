@@ -42,8 +42,6 @@ export async function getPaginatedAndFilteredProjectsAction(
 	const totalPages = Math.ceil(totalCount / itemsPerPage);
 
 	if (page > totalPages && totalPages > 0) {
-		// Redirect to page 1 if page is out of bounds
-		// TO-DO: TEST!!! This feels odd
 		const url = getPageOutOfBoundsRedirectUrl(searchInput, letterFilter);
 		redirect(url);
 	}
