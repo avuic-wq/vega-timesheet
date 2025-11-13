@@ -10,7 +10,7 @@ import {
 	HOME_PAGE_ROUTE,
 } from "@/src/lib/consts";
 
-// TO-DO: Move somewhere and use as name in inputs
+// TO-DO: Move somewhere and use as name in inputs?
 const usernameField = "username";
 const passwordField = "password";
 

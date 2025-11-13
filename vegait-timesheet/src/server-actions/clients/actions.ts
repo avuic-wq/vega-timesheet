@@ -39,8 +39,6 @@ export async function getPaginatedAndFileterdClientsAction(
 
 	const totalPages = Math.ceil(totalCount / itemsPerPage);
 	if (page > totalPages && totalPages > 0) {
-		// Redirect to page 1 if page is out of bounds
-		// TO-DO: TEST! & This feels odd
 		redirect(
 			`?page=1${searchInput ? `&search=${searchInput}` : ""}${letterFilter ? `&letterFilter=${letterFilter}` : ""}`,
 		);
