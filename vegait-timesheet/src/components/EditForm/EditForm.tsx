@@ -10,6 +10,7 @@ type Props = {
 const EditForm = ({ config }: Props) => {
 	// TO-DO: Validate form data with zod before mutating
 	// TO-DO: Disable button if a required field is empty
+	// TO-DO: If select value != one of the options stop the submit
 	return (
 		<div className="flex flex-col justify-center gap-4 mb-3">
 			<form className="flex flex-col gap-4 w-full mb-4">
@@ -25,22 +26,22 @@ const EditForm = ({ config }: Props) => {
 						</div>
 					);
 				})}
+				<div className="flex justify-center flex-col items-center gap-3">
+					{config.buttons.map((button) => {
+						return (
+							<Button
+								type="submit"
+								key={button.text}
+								variant={button.variant}
+								isDisabled={button.isDisabled}
+								className="w-2/5"
+							>
+								{button.text}
+							</Button>
+						);
+					})}
+				</div>
 			</form>
-			<div className="flex justify-center flex-col items-center gap-3">
-				{config.buttons.map((button) => {
-					return (
-						<Button
-							type="submit"
-							key={button.text}
-							variant={button.variant}
-							isDisabled={button.isDisabled}
-							className="w-2/5"
-						>
-							{button.text}
-						</Button>
-					);
-				})}
-			</div>
 		</div>
 	);
 };
