@@ -3,8 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useActionState, useEffect } from "react";
 import Button from "@/src/components/Button/Button";
+import FormField from "@/src/components/EditForm/FormField";
 import Text from "@/src/components/Text";
-import { renderField } from "./renderField";
 import type { FormConfig } from "./types";
 
 type Props = {
@@ -30,7 +30,7 @@ const EditForm = ({ config }: Props) => {
 				{config?.fields?.map((field) => {
 					return (
 						<div key={field.name} className="flex justify-between">
-							<div className="w-full">{renderField(field)}</div>
+							<div className="w-full">{<FormField field={field} />}</div>
 							<div className="min-w-3">
 								{field.isRequired && (
 									<Text value="*" className="ml-1 font-bold text-red" />
