@@ -1,8 +1,7 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { ZodError } from "zod";
-import { signInSchema } from "@/src/lib/validators/zodSchemas";
-
+import { signInSchema } from "@/src/lib/validators/Users/schemas";
 import { authenticateUser } from "./authenticateUser";
 
 const oneHourInSeconds = 3600;
