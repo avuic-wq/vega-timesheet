@@ -66,14 +66,15 @@ export async function getClientById(id: string) {
 
 export async function updateClientAction(id: string, formData: FormData) {
 	const rawData = {
-		name: formData.get("client-name"),
-		address: formData.get("client-address"),
-		countryCode: formData.get("client-countryISO"),
+		name: formData.get("name"),
+		address: formData.get("address"),
+		countryCode: formData.get("countryISO"),
 	};
 
 	const validation = clientsModalSchema.safeParse(rawData);
 
 	if (!validation.success) {
+		console.log({ zErrors: z.treeifyError(validation.error).properties });
 		return z.treeifyError(validation.error);
 	}
 

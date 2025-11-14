@@ -57,21 +57,21 @@ export default async function UpdateClientModal({ params }: Props) {
 		formAction: handleModalForm,
 		fields: [
 			{
-				name: "client-name",
+				name: "name",
 				type: "text",
 				placeholder: "Name",
 				initialValue: clientData?.name || "",
 				isRequired: true,
 			},
 			{
-				name: "client-address",
+				name: "address",
 				type: "text",
 				placeholder: "Address",
 				initialValue: clientData?.address || "",
 				isRequired: true,
 			},
 			{
-				name: "client-countryISO",
+				name: "countryISO",
 				type: "select",
 				placeholder: "Country",
 				initialValue: initialCountry,
