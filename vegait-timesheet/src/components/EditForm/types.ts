@@ -1,3 +1,4 @@
+import type { Client, Project } from "@prisma/client";
 import type { ButtonVariant } from "@/src/lib/types";
 
 export type TextField = {
@@ -29,8 +30,13 @@ export type Button = {
 };
 
 export type FormState =
-	| { isRequestSuccessful?: boolean; errors?: Record<string, string> }
+	| {
+			isRequestSuccessful?: boolean;
+			data?: Client | Project;
+			errors?: Record<string, string>;
+	  }
 	| undefined;
+
 export type FormConfig = {
 	formAction: (prevState: FormState, formData: FormData) => Promise<FormState>;
 	fields: FormField[];

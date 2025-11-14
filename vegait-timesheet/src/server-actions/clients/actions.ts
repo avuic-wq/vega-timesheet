@@ -1,6 +1,5 @@
 "use server";
 
-import type { Client } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import z from "zod";
@@ -66,7 +65,7 @@ export async function getClientById(id: string) {
 }
 
 export async function updateClientAction(id: string, formData: FormData) {
-	const rawData: Record<keyof Client, string> = {
+	const rawData = {
 		name: formData.get("client-name"),
 		address: formData.get("client-address"),
 		countryCode: formData.get("client-countryISO"),
@@ -79,22 +78,18 @@ export async function updateClientAction(id: string, formData: FormData) {
 	}
 
 	try {
-		await updateClient(id, validation.data);
+		const updatedClient = await updateClient(id, validation.data);
 		revalidatePath("/clients");
 		revalidatePath(`/clients/${id}`);
-		return { isRequestSuccessful: true };
-	} catch (error) {
-		return `[DB] Failed to update client: ${error}`;
-	}
+		return { isRequestSuccessful: true, data: updatedClient };
+	} catch (error) {}
 }
 
 export async function deleteClientAction(id: string) {
 	try {
-		await deleteClient(id);
+		const deletedClient = await deleteClient(id);
 		revalidatePath("/clients");
 		revalidatePath(`/clients/${id}`);
-		return { isRequestSuccessful: true };
-	} catch (error) {
-		return `[DB] Failed to delete client: ${error}`;
-	}
+		return { isRequestSuccessful: true, data: deletedClient };
+	} catch (error) {}
 }
