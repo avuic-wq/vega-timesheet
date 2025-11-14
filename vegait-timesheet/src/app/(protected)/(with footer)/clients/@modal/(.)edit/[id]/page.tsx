@@ -28,7 +28,7 @@ export default async function UpdateClientModal({ params }: Props) {
 	const clientData = await fetchClientById(clientId);
 
 	const countriesOptions = Object.values(countriesData).map((countryData) => {
-		return { label: countryData.name, value: countryData.iso3 };
+		return { label: countryData.name, value: countryData.iso2 };
 	});
 
 	const initialCountry = countriesOptions.find((option) => {
