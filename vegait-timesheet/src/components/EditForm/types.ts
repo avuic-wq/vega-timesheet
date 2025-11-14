@@ -19,15 +19,20 @@ export type SelectField = {
 	isRequired?: boolean;
 };
 
+export type FormButtonAction = "UPDATE" | "DELETE";
+
 export type FormField = TextField | SelectField;
 export type Button = {
 	text: string;
 	variant: ButtonVariant;
-	action: "UPDATE" | "DELETE";
-	isDisabled?: boolean;
+	action: FormButtonAction;
 };
 
+export type FormState =
+	| { isRequestSuccessful?: boolean; errors?: Record<string, string> }
+	| undefined;
 export type FormConfig = {
+	formAction: (prevState: FormState, formData: FormData) => Promise<FormState>;
 	fields: FormField[];
 	buttons: Button[];
 };

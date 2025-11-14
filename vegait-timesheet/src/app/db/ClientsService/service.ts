@@ -1,4 +1,4 @@
-import type { Prisma } from "@prisma/client";
+import type { Client, Prisma } from "@prisma/client";
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/prisma/prisma";
 
@@ -7,6 +7,9 @@ import type {
 	FetchClientsFirstLettersResult,
 	FetchPaginatedAndFilteredClientsResult,
 } from "./types";
+
+// TO-DO: Return types
+// TO-DO: Validation
 
 export const fetchAllClients = async (): FetchAllClientsResult => {
 	return prisma.client.findMany({
@@ -65,3 +68,17 @@ export const fetchClientById = async (id: string) => {
 	});
 	return client;
 };
+
+// TO-DO: type data
+export const updateClient = async (id: string, data: any): Promise<Client> => {
+	return prisma.client.update({
+		where: { id },
+		data,
+	});
+};
+
+export async function deleteClient(id: string): Promise<Client> {
+	return prisma.client.delete({
+		where: { id },
+	});
+}

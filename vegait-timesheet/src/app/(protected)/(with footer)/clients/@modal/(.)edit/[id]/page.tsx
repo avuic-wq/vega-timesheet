@@ -1,13 +1,25 @@
 import { fetchClientById } from "@/src/app/db/ClientsService/service";
 import EditForm from "@/src/components/EditForm/EditForm";
-import type { FormConfig } from "@/src/components/EditForm/types";
+import type {
+	FormButtonAction,
+	FormConfig,
+	FormState,
+} from "@/src/components/EditForm/types";
 import Modal from "@/src/components/Modal/Modal";
 import { countriesData } from "@/src/lib/countriesData";
+import {
+	deleteClientAction,
+	updateClientAction,
+} from "@/src/server-actions/clients/actions";
 
 const modalTitle = "Client";
 
+export const ACTION_TYPES: Record<FormButtonAction, FormButtonAction> = {
+	UPDATE: "UPDATE",
+	DELETE: "DELETE",
+};
 interface Props {
-	params: { id: string };
+	params: Promise<{ id: string }>;
 }
 
 export default async function UpdateClientModal({ params }: Props) {
@@ -25,8 +37,26 @@ export default async function UpdateClientModal({ params }: Props) {
 		return option.value === clientData?.countryCode;
 	}) || { label: "", value: "" };
 
+	const handleModalForm = async (
+		_prevState: FormState,
+		formData: FormData,
+	): Promise<FormState> => {
+		"use server";
+
+		const actionType = formData.get("action");
+
+		if (actionType === ACTION_TYPES.UPDATE) {
+			return await updateClientAction(clientId, formData);
+		}
+
+		if (actionType === ACTION_TYPES.DELETE) {
+			return await deleteClientAction(clientId);
+		}
+	};
+
 	// TO-DO: Extract
 	const formConfig: FormConfig = {
+		formAction: handleModalForm,
 		fields: [
 			{
 				name: "client-name",
@@ -55,7 +85,6 @@ export default async function UpdateClientModal({ params }: Props) {
 			{
 				text: "Save",
 				variant: "primary",
-				isDisabled: false,
 				action: "UPDATE",
 			},
 			{

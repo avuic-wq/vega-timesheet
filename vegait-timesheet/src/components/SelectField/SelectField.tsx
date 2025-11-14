@@ -10,16 +10,17 @@ const resultsDropdownStyle =
 const noResultDropdownStyle =
 	"absolute s z-50 w-full mt-2 bg-white border-[1.5px] border-grey-200 shadow-lg px-3 py-2 text-gray-400";
 interface Props {
+	name: string;
 	initialSelectedOption?: SelectableOption;
 	options: SelectableOption[];
 }
 
-const SelectField = ({ initialSelectedOption, options }: Props) => {
+const SelectField = ({ name, initialSelectedOption, options }: Props) => {
 	const ref = useRef<HTMLDivElement>(null);
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-	const [selectedValue, setSelectedValue] = useState<SelectableOption>({
+	const [selectedOption, setSelectedOption] = useState<SelectableOption>({
 		label: initialSelectedOption?.label || "",
 		value: initialSelectedOption?.value || "",
 	});
@@ -42,6 +43,7 @@ const SelectField = ({ initialSelectedOption, options }: Props) => {
 
 	return (
 		<div ref={ref} className="relative w-full">
+			<input type="hidden" name={name} value={selectedOption?.value} />
 			<div className="max-h-[22px] relative">
 				<input
 					ref={inputRef}
@@ -54,7 +56,7 @@ const SelectField = ({ initialSelectedOption, options }: Props) => {
 						setIsDropdownVisible(true);
 						setSearchText("");
 					}}
-					placeholder={selectedValue?.label}
+					placeholder={selectedOption?.label}
 					className="w-full max-h-[22px] border-none focus:outline-none placeholder:text-black"
 				/>
 				<Icon
@@ -76,12 +78,12 @@ const SelectField = ({ initialSelectedOption, options }: Props) => {
 							key={option.value}
 							type="button"
 							onClick={() => {
-								setSelectedValue(option);
+								setSelectedOption(option);
 								setIsDropdownVisible(false);
 								setSearchText("");
 							}}
 							className={`w-full text-left px-3 py-2 cursor-pointer hover:bg-gray-100 ${
-								option.value === selectedValue.value
+								option.value === selectedOption.value
 									? "bg-blue-50 font-medium"
 									: ""
 							}`}

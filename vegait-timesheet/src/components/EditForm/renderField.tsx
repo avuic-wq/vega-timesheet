@@ -36,6 +36,7 @@ export const renderField = (field: FormField): JSX.Element | null => {
 		return (
 			<div className={defaultContainerStyle}>
 				<SelectField
+					name={field.name}
 					initialSelectedOption={field.initialValue}
 					options={field.options}
 				/>

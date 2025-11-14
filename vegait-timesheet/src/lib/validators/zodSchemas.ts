@@ -26,3 +26,5 @@ export const projectsParametersSchema = z.object({
 		.default(1)
 		.transform((val) => (Number.isNaN(val) || val < 1 ? 1 : val)),
 });
+
+// TO-DO: Extract to separate functions

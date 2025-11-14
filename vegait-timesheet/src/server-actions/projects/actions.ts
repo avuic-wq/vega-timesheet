@@ -13,6 +13,10 @@ import type {
 	GetProjectsFirstLettersActionResult,
 } from "./types";
 
+// TO-DO: Return types
+// TO-DO: Validation
+// TO-DO: Error handling
+
 const getPageOutOfBoundsRedirectUrl = (
 	searchInput?: string,
 	letterFilter?: string,

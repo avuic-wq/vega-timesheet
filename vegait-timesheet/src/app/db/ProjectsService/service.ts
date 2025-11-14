@@ -7,6 +7,9 @@ import type {
 	FetchProjectsFirstLettersResult,
 } from "./types";
 
+// TO-DO: Return types
+// TO-DO: Validation
+
 export const fetchAllProjects = async (): Promise<FetchAllProjcetsResult> => {
 	return prisma.project.findMany({
 		orderBy: { name: "asc" },

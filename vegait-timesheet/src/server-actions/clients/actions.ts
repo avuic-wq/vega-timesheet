@@ -1,18 +1,28 @@
 "use server";
 
+import type { Client } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import z from "zod";
 import {
+	deleteClient,
 	fetchAllClients,
 	fetchClientById,
 	fetchClientsFirstLetters,
 	fetchPaginatedAndFilteredClients,
+	updateClient,
 } from "@/src/app/db/ClientsService/service";
 import { ITEMS_PER_PAGE } from "@/src/lib/consts";
+import { clientsModalSchema } from "@/src/lib/validators/Clients/schemas";
 import type {
 	GetAllClientsActionResult,
 	GetClientsFirstLettersActionResult,
 	GetPaginatedAndFilteredClientsActionResult,
 } from "./types";
+
+// TO-DO: Return types
+// TO-DO: Validation
+// TO-DO: Error handling
 
 export async function getAllClientsAction(): GetAllClientsActionResult {
 	const clients = fetchAllClients();
@@ -53,4 +63,38 @@ export async function getPaginatedAndFileterdClientsAction(
 export async function getClientById(id: string) {
 	const client = await fetchClientById(id);
 	return client;
+}
+
+export async function updateClientAction(id: string, formData: FormData) {
+	const rawData: Record<keyof Client, string> = {
+		name: formData.get("client-name"),
+		address: formData.get("client-address"),
+		countryCode: formData.get("client-countryISO"),
+	};
+
+	const validation = clientsModalSchema.safeParse(rawData);
+
+	if (!validation.success) {
+		return z.treeifyError(validation.error);
+	}
+
+	try {
+		await updateClient(id, validation.data);
+		revalidatePath("/clients");
+		revalidatePath(`/clients/${id}`);
+		return { isRequestSuccessful: true };
+	} catch (error) {
+		return `[DB] Failed to update client: ${error}`;
+	}
+}
+
+export async function deleteClientAction(id: string) {
+	try {
+		await deleteClient(id);
+		revalidatePath("/clients");
+		revalidatePath(`/clients/${id}`);
+		return { isRequestSuccessful: true };
+	} catch (error) {
+		return `[DB] Failed to delete client: ${error}`;
+	}
 }
