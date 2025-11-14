@@ -25,8 +25,6 @@ interface Props {
 export default async function UpdateClientModal({ params }: Props) {
 	const { id: clientId } = await params;
 
-	// Promise.all[]
-	// const deleteClient = await deleteClientByIdAction(clientId)
 	const clientData = await fetchClientById(clientId);
 
 	const countriesOptions = Object.values(countriesData).map((countryData) => {
