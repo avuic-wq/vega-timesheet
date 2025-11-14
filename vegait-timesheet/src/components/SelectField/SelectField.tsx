@@ -48,6 +48,7 @@ const SelectField = ({ name, initialSelectedOption, options }: Props) => {
 				<input
 					ref={inputRef}
 					type="text"
+					value={!isDropdownVisible ? selectedOption?.label : searchText}
 					onChange={(e) => {
 						setSearchText(e.target.value);
 						setIsDropdownVisible(true);
