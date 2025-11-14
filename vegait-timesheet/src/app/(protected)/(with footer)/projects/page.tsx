@@ -3,7 +3,6 @@ import Header from "@/src/components/Header/Header";
 import { List as ProjectsList } from "@/src/components/List/List";
 import { APP_ROUTES, INITIAL_LIST_PAGE } from "@/src/lib/consts";
 import type { SearchParams } from "@/src/lib/types";
-import { projectsParametersSchema } from "@/src/lib/validators/zodSchemas";
 import {
 	getPaginatedAndFilteredProjectsAction,
 	getProjectsFirstLettersAction,
@@ -17,20 +16,12 @@ export default async function Projects({ searchParams }: Props) {
 	const params = await searchParams;
 	const searchInputParam = params?.search || "";
 	const letterFilterParam = params?.startsWith || "";
-	const currentPageParam = params?.page || INITIAL_LIST_PAGE;
-
-	const validatedParameters = projectsParametersSchema.parseAsync({
-		searchInput: searchInputParam,
-		letterFilter: letterFilterParam,
-		currentPage: currentPageParam,
-	});
-
-	const { searchInput, letterFilter, currentPage } = await validatedParameters;
+	const currentPageParam = Number(params?.page) || INITIAL_LIST_PAGE;
 
 	const { projects, totalPages } = await getPaginatedAndFilteredProjectsAction(
-		currentPage,
-		searchInput,
-		letterFilter,
+		currentPageParam,
+		searchInputParam,
+		letterFilterParam,
 	);
 
 	const filterData = await getProjectsFirstLettersAction();
@@ -41,7 +32,7 @@ export default async function Projects({ searchParams }: Props) {
 			<LetterFilters letters={filterData} />
 			<ProjectsList
 				data={projects}
-				currentPage={currentPage}
+				currentPage={currentPageParam}
 				totalPages={totalPages}
 			/>
 		</div>
