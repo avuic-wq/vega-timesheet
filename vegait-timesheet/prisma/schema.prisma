@@ -68,7 +68,7 @@ model Client {
   id          String    @id @default(cuid())
   name        String
   address     String?
-  countryCode String    @db.Char(3) // ISO 3-letter code (e.g., "USA", "SRB", "GBR")
+  countryCode String    @db.Char(2) // ISO 2-letter code (e.g., "US", "RS", "GB")
   projects    Project[]
   timeLogs    TimeLog[]
   createdAt   DateTime  @default(now())
