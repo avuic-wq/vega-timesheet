@@ -31,7 +31,7 @@ export default async function Projects({ searchParams }: Props) {
 			<Header setting={APP_ROUTES.PROJECTS} />
 			<LetterFilters letters={filterData} />
 			<ProjectsList
-				items={projects}
+				data={projects}
 				currentPage={currentPageParam}
 				totalPages={totalPages}
 			/>

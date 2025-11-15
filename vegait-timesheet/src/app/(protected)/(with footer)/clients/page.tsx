@@ -32,7 +32,7 @@ export default async function Clients({ searchParams }: Props) {
 			<Header setting={APP_ROUTES.CLIENTS} />
 			<LetterFilters letters={filterData} />
 			<ClientList
-				items={clients}
+				data={clients}
 				currentPage={currentPageParam}
 				totalPages={totalPages}
 			/>
