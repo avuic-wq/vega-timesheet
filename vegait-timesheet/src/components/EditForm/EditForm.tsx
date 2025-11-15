@@ -1,6 +1,6 @@
 "use client";
 
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { type FormEvent, useState } from "react";
 import Button from "@/src/components/Button/Button";
 import FormFields from "./FormFields";
@@ -12,6 +12,7 @@ interface Props {
 }
 
 const EditForm = ({ config }: Props) => {
+	const router = useRouter();
 	const initialValues = getFormInitialValues(config);
 	const [formValues, setFormValues] = useState<FormValues>(initialValues);
 
@@ -32,7 +33,7 @@ const EditForm = ({ config }: Props) => {
 		);
 		console.log({ result }); // Save doesnt work due to getting object instead of string value for coutnry code
 		if (result?.isRequestSuccessful) {
-			redirect(config.entityType);
+			router.back();
 		}
 	};
 
