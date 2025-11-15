@@ -5,7 +5,7 @@ export type TextField = {
 	type: "text";
 	name: string;
 	placeholder: string;
-	initialValue: string;
+	initialValue?: string;
 	isRequired?: boolean;
 };
 
@@ -15,7 +15,7 @@ export type SelectField = {
 	type: "select";
 	name: string;
 	placeholder: string;
-	initialValue: SelectableOption;
+	initialValue?: string;
 	options: SelectableOption[];
 	isRequired?: boolean;
 };
@@ -33,12 +33,20 @@ export type FormState =
 	| {
 			isRequestSuccessful?: boolean;
 			data?: Client | Project;
-			errors?: Record<string, string>;
+			errors?: Record<string, string | null | undefined>;
 	  }
 	| undefined;
 
 export type FormConfig = {
-	formAction: (prevState: FormState, formData: FormData) => Promise<FormState>;
+	entityId: string;
+	entityType: "clients" | "projects";
 	fields: FormField[];
 	buttons: Button[];
 };
+
+export type FormValues = Record<string, string>;
+
+export type SubmitHandlerMapper = Record<
+	FormConfig["entityType"],
+	Record<FormButtonAction, (entityId: string, formValues: FormValues) => any> // TO-DO: Update to action return types
+>;

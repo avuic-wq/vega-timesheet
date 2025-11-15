@@ -1,23 +1,11 @@
 import { fetchClientById } from "@/src/app/db/ClientsService/service";
 import EditForm from "@/src/components/EditForm/EditForm";
-import type {
-	FormButtonAction,
-	FormConfig,
-	FormState,
-} from "@/src/components/EditForm/types";
+import type { FormConfig } from "@/src/components/EditForm/types";
 import Modal from "@/src/components/Modal/Modal";
 import { countriesData } from "@/src/lib/countriesData";
-import {
-	deleteClientAction,
-	updateClientAction,
-} from "@/src/server-actions/clients/actions";
 
 const modalTitle = "Client";
 
-export const ACTION_TYPES: Record<FormButtonAction, FormButtonAction> = {
-	UPDATE: "UPDATE",
-	DELETE: "DELETE",
-};
 interface Props {
 	params: Promise<{ id: string }>;
 }
@@ -31,30 +19,15 @@ export default async function UpdateClientModal({ params }: Props) {
 		return { label: countryData.name, value: countryData.iso2 };
 	});
 
-	const initialCountry = countriesOptions.find((option) => {
-		return option.value === clientData?.countryCode;
-	}) || { label: "", value: "" };
-
-	const handleModalForm = async (
-		_prevState: FormState,
-		formData: FormData,
-	): Promise<FormState> => {
-		"use server";
-
-		const actionType = formData.get("action");
-
-		if (actionType === ACTION_TYPES.UPDATE) {
-			return await updateClientAction(clientId, formData);
-		}
-
-		if (actionType === ACTION_TYPES.DELETE) {
-			return await deleteClientAction(clientId);
-		}
-	};
+	const initialCountryCode =
+		countriesOptions.find((option) => {
+			return option.value === clientData?.countryCode;
+		})?.value || "";
 
 	// TO-DO: Extract
 	const formConfig: FormConfig = {
-		formAction: handleModalForm,
+		entityId: clientId,
+		entityType: "clients",
 		fields: [
 			{
 				name: "name",
@@ -71,10 +44,10 @@ export default async function UpdateClientModal({ params }: Props) {
 				isRequired: true,
 			},
 			{
-				name: "countryISO",
+				name: "countryCode",
 				type: "select",
 				placeholder: "Country",
-				initialValue: initialCountry,
+				initialValue: initialCountryCode,
 				options: countriesOptions,
 				isRequired: true,
 			},

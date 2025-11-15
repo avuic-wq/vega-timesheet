@@ -11,7 +11,9 @@ import {
 	fetchPaginatedAndFilteredClients,
 	updateClient,
 } from "@/src/app/db/ClientsService/service";
+import type { FormState, FormValues } from "@/src/components/EditForm/types";
 import { ITEMS_PER_PAGE } from "@/src/lib/consts";
+import { formatZodErrors } from "@/src/lib/utils/formatZodErrors";
 import { clientsModalSchema } from "@/src/lib/validators/Clients/schemas";
 import type {
 	GetAllClientsActionResult,
@@ -64,18 +66,17 @@ export async function getClientById(id: string) {
 	return client;
 }
 
-export async function updateClientAction(id: string, formData: FormData) {
-	const rawData = {
-		name: formData.get("name"),
-		address: formData.get("address"),
-		countryCode: formData.get("countryISO"),
-	};
-
-	const validation = clientsModalSchema.safeParse(rawData);
+export async function updateClientAction(
+	id: string,
+	formValues: FormValues,
+): Promise<FormState> {
+	const validation = clientsModalSchema.safeParse(formValues);
 
 	if (!validation.success) {
-		console.log({ zErrors: z.treeifyError(validation.error).properties });
-		return z.treeifyError(validation.error);
+		return {
+			isRequestSuccessful: false,
+			errors: formatZodErrors(z.treeifyError(validation.error)?.properties),
+		};
 	}
 
 	try {
