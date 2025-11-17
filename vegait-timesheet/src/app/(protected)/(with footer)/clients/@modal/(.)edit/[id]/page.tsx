@@ -13,7 +13,6 @@ export default async function EditClient({ params }: Props) {
 	const { id: clientId } = await params;
 
 	const clientData = await fetchClientById(clientId);
-
 	const countryOptions = getCountrySelectOptions();
 
 	return (

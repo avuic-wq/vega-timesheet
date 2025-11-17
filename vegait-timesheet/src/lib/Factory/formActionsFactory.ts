@@ -22,13 +22,13 @@ type EntityHandlersMap = {
 interface FactoryProps<E extends EntityType> {
 	mode: FormMode;
 	entityType: E;
-	entityId: string;
+	entityId?: string;
 }
 
 export const formActionsFactory = <E extends EntityType>({
 	mode,
 	entityType,
-	entityId,
+	entityId = "",
 }: FactoryProps<E>): FormActions<EntityDataMap[E]> => {
 	const handlersMap: EntityHandlersMap = {
 		client: {

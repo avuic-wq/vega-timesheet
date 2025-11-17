@@ -14,7 +14,7 @@ interface Props<T> {
 	mode: FormMode;
 	config: FormConfig;
 	actions: FormActions<T>;
-	initialValues?: T;
+	initialValues: T;
 }
 
 const FormController = <T extends BaseFormData>({

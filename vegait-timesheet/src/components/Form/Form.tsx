@@ -9,7 +9,7 @@ import type { BaseFormData, FieldValue, FormConfig } from "../Form/types";
 type Props<T> = {
 	config: FormConfig;
 	onSubmit: (data: T) => Promise<void>;
-	initialValues?: T;
+	initialValues: T;
 	hasResetButton?: boolean;
 };
 

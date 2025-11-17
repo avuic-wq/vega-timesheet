@@ -16,7 +16,18 @@ const LoginForm = ({ callbackUrl }: Props) => {
 		await loginAction(formValues, callbackUrl);
 	};
 
-	return <Form config={formConfig} onSubmit={handleOnSubmit} />;
+	const initialValues: LoginFormData = {
+		username: "",
+		password: "",
+	};
+
+	return (
+		<Form
+			config={formConfig}
+			onSubmit={handleOnSubmit}
+			initialValues={initialValues}
+		/>
+	);
 };
 
 export default LoginForm;
