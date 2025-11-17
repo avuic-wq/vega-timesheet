@@ -21,7 +21,7 @@ export const FormField = <T extends BaseFormData>({
 	formValues,
 	onChange,
 }: Props<T>): JSX.Element | null => {
-	if (field.type === "text") {
+	if (field.type === "text" || field.type === "password") {
 		return (
 			<div className={defaultContainerStyle}>
 				{/* // TO-DO: Change to <TextField when text field is refactored (defaultValue) */}

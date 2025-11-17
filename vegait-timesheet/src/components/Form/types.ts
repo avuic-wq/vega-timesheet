@@ -33,6 +33,11 @@ export interface ProjectFormData extends BaseFormData {
 	industryId: string;
 }
 
+export interface LoginFormData extends BaseFormData {
+	username: string;
+	password: string
+}
+
 export interface FormConfig {
 	fields: FormField[];
 	buttonText: {

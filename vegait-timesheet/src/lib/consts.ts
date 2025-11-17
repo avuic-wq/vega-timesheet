@@ -31,11 +31,4 @@ export const AUTH_PROVIDERS = {
 	CREDENTIALS: "credentials",
 };
 
-export const AUTH_ERRORS_KEYS: Record<string, string> = {
-	INVALID_CREDENTIALS: "CredentialsSignin",
-} as const;
 
-export const AUTH_ERRORS_MESSAGES: Record<AuthErrorKey, string> = {
-	Default: "Something went wrong",
-	CredentialsSignin: "Invalid credentials",
-};

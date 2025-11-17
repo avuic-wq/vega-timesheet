@@ -1,9 +1,8 @@
 "use client";
 
-import { useActionState } from "react";
-import Button from "@/src/components/Button/Button";
-import Text from "@/src/components/Text";
-import TextField from "@/src/components/TextField/TextField";
+import Form from "@/src/components/Form/Form";
+import type { LoginFormData } from "@/src/components/Form/types";
+import { loginFormConfigFactory } from "@/src/lib/Factory/loginFormConfigFactory";
 import { loginAction } from "@/src/server-actions/auth/actions";
 
 interface Props {
@@ -11,36 +10,14 @@ interface Props {
 }
 
 const LoginForm = ({ callbackUrl }: Props) => {
-	const [errorMessage, formAction, isPending] = useActionState(
-		loginAction,
-		undefined,
-	);
+	const formConfig = loginFormConfigFactory();
 
-	return (
-		<form action={formAction} className="space-y-4">
-			<TextField
-				name="username"
-				placeholder="Username"
-				isDisabled={isPending}
-			/>
-			<TextField
-				name="password"
-				placeholder="Password"
-				isDisabled={isPending}
-				isPassword
-			/>
+	const handleOnSubmit = async (formValues: LoginFormData) => {
+		console.log("submit", { callbackUrl });
+		await loginAction(formValues, callbackUrl);
+	};
 
-			<input type="hidden" name="callbackUrl" value={callbackUrl} />
-
-			{errorMessage && (
-				<Text value={errorMessage} className="text-red text-center mb-5" />
-			)}
-
-			<Button type="submit" isDisabled={isPending}>
-				<Text value="Login" />
-			</Button>
-		</form>
-	);
+	return <Form<LoginFormData> config={formConfig} onSubmit={handleOnSubmit} />;
 };
 
 export default LoginForm;

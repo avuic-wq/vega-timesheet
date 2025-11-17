@@ -1,40 +1,25 @@
 "use server";
 
-import { AuthError } from "next-auth";
 import { signIn, signOut } from "@/auth/auth";
-import {
-	APP_ROUTES,
-	AUTH_ERRORS_KEYS,
-	AUTH_ERRORS_MESSAGES,
-	AUTH_PROVIDERS,
-	HOME_PAGE_ROUTE,
-} from "@/src/lib/consts";
-
-// TO-DO: Move somewhere and use as name in inputs?
-const usernameField = "username";
-const passwordField = "password";
+import type { LoginFormData } from "@/src/components/Form/types";
+import { APP_ROUTES, AUTH_PROVIDERS, HOME_PAGE_ROUTE } from "@/src/lib/consts";
 
 export async function loginAction(
-	_prevState: string | undefined,
-	formData: FormData,
-) {
-	const callbackUrl = String(formData.get("callbackUrl")) || HOME_PAGE_ROUTE;
+	formData: LoginFormData,
+	callbackUrl?: string,
+): Promise<void> {
+	const redirectUrl = callbackUrl || HOME_PAGE_ROUTE;
+
 	try {
 		await signIn(AUTH_PROVIDERS.CREDENTIALS, {
-			username: formData.get(usernameField),
-			password: formData.get(passwordField),
-			redirectTo: callbackUrl,
+			username: formData?.username,
+			password: formData?.password,
+			redirectTo: redirectUrl,
 		});
 	} catch (error) {
-		if (error instanceof AuthError) {
-			switch (error.type) {
-				case AUTH_ERRORS_KEYS.INVALID_CREDENTIALS:
-					return AUTH_ERRORS_MESSAGES.CredentialsSignin;
-				default:
-					return AUTH_ERRORS_MESSAGES.DEFAULT;
-			}
+		if (error instanceof Error && error.message === "NEXT_REDIRECT") {
+			throw error;
 		}
-		throw error;
 	}
 }
 
