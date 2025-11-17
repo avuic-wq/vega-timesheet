@@ -1,7 +1,7 @@
 import { fetchClientById } from "@/src/app/db/ClientsService/service";
 import EditClientForm from "@/src/components/EditClientForm/EditClientForm";
 import Modal from "@/src/components/Modal/Modal";
-import { countriesData } from "@/src/lib/countriesData";
+import { getCountrySelectOptions } from "@/src/lib/utils/getCountrySelectOptions";
 
 const modalTitle = "Client";
 
@@ -14,9 +14,7 @@ export default async function EditClient({ params }: Props) {
 
 	const clientData = await fetchClientById(clientId);
 
-	const countryOptions = Object.values(countriesData).map((countryData) => {
-		return { label: countryData.name, value: countryData.iso2 };
-	});
+	const countryOptions = getCountrySelectOptions();
 
 	return (
 		<Modal title={modalTitle}>
