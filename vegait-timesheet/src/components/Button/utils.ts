@@ -9,7 +9,7 @@ export const getButtonStyle = (
 
 	const variantSpecificStyle = {
 		primary: "bg-black",
-		secondary: "",
+		secondary: "bg-transparent text-black",
 		danger: "bg-red",
 		custom: undefined,
 	};
