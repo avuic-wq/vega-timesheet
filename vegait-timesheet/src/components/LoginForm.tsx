@@ -17,7 +17,7 @@ const LoginForm = ({ callbackUrl }: Props) => {
 		await loginAction(formValues, callbackUrl);
 	};
 
-	return <Form<LoginFormData> config={formConfig} onSubmit={handleOnSubmit} />;
+	return <Form config={formConfig} onSubmit={handleOnSubmit} />;
 };
 
 export default LoginForm;

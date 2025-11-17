@@ -1,5 +1,3 @@
-import type { AuthErrorKey } from "./types";
-
 export const DEFAULT_SALT_ROUNDS: number = 10;
 export const DEBOUNCE_TIME = {
 	DEFAULT: 500,
@@ -30,5 +28,3 @@ export const SEARCH_PARAMETERS = {
 export const AUTH_PROVIDERS = {
 	CREDENTIALS: "credentials",
 };
-
-
