@@ -7,7 +7,7 @@ import { clientFormConfigFactory } from "@/src/lib/Factory/clientFormConfigFacto
 import { formActionsFactory } from "@/src/lib/Factory/formActionsFactory";
 
 interface Props<T> {
-	clientData: Client;
+	clientData: Client | null;
 	countryOptions: SelectOption[];
 	initialValues?: T;
 }
@@ -21,13 +21,13 @@ const EditClientForm = <T,>({ clientData, countryOptions }: Props<T>) => {
 	const formActions = formActionsFactory({
 		mode: "edit",
 		entityType: "client",
-		entityId: clientData.id,
+		entityId: clientData?.id,
 	});
 
 	const initialValues: ClientFormData = {
-		name: clientData.name || "",
-		address: clientData.address || "",
-		countryCode: clientData.countryCode || "",
+		name: clientData?.name || "",
+		address: clientData?.address || "",
+		countryCode: clientData?.countryCode || "",
 	};
 
 	return (
