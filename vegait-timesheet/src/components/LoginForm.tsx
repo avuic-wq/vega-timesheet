@@ -13,7 +13,6 @@ const LoginForm = ({ callbackUrl }: Props) => {
 	const formConfig = loginFormConfigFactory();
 
 	const handleOnSubmit = async (formValues: LoginFormData) => {
-		console.log("submit", { callbackUrl });
 		await loginAction(formValues, callbackUrl);
 	};
 
