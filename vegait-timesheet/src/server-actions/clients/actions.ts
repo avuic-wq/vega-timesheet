@@ -86,7 +86,7 @@ export async function updateClientAction(
 	try {
 		const result = await updateClient(id, validation.data);
 		const updatedClient = {
-			name: result,
+			name: result.name,
 			address: result.address,
 			countryCode: result.countryCode,
 		};
