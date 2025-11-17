@@ -24,7 +24,7 @@ const ListItem = <T extends BaseItem>({ item }: Props<T>) => {
 	const countryName = isClient
 		? getCountryData(item.countryCode as TCountryCode)?.name
 		: "";
-	const clientName = isProject ? item.clientId : "";
+	const clientName = isProject ? item.clientName : "";
 
 	return (
 		<Link href={`${pathname}/edit/${item.id}`} scroll={false}>

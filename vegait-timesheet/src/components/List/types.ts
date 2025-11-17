@@ -8,5 +8,5 @@ export interface ClientItem extends BaseItem {
 }
 
 export interface ProjectItem extends BaseItem {
-	clientId: string;
+	clientName: string;
 }
