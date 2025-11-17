@@ -1,6 +1,5 @@
-import type { Client } from "@prisma/client";
-import type { ListItem } from "@/src/components/List/ListItem";
+import type { BaseItem, ClientItem } from "@/src/components/List/types";
 
-export const isClientType = (item: ListItem): item is Client => {
+export const isClientType = (item: BaseItem): item is ClientItem => {
 	return "countryCode" in item;
 };

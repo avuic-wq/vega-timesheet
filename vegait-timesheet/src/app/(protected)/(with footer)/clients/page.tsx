@@ -31,8 +31,9 @@ export default async function Clients({ searchParams }: Props) {
 		<div className="flex flex-col gap-4">
 			<Header setting={APP_ROUTES.CLIENTS} />
 			<LetterFilters letters={filterData} />
+
 			<ClientList
-				data={clients}
+				items={clients}
 				currentPage={currentPageParam}
 				totalPages={totalPages}
 			/>
