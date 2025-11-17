@@ -27,7 +27,6 @@ const FormController = <T extends BaseFormData>({
 
 	const handleOnSubmit = async (data: T) => {
 		const result = await actions.onSubmit(data);
-		console.log("handleOnSubmit", { data, result });
 
 		if (result?.isSuccessful) {
 			router.back();
@@ -38,7 +37,6 @@ const FormController = <T extends BaseFormData>({
 		if (!actions?.onDelete) return;
 
 		const result = await actions.onDelete();
-		console.log("handleOnSubmit", { result });
 
 		if (result?.isSuccessful) {
 			router.back();
