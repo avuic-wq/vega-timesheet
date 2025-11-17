@@ -18,10 +18,6 @@ export default async function EditClient({ params }: Props) {
 		return { label: countryData.name, value: countryData.iso2 };
 	});
 
-	const initialCountry = countryOptions.find((option) => {
-		return option.value === clientData?.countryCode;
-	}) || { label: "", value: "" };
-
 	return (
 		<Modal title={modalTitle}>
 			<EditClientForm clientData={clientData} countryOptions={countryOptions} />
