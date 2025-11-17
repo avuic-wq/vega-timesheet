@@ -1,4 +1,4 @@
-import Footer from "@/src/components/Footer";
+import Footer from "@/src/components/Footer/Footer";
 
 export default function WithFooterLayout({
 	children,

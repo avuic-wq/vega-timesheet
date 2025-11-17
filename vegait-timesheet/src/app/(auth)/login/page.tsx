@@ -1,4 +1,4 @@
-import LoginForm from "@/src/components/LoginForm";
+import LoginForm from "@/src/components/LoginForm/LoginForm";
 import type { SearchParams } from "@/src/lib/types";
 
 interface Props {

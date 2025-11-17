@@ -3,7 +3,7 @@
 import { useCallback, useState } from "react";
 import Button from "@/src/components/Button/Button";
 import FormField from "@/src/components/Form/FormField";
-import Text from "@/src/components/Text";
+import Text from "@/src/components/Text/Text";
 import type { BaseFormData, FieldValue, FormConfig } from "../Form/types";
 
 type Props<T> = {

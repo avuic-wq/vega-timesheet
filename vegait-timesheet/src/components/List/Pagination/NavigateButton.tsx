@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import Button from "@/src/components/Button/Button";
-import Icon from "@/src/components/Icon";
+import Icon from "@/src/components/Icon/Icon";
 import type { NAVIGATE_BUTTON_ORIENTATION } from "./Pagination";
 import { createPageParams } from "./utils";
 

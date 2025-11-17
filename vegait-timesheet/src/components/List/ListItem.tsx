@@ -4,8 +4,8 @@ import type { Client, Project } from "@prisma/client";
 import { getCountryData, type TCountryCode } from "countries-list";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Icon from "@/src/components/Icon";
-import Text from "@/src/components/Text";
+import Icon from "@/src/components/Icon/Icon";
+import Text from "@/src/components/Text/Text";
 import { isClientType } from "@/src/lib/typeguards/isClientType";
 
 export type ListItem = Client | Project;

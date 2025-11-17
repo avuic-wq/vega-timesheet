@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import Icon, { type IconName } from "@/src/components/Icon";
+import Icon, { type IconName } from "@/src/components/Icon/Icon";
 
 interface Props {
 	name: string;

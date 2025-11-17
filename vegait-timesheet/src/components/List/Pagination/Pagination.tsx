@@ -1,4 +1,4 @@
-import Text from "@/src/components/Text";
+import Text from "@/src/components/Text/Text";
 import NavigateButton from "./NavigateButton";
 import PaginationItem from "./PaginationItem";
 import { getPaginationElementKey, getPagingationElements } from "./utils";

@@ -1,6 +1,6 @@
 "use server";
 
-import Text from "@/src/components/Text";
+import Text from "@/src/components/Text/Text";
 import ActionButton from "./ActionButton";
 import { config as headerConfig } from "./config";
 import Search from "./Search";
