@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
-import { Nunito, Vend_Sans } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
-
-const VendSansFont = Vend_Sans({
-	variable: "--font-vend-sans",
-	subsets: ["latin"],
-});
 
 const NunitoFont = Nunito({
 	variable: "--font-nunito",
@@ -24,9 +19,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body
-				className={`${VendSansFont.variable} ${NunitoFont.variable} antialiased bg-grey-100 `}
-			>
+			<body className={`${NunitoFont.variable} antialiased bg-grey-100 `}>
 				{children}
 			</body>
 		</html>
