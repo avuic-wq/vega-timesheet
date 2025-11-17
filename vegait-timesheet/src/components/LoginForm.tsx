@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import Button from "@/src/components/Button/Button";
 import Text from "@/src/components/Text";
-import TextField from "@/src/components/TextField";
+import TextField from "@/src/components/TextField/TextField";
 import { loginAction } from "@/src/server-actions/auth/actions";
 
 interface Props {

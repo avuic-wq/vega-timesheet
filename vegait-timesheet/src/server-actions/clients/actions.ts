@@ -2,7 +2,6 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import z from "zod";
 import {
 	deleteClient,
 	fetchAllClients,
@@ -11,6 +10,8 @@ import {
 	fetchPaginatedAndFilteredClients,
 	updateClient,
 } from "@/src/app/db/ClientsService/service";
+import { createClient } from "@/src/app/db/clientService";
+import type { ClientFormData, FormState } from "@/src/components/Form/types";
 import { ITEMS_PER_PAGE } from "@/src/lib/consts";
 import { clientsModalSchema } from "@/src/lib/validators/Clients/schemas";
 import type {
@@ -64,33 +65,86 @@ export async function getClientById(id: string) {
 	return client;
 }
 
-export async function updateClientAction(id: string, formData: FormData) {
+export async function updateClientAction(
+	id: string,
+	formData: ClientFormData,
+): Promise<FormState<ClientFormData>> {
 	const rawData = {
-		name: formData.get("name"),
-		address: formData.get("address"),
-		countryCode: formData.get("countryISO"),
+		name: formData?.name,
+		address: formData?.address,
+		countryCode: formData?.countryCode,
 	};
 
 	const validation = clientsModalSchema.safeParse(rawData);
 
 	if (!validation.success) {
-		console.log({ zErrors: z.treeifyError(validation.error).properties });
-		return z.treeifyError(validation.error);
+		return {
+			errors: undefined,
+		};
 	}
 
 	try {
-		const updatedClient = await updateClient(id, validation.data);
+		const result = await updateClient(id, validation.data);
+		const updatedClient = {
+			name: result,
+			address: result.address,
+			countryCode: result.countryCode,
+		};
+
 		revalidatePath("/clients");
 		revalidatePath(`/clients/${id}`);
-		return { isRequestSuccessful: true, data: updatedClient };
-	} catch (error) {}
+		return { isSuccessful: true, data: updatedClient };
+	} catch (error) {
+		return {
+			errors: {
+				database: "There was a problem updating the client in the database",
+			},
+		};
+	}
 }
 
-export async function deleteClientAction(id: string) {
+export async function deleteClientAction<T>(
+	id: string,
+): Promise<FormState<ClientFormData>> {
 	try {
-		const deletedClient = await deleteClient(id);
+		const result = await deleteClient(id);
+		const deletedClient: ClientFormData = {
+			name: result.name,
+			address: result.address,
+			countryCode: result.countryCode,
+		};
+
 		revalidatePath("/clients");
 		revalidatePath(`/clients/${id}`);
-		return { isRequestSuccessful: true, data: deletedClient };
-	} catch (error) {}
+		return { isSuccessful: true, data: deletedClient };
+	} catch (error) {
+		return {
+			errors: {
+				database: "There was a problem deleting the client in the database",
+			},
+		};
+	}
+}
+
+export async function createClientAction<T>(
+	formData: ClientFormData,
+): Promise<FormState<ClientFormData>> {
+	try {
+		const result = await createClient(formData);
+
+		const createdClient: ClientFormData = {
+			name: result.name,
+			address: result.address,
+			countryCode: result.countryCode,
+		};
+
+		revalidatePath("/clients");
+		return { isSuccessful: true, data: createdClient };
+	} catch (error) {
+		return {
+			errors: {
+				database: "There was a problem creating the client in the database",
+			},
+		};
+	}
 }

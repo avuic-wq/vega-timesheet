@@ -2,7 +2,6 @@
 
 import type { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
-import type { FormButtonAction } from "@/src/components/EditForm/types";
 import type { ButtonVariant } from "@/src/lib/types";
 import { getButtonStyle } from "./utils";
 
@@ -11,7 +10,6 @@ interface Props {
 	type?: "button" | "submit";
 	variant?: ButtonVariant;
 	onClick?: React.MouseEventHandler<HTMLButtonElement>;
-	formActionName?: FormButtonAction;
 	isDisabled?: boolean;
 	className?: string;
 }
@@ -21,7 +19,6 @@ const Button = ({
 	type = "button",
 	variant = "primary",
 	onClick,
-	formActionName,
 	isDisabled = false,
 	className,
 }: Props) => {
@@ -34,8 +31,6 @@ const Button = ({
 	return (
 		<button
 			type={type}
-			name={formActionName ? "action" : ""}
-			value={formActionName}
 			onClick={onClick}
 			disabled={isDisabled}
 			className={style}

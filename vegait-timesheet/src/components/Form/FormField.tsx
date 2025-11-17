@@ -1,16 +1,26 @@
 import type { JSX } from "react";
-import type { FormField as FormFieldType } from "@/src/components/EditForm/types";
+import type {
+	BaseFormData,
+	FieldValue,
+	FormField as FormFieldType,
+} from "@/src/components/Form/types";
 import SelectField from "@/src/components/SelectField/SelectField";
 
 const defaultContainerStyle =
 	"flex items-center border-2 border-grey-500 rounded-[24px] focus-within:border-black px-6 py-3";
 const defaultTextfieldStyle = "w-full h-full outline-none";
 
-interface Props {
+interface Props<T extends BaseFormData> {
 	field: FormFieldType;
+	formValues: T;
+	onChange: (fieldName: string, value: FieldValue) => void;
 }
 
-export const FormField = ({ field }: Props): JSX.Element | null => {
+export const FormField = <T extends BaseFormData>({
+	field,
+	formValues,
+	onChange,
+}: Props<T>): JSX.Element | null => {
 	if (field.type === "text") {
 		return (
 			<div className={defaultContainerStyle}>
@@ -22,7 +32,8 @@ export const FormField = ({ field }: Props): JSX.Element | null => {
 					spellCheck="false"
 					name={field.name}
 					placeholder={field.placeholder}
-					defaultValue={field.initialValue}
+					value={formValues[field.name]}
+					onChange={(e) => onChange(field.name, e.target.value)}
 					className={defaultTextfieldStyle}
 				/>
 				{/* <TextField
@@ -41,8 +52,9 @@ export const FormField = ({ field }: Props): JSX.Element | null => {
 			<div className={defaultContainerStyle}>
 				<SelectField
 					name={field.name}
-					initialSelectedOption={field.initialValue}
+					value={formValues[field.name]}
 					options={field.options}
+					onChange={onChange}
 				/>
 			</div>
 		);

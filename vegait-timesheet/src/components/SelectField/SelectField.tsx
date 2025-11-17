@@ -1,7 +1,8 @@
 "use client";
 
+import { getCountryData, type TCountryCode } from "countries-list";
 import { useEffect, useRef, useState } from "react";
-import type { SelectableOption } from "@/src/components/EditForm/types";
+import type { FieldValue, SelectOption } from "@/src/components/Form/types";
 import Icon from "@/src/components/Icon";
 import Text from "@/src/components/Text";
 
@@ -11,18 +12,22 @@ const noResultDropdownStyle =
 	"absolute s z-50 w-full mt-2 bg-white border-[1.5px] border-grey-200 shadow-lg px-3 py-2 text-gray-400";
 interface Props {
 	name: string;
-	initialSelectedOption?: SelectableOption;
-	options: SelectableOption[];
+	value?: string;
+	options: SelectOption[];
+	onChange: (fieldName: string, value: FieldValue) => void;
 }
 
-const SelectField = ({ name, initialSelectedOption, options }: Props) => {
+const SelectField = ({ name, value, options, onChange }: Props) => {
 	const ref = useRef<HTMLDivElement>(null);
 	const inputRef = useRef<HTMLInputElement>(null);
+	const countryFullName = value
+		? getCountryData(value as TCountryCode)?.name
+		: "";
 
 	const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-	const [selectedOption, setSelectedOption] = useState<SelectableOption>({
-		label: initialSelectedOption?.label || "",
-		value: initialSelectedOption?.value || "",
+	const [selectedOption, setSelectedOption] = useState<SelectOption>({
+		label: countryFullName,
+		value: value || "",
 	});
 	const [searchText, setSearchText] = useState("");
 
@@ -43,7 +48,6 @@ const SelectField = ({ name, initialSelectedOption, options }: Props) => {
 
 	return (
 		<div ref={ref} className="relative w-full">
-			<input type="hidden" name={name} value={selectedOption?.value} />
 			<div className="max-h-[22px] relative">
 				<input
 					ref={inputRef}
@@ -80,6 +84,7 @@ const SelectField = ({ name, initialSelectedOption, options }: Props) => {
 							type="button"
 							onClick={() => {
 								setSelectedOption(option);
+								onChange(name, option.value);
 								setIsDropdownVisible(false);
 								setSearchText("");
 							}}
