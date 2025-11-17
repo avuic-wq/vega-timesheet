@@ -8,7 +8,6 @@ interface Props {
 	placeholder: string;
 	isDisabled?: boolean;
 	error?: string;
-	isPassword?: boolean;
 	rightIcon?: IconName;
 	leftIcon?: IconName;
 	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -37,22 +36,22 @@ const TextField = ({
 	placeholder,
 	isDisabled = false,
 	error,
-	isPassword = false,
 	rightIcon,
 	leftIcon,
 	onChange,
 }: Props) => {
 	const [isFocused, setIsFocused] = useState(false);
-	const [showPassword, setShowPassword] = useState(!isPassword);
+	const isPasswordField = name === "password"
+	const [showPassword, setShowPassword] = useState(!isPasswordField);
 	const dynamicStyles = getDynamicStyles(
-		!!rightIcon || !!isPassword,
+		!!rightIcon || !!isPasswordField,
 		!!leftIcon,
 	);
 
 	return (
 		<div className="flex flex-col">
 			<div className="flex items-center border-2 border-grey-500 rounded-[24px] focus-within:border-black px-6">
-				{leftIcon && (
+				{!isPasswordField && leftIcon && (
 					<Icon name={leftIcon} style={{ opacity: isFocused ? 1 : 0.5 }} />
 				)}
 
@@ -70,7 +69,7 @@ const TextField = ({
 					disabled={isDisabled}
 				/>
 
-				{isPassword && (
+				{isPasswordField && (
 					<Icon
 						onClick={() => setShowPassword(!showPassword)}
 						name={showPassword ? "eye" : "eye-off"}
@@ -78,7 +77,7 @@ const TextField = ({
 					/>
 				)}
 
-				{!isPassword && rightIcon && (
+				{!isPasswordField && rightIcon && (
 					<Icon name={rightIcon} style={{ opacity: isFocused ? 1 : 0.5 }} />
 				)}
 			</div>

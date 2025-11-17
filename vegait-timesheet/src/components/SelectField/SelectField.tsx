@@ -70,7 +70,7 @@ const SelectField = ({ name, value, options, onChange }: Props) => {
 						position: "absolute",
 						pointerEvents: "none",
 						right: "12px",
-						top: "50%",
+						top: "12px",
 						transform: "translateY(-50%)",
 					}}
 				/>
