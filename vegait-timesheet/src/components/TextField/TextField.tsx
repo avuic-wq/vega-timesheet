@@ -1,19 +1,22 @@
 "use client";
 
 import { useState } from "react";
+import { twMerge } from "tailwind-merge";
 import Icon, { type IconName } from "@/src/components/Icon";
 
 interface Props {
 	name: string;
-	placeholder: string;
+	placeholder?: string;
+	value?: string;
 	isDisabled?: boolean;
 	error?: string;
 	rightIcon?: IconName;
 	leftIcon?: IconName;
-	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	className?: string;
 }
 
-const staticStyles = "py-3 w-full outline-none";
+const staticStyles = "w-full h-full outline-none py-3";
 
 const getDynamicStyles = (hasRightIcon: boolean, hasLeftIcon: boolean) => {
 	if (hasLeftIcon && hasRightIcon) {
@@ -34,6 +37,7 @@ const getDynamicStyles = (hasRightIcon: boolean, hasLeftIcon: boolean) => {
 const TextField = ({
 	name,
 	placeholder,
+	value,
 	isDisabled = false,
 	error,
 	rightIcon,
@@ -41,12 +45,13 @@ const TextField = ({
 	onChange,
 }: Props) => {
 	const [isFocused, setIsFocused] = useState(false);
-	const isPasswordField = name === "password"
+	const isPasswordField = name === "password";
 	const [showPassword, setShowPassword] = useState(!isPasswordField);
 	const dynamicStyles = getDynamicStyles(
 		!!rightIcon || !!isPasswordField,
 		!!leftIcon,
 	);
+	const style = twMerge(staticStyles, dynamicStyles);
 
 	return (
 		<div className="flex flex-col">
@@ -60,13 +65,14 @@ const TextField = ({
 					type={showPassword ? "text" : "password"}
 					name={name}
 					placeholder={placeholder}
-					className={`${staticStyles} ${dynamicStyles}`}
 					autoComplete="off"
 					spellCheck="false"
-					onChange={(e) => onChange?.(e)}
+					value={value}
+					onChange={(e) => onChange(e)}
 					onFocus={() => setIsFocused(true)}
 					onBlur={() => setIsFocused(false)}
 					disabled={isDisabled}
+					className={style}
 				/>
 
 				{isPasswordField && (

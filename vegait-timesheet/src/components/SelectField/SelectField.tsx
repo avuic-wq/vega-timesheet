@@ -6,10 +6,15 @@ import type { FieldValue, SelectOption } from "@/src/components/Form/types";
 import Icon from "@/src/components/Icon";
 import Text from "@/src/components/Text";
 
+const inputContainerStyle =
+	"flex items-center border-2 border-grey-500 rounded-[24px] focus-within:border-black px-6";
+const inputStyle =
+	"w-full h-full outline-none py-3 pr-8 placeholder:text-black";
 const resultsDropdownStyle =
-	"absolute left-[1px] z-50 w-full mt-2 bg-white border-[1.5px] border-grey-200 shadow-lg max-h-60 overflow-y-auto";
+	"absolute z-50 left-[14px] rounded-[10px] bg-white border-[1.5px] border-grey-200 shadow-lg max-h-60 overflow-y-auto";
 const noResultDropdownStyle =
-	"absolute s z-50 w-full mt-2 bg-white border-[1.5px] border-grey-200 shadow-lg px-3 py-2 text-gray-400";
+	"absolute z-50 mt-1 w-full rounded-[24px] bg-white border-[1.5px] border-grey-200 shadow-lg px-3 py-2 text-gray-400";
+
 interface Props {
 	name: string;
 	value?: string;
@@ -24,11 +29,9 @@ const SelectField = ({ name, value, options, onChange }: Props) => {
 		? getCountryData(value as TCountryCode)?.name
 		: "";
 
+	const selectedOption = { label: countryFullName, value };
+
 	const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-	const [selectedOption, setSelectedOption] = useState<SelectOption>({
-		label: countryFullName,
-		value: value || "",
-	});
 	const [searchText, setSearchText] = useState("");
 
 	const filteredOptions = options.filter((option) =>
@@ -48,7 +51,7 @@ const SelectField = ({ name, value, options, onChange }: Props) => {
 
 	return (
 		<div ref={ref} className="relative w-full">
-			<div className="max-h-[22px] relative">
+			<div className={inputContainerStyle}>
 				<input
 					ref={inputRef}
 					type="text"
@@ -62,15 +65,15 @@ const SelectField = ({ name, value, options, onChange }: Props) => {
 						setSearchText("");
 					}}
 					placeholder={selectedOption?.label}
-					className="w-full max-h-[22px] border-none focus:outline-none placeholder:text-black"
+					className={inputStyle}
 				/>
 				<Icon
 					name="chevron-down"
 					style={{
 						position: "absolute",
 						pointerEvents: "none",
-						right: "12px",
-						top: "12px",
+						right: "29px",
+						top: "25px",
 						transform: "translateY(-50%)",
 					}}
 				/>
@@ -83,7 +86,6 @@ const SelectField = ({ name, value, options, onChange }: Props) => {
 							key={option.value}
 							type="button"
 							onClick={() => {
-								setSelectedOption(option);
 								onChange(name, option.value);
 								setIsDropdownVisible(false);
 								setSearchText("");
