@@ -8,8 +8,6 @@ import Text from "@/src/components/Text";
 
 const inputContainerStyle =
 	"flex items-center border-2 border-grey-500 rounded-[24px] focus-within:border-black px-6";
-const inputStyle =
-	"w-full h-full outline-none py-3 pr-8 placeholder:text-black";
 const resultsDropdownStyle =
 	"absolute z-50 left-[14px] rounded-[10px] bg-white border-[1.5px] border-grey-200 shadow-lg max-h-60 overflow-y-auto";
 const noResultDropdownStyle =
@@ -25,14 +23,14 @@ interface Props {
 const SelectField = ({ name, value, options, onChange }: Props) => {
 	const ref = useRef<HTMLDivElement>(null);
 	const inputRef = useRef<HTMLInputElement>(null);
+	const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+	const [searchText, setSearchText] = useState("");
+
 	const countryFullName = value
 		? getCountryData(value as TCountryCode)?.name
 		: "";
 
 	const selectedOption = { label: countryFullName, value };
-
-	const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-	const [searchText, setSearchText] = useState("");
 
 	const filteredOptions = options.filter((option) =>
 		option.label.toLowerCase().includes(searchText.toLowerCase()),
@@ -49,6 +47,8 @@ const SelectField = ({ name, value, options, onChange }: Props) => {
 		return () => document.removeEventListener("mousedown", handleClickOutside);
 	}, []);
 
+	const inputStyle = `w-full h-full outline-none py-3 pr-8 ${selectedOption?.label ? "placeholder:text-black" : ""}`;
+
 	return (
 		<div ref={ref} className="relative w-full">
 			<div className={inputContainerStyle}>
@@ -64,7 +64,7 @@ const SelectField = ({ name, value, options, onChange }: Props) => {
 						setIsDropdownVisible(true);
 						setSearchText("");
 					}}
-					placeholder={selectedOption?.label}
+					placeholder={selectedOption?.label || "Country"}
 					className={inputStyle}
 				/>
 				<Icon
