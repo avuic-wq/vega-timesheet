@@ -44,11 +44,21 @@ export const fetchPaginatedAndFilteredProjects = async (
 			orderBy: { name: "asc" },
 			skip: (page - 1) * itemsPerPage,
 			take: itemsPerPage,
+			include: {
+				client: { select: { name: true } },
+				industry: { select: { name: true } },
+			},
 		}),
 		prisma.project.count({ where }),
 	]);
 
-	return { projects, totalCount };
+	const extendedProject = projects.map((p) => ({
+		...p,
+		clientName: p.client.name,
+		industryName: p.industry.name,
+	}));
+
+	return { projects: extendedProject, totalCount };
 };
 
 export const fetchProjectsFirstLetters =
