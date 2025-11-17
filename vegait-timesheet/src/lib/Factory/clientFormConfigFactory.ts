@@ -9,7 +9,7 @@ type Props = {
 	countryOptions: SelectOption[];
 };
 
-export const clientConfigFactory = ({
+export const clientFormConfigFactory = ({
 	mode,
 	countryOptions,
 }: Props): FormConfig => ({
