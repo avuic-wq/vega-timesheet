@@ -8,7 +8,7 @@ interface Props<T extends BaseItem> {
 	currentPage: number;
 }
 
-export const List = async <T extends BaseItem>({
+export const List = <T extends BaseItem>({
 	items,
 	totalPages,
 	currentPage,

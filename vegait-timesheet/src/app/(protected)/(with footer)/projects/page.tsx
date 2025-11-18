@@ -1,12 +1,11 @@
+import { Suspense } from "react";
 import LetterFilters from "@/src/components/Filters/LetterFilters";
 import Header from "@/src/components/Header/Header";
-import { List as ProjectsList } from "@/src/components/List/List";
+import ProjectList from "@/src/components/ProjectList/ProjectList";
+import { ListSkeleton } from "@/src/components/Skeletons/ListSkeleton";
 import { APP_ROUTES, INITIAL_LIST_PAGE } from "@/src/lib/consts";
 import type { SearchParams } from "@/src/lib/types";
-import {
-	getPaginatedAndFilteredProjectsAction,
-	getProjectsFirstLettersAction,
-} from "@/src/server-actions/projects/actions";
+import { getProjectsFirstLettersAction } from "@/src/server-actions/projects/actions";
 
 interface Props {
 	searchParams: SearchParams;
@@ -18,23 +17,19 @@ export default async function Projects({ searchParams }: Props) {
 	const letterFilterParam = params?.startsWith || "";
 	const currentPageParam = Number(params?.page) || INITIAL_LIST_PAGE;
 
-	const { projects, totalPages } = await getPaginatedAndFilteredProjectsAction(
-		currentPageParam,
-		searchInputParam,
-		letterFilterParam,
-	);
-
 	const filterData = await getProjectsFirstLettersAction();
 
 	return (
 		<div className="flex flex-col gap-4">
 			<Header setting={APP_ROUTES.PROJECTS} />
 			<LetterFilters letters={filterData} />
-			<ProjectsList
-				items={projects}
-				currentPage={currentPageParam}
-				totalPages={totalPages}
-			/>
+			<Suspense fallback={<ListSkeleton />}>
+				<ProjectList
+					currentPage={currentPageParam}
+					searchInput={searchInputParam}
+					letterFilter={letterFilterParam}
+				/>
+			</Suspense>
 		</div>
 	);
 }
