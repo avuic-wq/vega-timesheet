@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { SelectOption } from "@/src/components/Form/types";
+import type { FieldValue, SelectOption } from "@/src/components/Form/types";
 import Icon from "@/src/components/Icon/Icon";
 import Text from "@/src/components/Text/Text";
 
@@ -17,7 +17,7 @@ interface Props {
 	placeholder?: string;
 	value?: string;
 	options: SelectOption[];
-	onChange: (e: React.MouseEvent<HTMLButtonElement>) => void;
+	onChange: (fieldName: string, value: FieldValue) => void;
 }
 
 // TO-DO: Lazy load if a dropdown list is big
@@ -91,7 +91,7 @@ const SelectField = ({
 							value={option.value}
 							type="button"
 							onClick={(e) => {
-								onChange(e);
+								onChange(name, option.value);
 								setIsDropdownVisible(false);
 								setSearchText("");
 							}}

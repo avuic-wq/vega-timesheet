@@ -7,8 +7,6 @@ import type {
 import SelectField from "@/src/components/SelectField/SelectField";
 import TextField from "@/src/components/TextField/TextField";
 
-const defaultContainerStyle = "flex items-center px-6 py-3";
-
 interface Props<T extends BaseFormData> {
 	field: FormFieldType;
 	formValues: T;
@@ -20,11 +18,11 @@ export const FormField = <T extends BaseFormData>({
 	formValues,
 	onChange,
 }: Props<T>): JSX.Element | null => {
-	if (field.type === "text" || field.type === "password") {
-		const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-			onChange(field.name, e.target.value);
-		};
+	const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		onChange(field.name, e.target.value);
+	};
 
+	if (field.type === "text" || field.type === "password") {
 		return (
 			<TextField
 				key={field.name}
@@ -37,10 +35,6 @@ export const FormField = <T extends BaseFormData>({
 	}
 
 	if (field.type === "select") {
-		const handleOnChange = (e: React.MouseEvent<HTMLButtonElement>) => {
-			onChange(field.name, e.currentTarget.value);
-		};
-
 		return (
 			<SelectField
 				key={field.name}
@@ -48,7 +42,7 @@ export const FormField = <T extends BaseFormData>({
 				placeholder={field.placeholder}
 				value={formValues[field.name]}
 				options={field.options}
-				onChange={handleOnChange}
+				onChange={onChange}
 			/>
 		);
 	}
