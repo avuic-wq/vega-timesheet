@@ -1,4 +1,4 @@
-import { fetchAllIndustries } from "@/src/app/db/IndustryService/service";
+import { fetchAllIndustries } from "@/src/db/IndustryService/service";
 import type { GetAllIndustriesActionResult } from "@/src/server-actions/industries/types";
 
 // TO-DO: Error handling

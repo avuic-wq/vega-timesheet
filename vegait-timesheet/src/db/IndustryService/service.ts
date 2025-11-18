@@ -1,5 +1,5 @@
 import { prisma } from "@/prisma/prisma";
-import type { FetchAllIndustriesResult } from "@/src/app/db/IndustryService/type";
+import type { FetchAllIndustriesResult } from "@/src/db/IndustryService/type";
 
 export const fetchAllIndustries = (): FetchAllIndustriesResult => {
 	return prisma.industry.findMany({
