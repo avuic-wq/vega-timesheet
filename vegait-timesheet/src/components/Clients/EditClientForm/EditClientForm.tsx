@@ -1,8 +1,11 @@
 "use client";
 
 import type { Client } from "@prisma/client";
-import FormController from "@/src/components/Form/FormController";
-import type { ClientFormData, SelectOption } from "@/src/components/Form/types";
+import FormController from "@/src/components/Shared/Form/FormController";
+import type {
+	ClientFormData,
+	SelectOption,
+} from "@/src/components/Shared/Form/types";
 import { clientFormConfigFactory } from "@/src/lib/Factory/clientFormConfigFactory";
 import { formActionsFactory } from "@/src/lib/Factory/formActionsFactory";
 

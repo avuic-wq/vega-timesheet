@@ -1,5 +1,5 @@
 import type React from "react";
-import Logo from "@/src/components/Logo/Logo";
+import Logo from "@/src/components/Shared/Logo/Logo";
 
 export default function AuthLayout({
 	children,

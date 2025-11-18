@@ -1,4 +1,4 @@
-import type { FormConfig } from "@/src/components/Form/types";
+import type { FormConfig } from "@/src/components/Shared/Form/types";
 
 export const loginFormConfigFactory = (): FormConfig => ({
 	fields: [

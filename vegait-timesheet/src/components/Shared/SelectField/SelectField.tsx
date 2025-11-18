@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { FieldValue, SelectOption } from "@/src/components/Form/types";
-import Icon from "@/src/components/Icon/Icon";
-import Text from "@/src/components/Text/Text";
+import type {
+	FieldValue,
+	SelectOption,
+} from "@/src/components/Shared/Form/types";
+import Icon from "@/src/components/Shared/Icon/Icon";
+import Text from "@/src/components/Shared/Text/Text";
 
 const inputContainerStyle =
 	"flex items-center border-2 border-grey-500 rounded-[24px] focus-within:border-black px-6";

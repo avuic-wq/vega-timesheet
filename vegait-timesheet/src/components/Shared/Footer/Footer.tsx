@@ -1,5 +1,5 @@
-import Logo from "@/src/components/Logo/Logo";
-import Text from "@/src/components/Text/Text";
+import Logo from "@/src/components/Shared/Logo/Logo";
+import Text from "@/src/components/Shared/Text/Text";
 
 const footerText =
 	"Co-creators. Passionate innovators. We're your software development partners, working at the cutting edge of digital product development. We have the technical expertise and domain experience to help you push boundaries, regardless of your industry";

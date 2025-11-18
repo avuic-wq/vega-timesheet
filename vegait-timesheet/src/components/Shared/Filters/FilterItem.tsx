@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import Button from "@/src/components/Button/Button";
+import Button from "@/src/components/Shared/Button/Button";
 import { SEARCH_PARAMETERS } from "@/src/lib/consts";
 import { getFilterStyle } from "./utils";
 

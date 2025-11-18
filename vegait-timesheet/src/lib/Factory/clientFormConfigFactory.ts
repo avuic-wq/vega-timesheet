@@ -2,7 +2,7 @@ import type {
 	FormConfig,
 	FormMode,
 	SelectOption,
-} from "@/src/components/Form/types";
+} from "@/src/components/Shared/Form/types";
 
 type Props = {
 	mode: FormMode;

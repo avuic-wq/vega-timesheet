@@ -1,4 +1,5 @@
-import Navigation from "@/src/components/Navigation/Navigation";
+import Navigation from "@/src/components/Shared/Navigation/Navigation";
+
 export default async function ProtectedLayout({
 	children,
 }: {

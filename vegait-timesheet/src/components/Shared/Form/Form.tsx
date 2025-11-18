@@ -1,9 +1,9 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import Button from "@/src/components/Button/Button";
-import FormField from "@/src/components/Form/FormField";
-import Text from "@/src/components/Text/Text";
+import Button from "@/src/components/Shared/Button/Button";
+import FormField from "@/src/components/Shared/Form/FormField";
+import Text from "@/src/components/Shared/Text/Text";
 import type { BaseFormData, FieldValue, FormConfig } from "../Form/types";
 
 type Props<T> = {

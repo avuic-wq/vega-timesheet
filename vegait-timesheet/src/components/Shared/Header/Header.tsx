@@ -1,7 +1,7 @@
 "use server";
 
 import type { PropsWithChildren } from "react";
-import Text from "@/src/components/Text/Text";
+import Text from "@/src/components/Shared/Text/Text";
 import ActionButton from "./ActionButton";
 import { config as headerConfig } from "./config";
 import Search from "./Search";

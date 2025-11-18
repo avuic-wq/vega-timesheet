@@ -1,5 +1,5 @@
 import type { Project } from "@prisma/client";
-import type { ProjectItem } from "@/src/components/List/types";
+import type { ProjectItem } from "@/src/components/Shared/List/types";
 
 export type FetchAllProjcetsResult = Promise<Project[]>;
 

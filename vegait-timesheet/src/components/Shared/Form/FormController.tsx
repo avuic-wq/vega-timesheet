@@ -1,14 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Button from "@/src/components/Button/Button";
-import Form from "@/src/components/Form/Form";
+import Button from "@/src/components/Shared/Button/Button";
+import Form from "@/src/components/Shared/Form/Form";
 import type {
 	BaseFormData,
 	FormActions,
 	FormConfig,
 	FormMode,
-} from "@/src/components/Form/types";
+} from "@/src/components/Shared/Form/types";
 
 interface Props<T> {
 	mode: FormMode;

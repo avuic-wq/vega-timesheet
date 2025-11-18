@@ -1,7 +1,7 @@
 import Skeleton from "react-loading-skeleton";
 import { ITEMS_PER_PAGE } from "@/src/lib/consts";
 import "react-loading-skeleton/dist/skeleton.css";
-import Icon from "@/src/components/Icon/Icon";
+import Icon from "@/src/components/Shared/Icon/Icon";
 
 export function ListSkeleton() {
 	return (

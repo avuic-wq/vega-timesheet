@@ -2,7 +2,7 @@
 
 import { debounce } from "lodash";
 import { useRouter, useSearchParams } from "next/navigation";
-import TextField from "@/src/components/TextField/TextField";
+import TextField from "@/src/components/Shared/TextField/TextField";
 import { DEBOUNCE_TIME, SEARCH_PARAMETERS } from "@/src/lib/consts";
 
 const Search = () => {

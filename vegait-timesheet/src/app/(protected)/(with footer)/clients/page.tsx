@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import ClientList from "@/src/components/Clients/ClientList/ClientList";
-import Header from "@/src/components/Header/Header";
 import LetterFilters from "@/src/components/Shared/Filters/LetterFilters";
-import { ListSkeleton } from "@/src/components/Skeletons/ListSkeleton";
+import Header from "@/src/components/Shared/Header/Header";
+import { ListSkeleton } from "@/src/components/Shared/Skeletons/ListSkeleton";
 import { APP_ROUTES, INITIAL_LIST_PAGE } from "@/src/lib/consts";
 import type { SearchParams } from "@/src/lib/types";
 import { getClientsFirstLettersAction } from "@/src/server-actions/clients/actions";

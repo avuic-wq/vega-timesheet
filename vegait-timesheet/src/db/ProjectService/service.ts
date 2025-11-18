@@ -1,7 +1,7 @@
 import type { Prisma } from "@prisma/client";
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/prisma/prisma";
-import type { ProjectFormData } from "@/src/components/Form/types";
+import type { ProjectFormData } from "@/src/components/Shared/Form/types";
 import type {
 	CreateProjectResult,
 	DeleteProjectResult,

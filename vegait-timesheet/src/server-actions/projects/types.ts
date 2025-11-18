@@ -1,6 +1,9 @@
 import type { Project } from "@prisma/client";
-import type { FormState, ProjectFormData } from "@/src/components/Form/types";
-import type { ProjectItem } from "@/src/components/List/types";
+import type {
+	FormState,
+	ProjectFormData,
+} from "@/src/components/Shared/Form/types";
+import type { ProjectItem } from "@/src/components/Shared/List/types";
 
 export type GetPaginatedAndFilteredProjectsActionResult = Promise<{
 	projects: ProjectItem[];

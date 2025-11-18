@@ -3,9 +3,9 @@ import type {
 	BaseFormData,
 	FieldValue,
 	FormField as FormFieldType,
-} from "@/src/components/Form/types";
-import SelectField from "@/src/components/SelectField/SelectField";
-import TextField from "@/src/components/TextField/TextField";
+} from "@/src/components/Shared/Form/types";
+import SelectField from "@/src/components/Shared/SelectField/SelectField";
+import TextField from "@/src/components/Shared/TextField/TextField";
 
 interface Props<T extends BaseFormData> {
 	field: FormFieldType;

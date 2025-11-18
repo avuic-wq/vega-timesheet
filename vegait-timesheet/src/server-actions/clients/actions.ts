@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import type { ClientFormData } from "@/src/components/Form/types";
+import type { ClientFormData } from "@/src/components/Shared/Form/types";
 import {
 	createClient,
 	deleteClient,

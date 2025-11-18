@@ -1,5 +1,8 @@
 import type { Client } from "@prisma/client";
-import type { ClientFormData, FormState } from "@/src/components/Form/types";
+import type {
+	ClientFormData,
+	FormState,
+} from "@/src/components/Shared/Form/types";
 
 export type GetPaginatedAndFilteredClientsActionResult = Promise<{
 	clients: Client[];

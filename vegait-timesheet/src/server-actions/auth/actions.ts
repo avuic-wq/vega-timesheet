@@ -1,7 +1,7 @@
 "use server";
 
 import { signIn, signOut } from "@/auth/auth";
-import type { LoginFormData } from "@/src/components/Form/types";
+import type { LoginFormData } from "@/src/components/Shared/Form/types";
 import { APP_ROUTES, AUTH_PROVIDERS, HOME_PAGE_ROUTE } from "@/src/lib/consts";
 
 export async function loginAction(

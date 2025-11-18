@@ -4,7 +4,7 @@ import type {
 	FormActions,
 	FormMode,
 	FormState,
-} from "@/src/components/Form/types";
+} from "@/src/components/Shared/Form/types";
 import {
 	createClientAction,
 	deleteClientAction,

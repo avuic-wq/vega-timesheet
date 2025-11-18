@@ -3,9 +3,9 @@
 import { useRouter } from "next/navigation";
 import { type ReactNode, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import Button from "@/src/components/Button/Button";
-import Icon from "@/src/components/Icon/Icon";
-import Text from "@/src/components/Text/Text";
+import Button from "@/src/components/Shared/Button/Button";
+import Icon from "@/src/components/Shared/Icon/Icon";
+import Text from "@/src/components/Shared/Text/Text";
 
 interface Props {
 	children: ReactNode;

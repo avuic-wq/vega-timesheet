@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import type { ProjectFormData } from "@/src/components/Form/types";
+import type { ProjectFormData } from "@/src/components/Shared/Form/types";
 import {
 	createProject,
 	deleteProject,

@@ -1,4 +1,4 @@
-import { List } from "@/src/components/List/List";
+import { List } from "@/src/components/Shared/List/List";
 import { getPaginatedAndFileterdClientsAction } from "@/src/server-actions/clients/actions";
 
 interface Props {

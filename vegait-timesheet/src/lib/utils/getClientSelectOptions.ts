@@ -1,5 +1,5 @@
 import type { Client } from "@prisma/client";
-import type { SelectOption } from "@/src/components/Form/types";
+import type { SelectOption } from "@/src/components/Shared/Form/types";
 
 export const getClientSelectOptions = (clients: Client[]): SelectOption[] => {
 	return clients.map((client) => ({

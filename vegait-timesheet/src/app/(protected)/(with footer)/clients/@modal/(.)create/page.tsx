@@ -1,5 +1,5 @@
 import CreateClientForm from "@/src/components/Clients/CreateClientForm/CreateClientForm";
-import Modal from "@/src/components/Modal/Modal";
+import Modal from "@/src/components/Shared/Modal/Modal";
 import { getCountrySelectOptions } from "@/src/lib/utils/getCountrySelectOptions";
 
 const modalTitle = "Create";

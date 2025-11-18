@@ -1,6 +1,6 @@
 "use client";
 
-import Text from "@/src/components/Text/Text";
+import Text from "@/src/components/Shared/Text/Text";
 import NavigateButton from "./NavigateButton";
 import PaginationItem from "./PaginationItem";
 import { getPaginationElementKey, getPagingationElements } from "./utils";

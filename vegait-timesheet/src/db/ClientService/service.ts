@@ -1,7 +1,7 @@
 import type { Client, Prisma } from "@prisma/client";
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/prisma/prisma";
-import type { ClientFormData } from "@/src/components/Form/types";
+import type { ClientFormData } from "@/src/components/Shared/Form/types";
 import type {
 	FetchAllClientsResult,
 	FetchClientsFirstLettersResult,

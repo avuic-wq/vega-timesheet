@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Icon from "@/src/components/Icon/Icon";
-import Text from "@/src/components/Text/Text";
+import Icon from "@/src/components/Shared/Icon/Icon";
+import Text from "@/src/components/Shared/Text/Text";
 import { config } from "./config";
 
 interface Props {

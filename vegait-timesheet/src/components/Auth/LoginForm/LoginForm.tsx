@@ -1,7 +1,7 @@
 "use client";
 
-import Form from "@/src/components/Form/Form";
-import type { LoginFormData } from "@/src/components/Form/types";
+import Form from "@/src/components/Shared/Form/Form";
+import type { LoginFormData } from "@/src/components/Shared/Form/types";
 import { loginFormConfigFactory } from "@/src/lib/Factory/loginFormConfigFactory";
 import { loginAction } from "@/src/server-actions/auth/actions";
 

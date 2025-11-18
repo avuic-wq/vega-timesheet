@@ -1,4 +1,4 @@
-import type { BaseItem } from "@/src/components/List/types";
+import type { BaseItem } from "@/src/components/Shared/List/types";
 import ListItem from "./ListItem";
 import Pagination from "./Pagination/Pagination";
 
