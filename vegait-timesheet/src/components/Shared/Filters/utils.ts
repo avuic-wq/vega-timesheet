@@ -5,7 +5,7 @@ export const getFilterStyle = (
 	isSelected: boolean = false,
 ) => {
 	const commonStyle =
-		"flex justify-center items-center rounded-[16px] bg-primary min-w-[40px] min-h-[40px] cursor-pointer";
+		"flex justify-center items-center rounded-2xl bg-primary min-w-[40px] min-h-[40px] cursor-pointer";
 
 	const shadowStyle = `${isSelected ? "shadow-red" : "shadow-grey-500"} hover:shadow-[0_4px_8px_rgba(0,0,0,0.2)] transition-all`;
 

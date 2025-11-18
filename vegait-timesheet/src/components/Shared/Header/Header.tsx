@@ -6,7 +6,7 @@ import ActionButton from "./ActionButton";
 import { config as headerConfig } from "./config";
 import Search from "./Search";
 
-const staticStyles = "flex bg-white rounded-[16px] p-6 gap-2";
+const staticStyles = "flex bg-white rounded-2xl p-6 gap-2";
 
 interface Props {
 	setting: string;

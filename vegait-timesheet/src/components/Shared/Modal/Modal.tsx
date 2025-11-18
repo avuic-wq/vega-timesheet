@@ -60,7 +60,7 @@ const Modal = ({ children, title }: Props) => {
 			<div className="absolute inset-0 bg-black opacity-50 transition-opacity" />
 			<div
 				ref={modalRef}
-				className="relative bg-white rounded-[16px] shadow-xl max-w-[400px] w-full max-h-[90vh] overflow-y-visible z-10 p-6
+				className="relative bg-white rounded-2xl shadow-xl max-w-[400px] w-full max-h-[90vh] overflow-y-visible z-10 p-6
 				           flex flex-col gap-8"
 			>
 				<div className="flex justify-between mb-4">

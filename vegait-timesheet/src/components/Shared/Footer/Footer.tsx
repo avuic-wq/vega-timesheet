@@ -7,7 +7,7 @@ const copyrightText = "© Copyright Vega IT. All rights reserved.";
 
 const Footer = () => {
 	return (
-		<div className="flex items-center justify-center bg-white rounded-[16px] py-12 pl-70 pr-240">
+		<div className="flex items-center justify-center bg-white rounded-2xl py-12 pl-70 pr-240">
 			<div className="flex items-left flex-col gap-8">
 				<Logo />
 				<Text value={footerText} />

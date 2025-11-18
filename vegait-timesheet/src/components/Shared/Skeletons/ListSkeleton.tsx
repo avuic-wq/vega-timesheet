@@ -18,7 +18,7 @@ export function ListSkeleton() {
 
 function ListItemSkeleton() {
 	return (
-		<li className="px-6 py-3 bg-primary rounded-[16px] mt-2 w-full">
+		<li className="px-6 py-3 bg-primary rounded-2xl mt-2 w-full">
 			<div className="flex justify-between items-center">
 				<div className="flex gap-2 flex-1">
 					<Skeleton
