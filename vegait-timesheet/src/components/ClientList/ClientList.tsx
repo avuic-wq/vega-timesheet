@@ -12,7 +12,7 @@ export async function ClientList({
 	searchInput,
 	letterFilter,
 }: Props) {
-	// Artifical delay for client list
+	// Artifical delay for list
 	// await new Promise((resolve) => setTimeout(resolve, 3000));
 
 	const { clients, totalPages } = await getPaginatedAndFileterdClientsAction(

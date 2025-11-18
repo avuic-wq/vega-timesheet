@@ -12,7 +12,7 @@ export async function ProjectList({
 	searchInput,
 	letterFilter,
 }: Props) {
-	// Artifical delay for client list
+	// Artifical delay for list
 	// await new Promise((resolve) => setTimeout(resolve, 3000));
 
 	const { projects, totalPages } = await getPaginatedAndFilteredProjectsAction(
