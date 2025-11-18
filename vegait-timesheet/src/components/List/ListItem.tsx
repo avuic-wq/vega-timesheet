@@ -1,6 +1,5 @@
 "use client";
 
-import type { Client, Project } from "@prisma/client";
 import { getCountryData, type TCountryCode } from "countries-list";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,8 +8,6 @@ import type { BaseItem } from "@/src/components/List/types";
 import Text from "@/src/components/Text/Text";
 import { isClientType } from "@/src/lib/typeguards/isClientType";
 import { isProjectType } from "@/src/lib/typeguards/isProjectType";
-
-export type ListItem = Client | Project;
 
 interface Props<T extends BaseItem> {
 	item: T;
