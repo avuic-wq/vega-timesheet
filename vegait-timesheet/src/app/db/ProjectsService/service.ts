@@ -86,8 +86,8 @@ export const createProject = (data: ProjectFormData): CreateProjectResult => {
 	return prisma.project.create({
 		data: {
 			name: data.name,
-			clientId: data.countryCode,
-			industryId: data.address,
+			clientId: data.clientId,
+			industryId: data.industryId,
 		},
 	});
 };
