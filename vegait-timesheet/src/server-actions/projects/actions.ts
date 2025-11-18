@@ -84,10 +84,10 @@ export async function getProjectByIdAction(
 }
 
 export async function createProjectAction(
-	data: ProjectFormData,
+	formData: ProjectFormData,
 ): CreateProjectActionResult {
 	try {
-		const result = await createProject(data);
+		const result = await createProject(formData);
 
 		const createdProject: ProjectFormData = {
 			name: result.name,
@@ -108,10 +108,10 @@ export async function createProjectAction(
 
 export async function updateProjectAction(
 	id: string,
-	data: ProjectFormData,
+	formData: ProjectFormData,
 ): UpdateProjectActionResult {
 	try {
-		const result = await updateProject(id, data);
+		const result = await updateProject(id, formData);
 
 		const updatedProject: ProjectFormData = {
 			name: result.name,
