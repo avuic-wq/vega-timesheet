@@ -33,11 +33,11 @@ const EditProjectForm = ({
 	});
 
 	const initialValues: ProjectFormData = {
-		name: projectData.name,
-		clientId: projectData.clientId,
-		industryId: projectData.industryId,
+		name: projectData.name || "",
+		clientId: projectData.clientId || "",
+		industryId: projectData.industryId || "",
 	};
-
+	console.log({ projectData, clientOptions, industryOptions });
 	return (
 		<FormController
 			mode="edit"
