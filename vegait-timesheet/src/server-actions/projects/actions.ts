@@ -10,7 +10,7 @@ import {
 	fetchProjectById,
 	fetchProjectsFirstLetters,
 	updateProject,
-} from "@/src/app/db/ProjectsService/service";
+} from "@/src/app/db/ProjectService/service";
 import type { ProjectFormData } from "@/src/components/Form/types";
 import {
 	APP_ROUTES,

@@ -1,4 +1,4 @@
-import { findUserByUsername } from "@/src/app/db/userService";
+import { findUserByUsername } from "@/src/app/db/UserService/service.ts";
 import { validatePassword } from "@/src/lib/utils/validatePassword";
 
 export const authenticateUser = async (username: string, password: string) => {

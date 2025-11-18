@@ -10,7 +10,7 @@ import {
 	fetchClientsFirstLetters,
 	fetchPaginatedAndFilteredClients,
 	updateClient,
-} from "@/src/app/db/ClientsService/service";
+} from "@/src/app/db/ClientService/service";
 import type { ClientFormData } from "@/src/components/Form/types";
 import { ITEMS_PER_PAGE } from "@/src/lib/consts";
 import { clientsModalSchema } from "@/src/lib/validators/Clients/schemas";
