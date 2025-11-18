@@ -7,7 +7,6 @@ import type {
 	DeleteProjectResult,
 	FetchAllProjcetsResult,
 	FetchPaginatedAndFilteredProjectsResult,
-	FetchProjectByIdResult,
 	FetchProjectsFirstLettersResult,
 	UpdateProjectResult,
 } from "./types";
@@ -66,13 +65,6 @@ export const fetchPaginatedAndFilteredProjects = async (
 	return { projects: extendedProject, totalCount };
 };
 
-export const fetchProjectById = async (id: string): FetchProjectByIdResult => {
-	const project = await prisma.project.findUnique({
-		where: { id },
-	});
-	return project;
-};
-
 export const fetchProjectsFirstLetters =
 	unstable_cache(async (): FetchProjectsFirstLettersResult => {
 		const letterObjects = await prisma.$queryRaw<{ first_letter: string }[]>`
@@ -82,6 +74,13 @@ export const fetchProjectsFirstLetters =
 
 		return letterObjects.map((obj) => obj.first_letter);
 	}, ["projects-filters-all-letters"]);
+
+export const fetchProjectById = async (id: string): FetchProjectByIdResult => {
+	const project = await prisma.project.findUnique({
+		where: { id },
+	});
+	return project;
+};
 
 export const createProject = (data: ProjectFormData): CreateProjectResult => {
 	return prisma.project.create({
