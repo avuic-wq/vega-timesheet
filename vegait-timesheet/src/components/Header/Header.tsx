@@ -12,7 +12,7 @@ interface Props {
 }
 
 const Header = ({ setting }: Props) => {
-	// TO-DO: Might be a wrapper because of filters/etc
+	// TO-DO: Might be a wrapper because of report filters
 	const config = headerConfig[setting] || {};
 	const { title, description, hasActionButton, hasSearch } = config;
 

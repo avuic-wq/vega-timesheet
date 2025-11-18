@@ -15,7 +15,6 @@ export const List = <T extends BaseItem>({
 }: Props<T>) => {
 	return (
 		<div className="flex flex-col gap-6 min">
-			{/* // TO-DO: Do we want min-h or not? */}
 			<ul className="min-h-[608px]">
 				{items.map((item) => {
 					return <ListItem key={item.id} item={item} />;

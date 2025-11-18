@@ -11,9 +11,6 @@ import type {
 	UpdateProjectResult,
 } from "./types";
 
-// TO-DO: Return types
-// TO-DO: Validation
-
 export const fetchAllProjects = async (): FetchAllProjcetsResult => {
 	return prisma.project.findMany({
 		orderBy: { name: "asc" },

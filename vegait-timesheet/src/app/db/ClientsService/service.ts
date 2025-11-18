@@ -8,9 +8,6 @@ import type {
 	FetchPaginatedAndFilteredClientsResult,
 } from "./types";
 
-// TO-DO: Return types
-// TO-DO: Validation
-
 export const fetchAllClients = async (): FetchAllClientsResult => {
 	return prisma.client.findMany({
 		orderBy: { name: "asc" },
