@@ -103,8 +103,8 @@ export const updateProject = async (
 	});
 };
 
-export async function deleteProject(id: string): DeleteProjectResult {
+export const deleteProject = async (id: string): DeleteProjectResult => {
 	return prisma.project.delete({
 		where: { id },
 	});
-}
+};
