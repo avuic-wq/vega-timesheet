@@ -9,6 +9,16 @@ import Text from "@/src/components/Text/Text";
 import { isClientType } from "@/src/lib/typeguards/isClientType";
 import { isProjectType } from "@/src/lib/typeguards/isProjectType";
 
+const getSecondaryText = (item: BaseItem) => {
+	if (isClientType(item)) {
+		return item.countryCode
+	}
+
+	if (isProjectType(item)) {
+		return item.clientName
+	}
+}
+
 interface Props<T extends BaseItem> {
 	item: T;
 }
@@ -29,7 +39,7 @@ const ListItem = <T extends BaseItem>({ item }: Props<T>) => {
 				<div className="flex gap-2">
 					<Text value={item.name} />
 					<Text
-						value={isClient ? countryName : clientName}
+						value={getSecondaryText(item)}
 						className="text-grey-500"
 					/>
 				</div>
