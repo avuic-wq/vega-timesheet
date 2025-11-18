@@ -37,7 +37,7 @@ const EditProjectForm = ({
 		clientId: projectData.clientId || "",
 		industryId: projectData.industryId || "",
 	};
-	console.log({ projectData, clientOptions, industryOptions });
+
 	return (
 		<FormController
 			mode="edit"

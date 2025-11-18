@@ -34,7 +34,7 @@ const SelectField = ({
 	const [searchText, setSearchText] = useState("");
 
 	const selectedOption = options.find((option) => option.value === value);
-	console.log({ value, selectedOption });
+
 	const filteredOptions = options.filter((option) =>
 		option.label.toLowerCase().includes(searchText.toLowerCase()),
 	);
