@@ -1,8 +1,7 @@
 "use client";
 
-import { getCountryData, type TCountryCode } from "countries-list";
 import { useEffect, useRef, useState } from "react";
-import type { FieldValue, SelectOption } from "@/src/components/Form/types";
+import type { SelectOption } from "@/src/components/Form/types";
 import Icon from "@/src/components/Icon/Icon";
 import Text from "@/src/components/Text/Text";
 
@@ -15,23 +14,27 @@ const noResultDropdownStyle =
 
 interface Props {
 	name: string;
+	placeholder?: string;
 	value?: string;
 	options: SelectOption[];
-	onChange: (fieldName: string, value: FieldValue) => void;
+	onChange: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const SelectField = ({ name, value, options, onChange }: Props) => {
+// TO-DO: Lazy load if a dropdown list is big
+const SelectField = ({
+	name,
+	placeholder,
+	value,
+	options,
+	onChange,
+}: Props) => {
 	const ref = useRef<HTMLDivElement>(null);
 	const inputRef = useRef<HTMLInputElement>(null);
 	const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 	const [searchText, setSearchText] = useState("");
 
-	const countryFullName = value
-		? getCountryData(value as TCountryCode)?.name
-		: "";
-
-	const selectedOption = { label: countryFullName, value };
-
+	const selectedOption = options.find((option) => option.value === value);
+	console.log({ value, selectedOption });
 	const filteredOptions = options.filter((option) =>
 		option.label.toLowerCase().includes(searchText.toLowerCase()),
 	);
@@ -64,7 +67,7 @@ const SelectField = ({ name, value, options, onChange }: Props) => {
 						setIsDropdownVisible(true);
 						setSearchText("");
 					}}
-					placeholder={selectedOption?.label || "Country"}
+					placeholder={selectedOption?.label || placeholder}
 					className={inputStyle}
 				/>
 				<Icon
@@ -83,15 +86,17 @@ const SelectField = ({ name, value, options, onChange }: Props) => {
 				<div className={resultsDropdownStyle}>
 					{filteredOptions.map((option) => (
 						<button
+							name={name}
 							key={option.value}
+							value={option.value}
 							type="button"
-							onClick={() => {
-								onChange(name, option.value);
+							onClick={(e) => {
+								onChange(e);
 								setIsDropdownVisible(false);
 								setSearchText("");
 							}}
 							className={`w-full text-left px-3 py-2 cursor-pointer hover:bg-gray-100 ${
-								option.value === selectedOption.value
+								option.value === selectedOption?.value
 									? "bg-blue-50 font-medium"
 									: ""
 							}`}

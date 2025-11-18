@@ -1,4 +1,10 @@
+import EditProjectForm from "@/src/components/EditProjectForm/EditProjectForm";
 import Modal from "@/src/components/Modal/Modal";
+import { getClientSelectOptions } from "@/src/lib/utils/getClientSelectOptions";
+import { getIndustrySelectOptions } from "@/src/lib/utils/getIndustrySelectOptions";
+import { getAllClientsAction } from "@/src/server-actions/clients/actions";
+import { getAllIndustriesAction } from "@/src/server-actions/industries/actions";
+import { getProjectByIdAction } from "@/src/server-actions/projects/actions";
 
 const modalTitle = "Project";
 
@@ -9,13 +15,22 @@ interface Props {
 export default async function EditProject({ params }: Props) {
 	const { id: projectId } = await params;
 
-	const projectData = await fetchProjectById(projectId);
-	const clientOptions = getClientSelectOptions();
-	const industryOptions = getIndustrySelectOptions();
+	const [projectData, clients, industries] = await Promise.all([
+		getProjectByIdAction(projectId),
+		getAllClientsAction(),
+		getAllIndustriesAction(),
+	]);
+
+	const clientSelectOptions = getClientSelectOptions(clients);
+	const industrySelectOptions = getIndustrySelectOptions(industries);
 
 	return (
 		<Modal title={modalTitle}>
-			<EditProjectForm projectData={projectData} industryOptions={industryOptions} />
+			<EditProjectForm
+				projectData={projectData}
+				clientOptions={clientSelectOptions}
+				industryOptions={industrySelectOptions}
+			/>
 		</Modal>
 	);
 }

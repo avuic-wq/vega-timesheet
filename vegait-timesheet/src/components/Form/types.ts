@@ -6,13 +6,11 @@ interface BaseField {
 export interface TextField extends BaseField {
 	type: "text" | "password";
 }
-
-export type SelectOption = { value: string; label: string };
 export interface SelectField extends BaseField {
-	name: string;
 	type: "select";
 	options: SelectOption[];
 }
+export type SelectOption = { value: string; label: string };
 
 export type FormField = TextField | SelectField;
 
@@ -34,7 +32,7 @@ export interface ProjectFormData extends BaseFormData {
 
 export interface LoginFormData extends BaseFormData {
 	username: string;
-	password: string
+	password: string;
 }
 
 export interface FormConfig {

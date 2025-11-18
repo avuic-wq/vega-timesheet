@@ -20,11 +20,11 @@ export const FormField = <T extends BaseFormData>({
 	formValues,
 	onChange,
 }: Props<T>): JSX.Element | null => {
-	const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		onChange(field.name, e.target.value);
-	};
-
 	if (field.type === "text" || field.type === "password") {
+		const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+			onChange(field.name, e.target.value);
+		};
+
 		return (
 			<TextField
 				key={field.name}
@@ -37,12 +37,18 @@ export const FormField = <T extends BaseFormData>({
 	}
 
 	if (field.type === "select") {
+		const handleOnChange = (e: React.MouseEvent<HTMLButtonElement>) => {
+			onChange(field.name, e.currentTarget.value);
+		};
+
 		return (
 			<SelectField
+				key={field.name}
 				name={field.name}
+				placeholder={field.placeholder}
 				value={formValues[field.name]}
 				options={field.options}
-				onChange={onChange}
+				onChange={handleOnChange}
 			/>
 		);
 	}
