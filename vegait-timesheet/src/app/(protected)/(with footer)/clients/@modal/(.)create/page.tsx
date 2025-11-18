@@ -1,4 +1,4 @@
-import CreateClientForm from "@/src/components/CreateClientForm/CreateClientForm";
+import CreateClientForm from "@/src/components/Clients/CreateClientForm/CreateClientForm";
 import Modal from "@/src/components/Modal/Modal";
 import { getCountrySelectOptions } from "@/src/lib/utils/getCountrySelectOptions";
 

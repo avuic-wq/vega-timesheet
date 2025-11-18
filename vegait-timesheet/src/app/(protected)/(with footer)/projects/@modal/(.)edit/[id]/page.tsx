@@ -1,5 +1,5 @@
-import EditProjectForm from "@/src/components/EditProjectForm/EditProjectForm";
-import Modal from "@/src/components/Modal/Modal";
+import EditProjectForm from "@/src/components/Projects/EditProjectForm/EditProjectForm";
+import Modal from "@/src/components/Shared/Modal/Modal";
 import { getClientSelectOptions } from "@/src/lib/utils/getClientSelectOptions";
 import { getIndustrySelectOptions } from "@/src/lib/utils/getIndustrySelectOptions";
 import { getAllClientsAction } from "@/src/server-actions/clients/actions";
