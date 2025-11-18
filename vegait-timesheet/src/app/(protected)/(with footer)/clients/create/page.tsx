@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 export default function CreateClientDirect() {
-	return <div>Fallback</div>;
+	redirect("/clients");
 }

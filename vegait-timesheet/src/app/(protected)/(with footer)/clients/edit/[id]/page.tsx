@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
-export default function UpdateClientModalDirect() {
+export default function UpdateClientDirect() {
 	redirect("/clients");
 }
