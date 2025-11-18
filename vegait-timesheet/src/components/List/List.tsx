@@ -8,13 +8,13 @@ interface Props<T extends BaseItem> {
 	currentPage: number;
 }
 
-export const List = <T extends BaseItem>({
+export const List = async <T extends BaseItem>({
 	items,
 	totalPages,
 	currentPage,
 }: Props<T>) => {
 	return (
-		<div className="flex flex-col gap-6 min">
+		<div className="flex flex-col">
 			<ul className="min-h-[608px]">
 				{items.map((item) => {
 					return <ListItem key={item.id} item={item} />;

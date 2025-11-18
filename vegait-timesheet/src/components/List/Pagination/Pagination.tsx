@@ -1,3 +1,5 @@
+"use client";
+
 import Text from "@/src/components/Text/Text";
 import NavigateButton from "./NavigateButton";
 import PaginationItem from "./PaginationItem";

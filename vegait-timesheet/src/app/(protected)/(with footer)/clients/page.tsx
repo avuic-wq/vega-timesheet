@@ -1,12 +1,11 @@
+import { Suspense } from "react";
+import ClientList from "@/src/components/ClientList/ClientList";
 import LetterFilters from "@/src/components/Filters/LetterFilters";
 import Header from "@/src/components/Header/Header";
-import { List as ClientList } from "@/src/components/List/List";
+import { ListSkeleton } from "@/src/components/Skeletons/ListSkeleton";
 import { APP_ROUTES, INITIAL_LIST_PAGE } from "@/src/lib/consts";
 import type { SearchParams } from "@/src/lib/types";
-import {
-	getClientsFirstLettersAction,
-	getPaginatedAndFileterdClientsAction,
-} from "@/src/server-actions/clients/actions";
+import { getClientsFirstLettersAction } from "@/src/server-actions/clients/actions";
 
 interface Props {
 	searchParams: SearchParams;
@@ -18,25 +17,20 @@ export default async function Clients({ searchParams }: Props) {
 	const letterFilterParam = params?.startsWith || "";
 	const currentPageParam = Number(params?.page) || INITIAL_LIST_PAGE;
 
-	const [{ clients, totalPages }, filterData] = await Promise.all([
-		getPaginatedAndFileterdClientsAction(
-			currentPageParam,
-			searchInputParam,
-			letterFilterParam,
-		),
-		getClientsFirstLettersAction(),
-	]);
+	const filterData = await getClientsFirstLettersAction();
 
 	return (
 		<div className="flex flex-col gap-4">
 			<Header setting={APP_ROUTES.CLIENTS} />
 			<LetterFilters letters={filterData} />
 
-			<ClientList
-				items={clients}
-				currentPage={currentPageParam}
-				totalPages={totalPages}
-			/>
+			<Suspense fallback={<ListSkeleton />}>
+				<ClientList
+					currentPage={currentPageParam}
+					searchInput={searchInputParam}
+					letterFilter={letterFilterParam}
+				/>
+			</Suspense>
 		</div>
 	);
 }
