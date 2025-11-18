@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import type { ClientFormData } from "@/src/components/Form/types";
 import {
 	createClient,
 	deleteClient,
@@ -10,8 +11,7 @@ import {
 	fetchClientsFirstLetters,
 	fetchPaginatedAndFilteredClients,
 	updateClient,
-} from "@/src/app/db/ClientService/service";
-import type { ClientFormData } from "@/src/components/Form/types";
+} from "@/src/db/ClientService/service";
 import { ITEMS_PER_PAGE } from "@/src/lib/consts";
 import { clientsModalSchema } from "@/src/lib/validators/Clients/schemas";
 import type {

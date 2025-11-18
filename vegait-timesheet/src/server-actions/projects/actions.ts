@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import type { ProjectFormData } from "@/src/components/Form/types";
 import {
 	createProject,
 	deleteProject,
@@ -10,8 +11,7 @@ import {
 	fetchProjectById,
 	fetchProjectsFirstLetters,
 	updateProject,
-} from "@/src/app/db/ProjectService/service";
-import type { ProjectFormData } from "@/src/components/Form/types";
+} from "@/src/db/ProjectService/service";
 import {
 	APP_ROUTES,
 	ITEMS_PER_PAGE,
