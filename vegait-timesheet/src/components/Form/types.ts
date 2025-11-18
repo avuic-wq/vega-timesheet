@@ -9,6 +9,7 @@ export interface TextField extends BaseField {
 
 export type SelectOption = { value: string; label: string };
 export interface SelectField extends BaseField {
+	name: string;
 	type: "select";
 	options: SelectOption[];
 }
@@ -22,13 +23,11 @@ export interface BaseFormData {
 }
 
 export interface ClientFormData extends BaseFormData {
-	name: string;
 	address: string;
 	countryCode: string;
 }
 
 export interface ProjectFormData extends BaseFormData {
-	title: string;
 	clientId: string;
 	industryId: string;
 }
