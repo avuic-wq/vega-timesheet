@@ -7,6 +7,7 @@ import type {
 	FetchClientsFirstLettersResult,
 	FetchPaginatedAndFilteredClientsResult,
 } from "./types";
+import { ClientFormData } from "@/src/components/Form/types";
 
 // TO-DO: Return types
 // TO-DO: Validation
@@ -69,8 +70,17 @@ export const fetchClientById = async (id: string) => {
 	return client;
 };
 
-// TO-DO: type data
-export const updateClient = async (id: string, data: any): Promise<Client> => {
+export async function createClient(data: ClientFormData): Promise<Client> {
+	return prisma.client.create({
+		data: {
+			name: data.name,
+			countryCode: data.countryCode,
+			address: data.address,
+		},
+	});
+}
+
+export const updateClient = async (id: string, data: ClientFormData): Promise<Client> => {
 	return prisma.client.update({
 		where: { id },
 		data,

@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import {
+	createClient,
 	deleteClient,
 	fetchAllClients,
 	fetchClientById,
@@ -10,7 +11,6 @@ import {
 	fetchPaginatedAndFilteredClients,
 	updateClient,
 } from "@/src/app/db/ClientsService/service";
-import { createClient } from "@/src/app/db/clientService";
 import type { ClientFormData, FormState } from "@/src/components/Form/types";
 import { ITEMS_PER_PAGE } from "@/src/lib/consts";
 import { clientsModalSchema } from "@/src/lib/validators/Clients/schemas";
