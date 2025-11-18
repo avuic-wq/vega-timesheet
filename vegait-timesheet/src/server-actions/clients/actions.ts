@@ -11,13 +11,16 @@ import {
 	fetchPaginatedAndFilteredClients,
 	updateClient,
 } from "@/src/app/db/ClientsService/service";
-import type { ClientFormData, FormState } from "@/src/components/Form/types";
+import type { ClientFormData } from "@/src/components/Form/types";
 import { ITEMS_PER_PAGE } from "@/src/lib/consts";
 import { clientsModalSchema } from "@/src/lib/validators/Clients/schemas";
 import type {
+	CreateClientActionResult,
+	DeleteClientActionResult,
 	GetAllClientsActionResult,
 	GetClientsFirstLettersActionResult,
 	GetPaginatedAndFilteredClientsActionResult,
+	UpdateClientActionResult,
 } from "./types";
 
 // TO-DO: Return types
@@ -60,15 +63,40 @@ export async function getPaginatedAndFileterdClientsAction(
 	};
 }
 
-export async function getClientById(id: string) {
-	const client = await fetchClientById(id);
-	return client;
+export async function getClientByIdAction(id: string) {
+	try {
+		const client = await fetchClientById(id);
+		return client;
+	} catch (error) {}
+}
+
+export async function createClientAction(
+	formData: ClientFormData,
+): CreateClientActionResult {
+	try {
+		const result = await createClient(formData);
+
+		const createdClient: ClientFormData = {
+			name: result.name,
+			address: result.address,
+			countryCode: result.countryCode,
+		};
+
+		revalidatePath("/clients");
+		return { isSuccessful: true, data: createdClient };
+	} catch (error) {
+		return {
+			errors: {
+				database: "There was a problem creating the client in the database",
+			},
+		};
+	}
 }
 
 export async function updateClientAction(
 	id: string,
 	formData: ClientFormData,
-): Promise<FormState<ClientFormData>> {
+): UpdateClientActionResult {
 	const rawData = {
 		name: formData?.name,
 		address: formData?.address,
@@ -105,7 +133,7 @@ export async function updateClientAction(
 
 export async function deleteClientAction<T>(
 	id: string,
-): Promise<FormState<ClientFormData>> {
+): DeleteClientActionResult {
 	try {
 		const result = await deleteClient(id);
 		const deletedClient: ClientFormData = {
@@ -121,29 +149,6 @@ export async function deleteClientAction<T>(
 		return {
 			errors: {
 				database: "There was a problem deleting the client in the database",
-			},
-		};
-	}
-}
-
-export async function createClientAction<T>(
-	formData: ClientFormData,
-): Promise<FormState<ClientFormData>> {
-	try {
-		const result = await createClient(formData);
-
-		const createdClient: ClientFormData = {
-			name: result.name,
-			address: result.address,
-			countryCode: result.countryCode,
-		};
-
-		revalidatePath("/clients");
-		return { isSuccessful: true, data: createdClient };
-	} catch (error) {
-		return {
-			errors: {
-				database: "There was a problem creating the client in the database",
 			},
 		};
 	}

@@ -1,13 +1,12 @@
 import type { Client, Prisma } from "@prisma/client";
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/prisma/prisma";
-
+import type { ClientFormData } from "@/src/components/Form/types";
 import type {
 	FetchAllClientsResult,
 	FetchClientsFirstLettersResult,
 	FetchPaginatedAndFilteredClientsResult,
 } from "./types";
-import { ClientFormData } from "@/src/components/Form/types";
 
 // TO-DO: Return types
 // TO-DO: Validation
@@ -70,7 +69,7 @@ export const fetchClientById = async (id: string) => {
 	return client;
 };
 
-export async function createClient(data: ClientFormData): Promise<Client> {
+export const createClient = async (data: ClientFormData): Promise<Client> => {
 	return prisma.client.create({
 		data: {
 			name: data.name,
@@ -78,17 +77,20 @@ export async function createClient(data: ClientFormData): Promise<Client> {
 			address: data.address,
 		},
 	});
-}
+};
 
-export const updateClient = async (id: string, data: ClientFormData): Promise<Client> => {
+export const updateClient = async (
+	id: string,
+	data: ClientFormData,
+): Promise<Client> => {
 	return prisma.client.update({
 		where: { id },
 		data,
 	});
 };
 
-export async function deleteClient(id: string): Promise<Client> {
+export const deleteClient = async (id: string): Promise<Client> => {
 	return prisma.client.delete({
 		where: { id },
 	});
-}
+};
