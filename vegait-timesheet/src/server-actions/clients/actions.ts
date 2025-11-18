@@ -12,7 +12,7 @@ import {
 	fetchPaginatedAndFilteredClients,
 	updateClient,
 } from "@/src/db/ClientService/service";
-import { ITEMS_PER_PAGE } from "@/src/lib/consts";
+import { APP_ROUTES, ITEMS_PER_PAGE } from "@/src/lib/consts";
 import { clientsModalSchema } from "@/src/lib/validators/Clients/schemas";
 import type {
 	CreateClientActionResult,
@@ -82,7 +82,7 @@ export async function createClientAction(
 			countryCode: result.countryCode,
 		};
 
-		revalidatePath("/clients");
+		revalidatePath(APP_ROUTES.CLIENTS);
 		return { isSuccessful: true, data: createdClient };
 	} catch (error) {
 		return {
@@ -119,7 +119,7 @@ export async function updateClientAction(
 			countryCode: result.countryCode,
 		};
 
-		revalidatePath("/clients");
+		revalidatePath(APP_ROUTES.CLIENTS);
 		revalidatePath(`/clients/${id}`);
 		return { isSuccessful: true, data: updatedClient };
 	} catch (error) {
@@ -142,7 +142,7 @@ export async function deleteClientAction<T>(
 			countryCode: result.countryCode,
 		};
 
-		revalidatePath("/clients");
+		revalidatePath(APP_ROUTES.CLIENTS);
 		revalidatePath(`/clients/${id}`);
 		return { isSuccessful: true, data: deletedClient };
 	} catch (error) {
