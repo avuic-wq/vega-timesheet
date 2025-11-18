@@ -1,16 +1,21 @@
 import type { Prisma } from "@prisma/client";
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/prisma/prisma";
+import type { ProjectFormData } from "@/src/components/Form/types";
 import type {
+	CreateProjectResult,
+	DeleteProjectResult,
 	FetchAllProjcetsResult,
 	FetchPaginatedAndFilteredProjectsResult,
+	FetchProjectByIdResult,
 	FetchProjectsFirstLettersResult,
+	UpdateProjectResult,
 } from "./types";
 
 // TO-DO: Return types
 // TO-DO: Validation
 
-export const fetchAllProjects = async (): Promise<FetchAllProjcetsResult> => {
+export const fetchAllProjects = async (): FetchAllProjcetsResult => {
 	return prisma.project.findMany({
 		orderBy: { name: "asc" },
 	});
@@ -21,7 +26,7 @@ export const fetchPaginatedAndFilteredProjects = async (
 	itemsPerPage: number,
 	searchInput?: string,
 	letterFilter?: string,
-): Promise<FetchPaginatedAndFilteredProjectsResult> => {
+): FetchPaginatedAndFilteredProjectsResult => {
 	const conditions: Prisma.ProjectWhereInput[] = [];
 
 	if (searchInput) {
@@ -61,8 +66,15 @@ export const fetchPaginatedAndFilteredProjects = async (
 	return { projects: extendedProject, totalCount };
 };
 
+export const fetchProjectById = async (id: string): FetchProjectByIdResult => {
+	const project = await prisma.project.findUnique({
+		where: { id },
+	});
+	return project;
+};
+
 export const fetchProjectsFirstLetters =
-	unstable_cache(async (): Promise<FetchProjectsFirstLettersResult> => {
+	unstable_cache(async (): FetchProjectsFirstLettersResult => {
 		const letterObjects = await prisma.$queryRaw<{ first_letter: string }[]>`
 		SELECT DISTINCT UPPER(SUBSTRING(name FROM 1 FOR 1)) AS first_letter
 		FROM "projects"
@@ -70,3 +82,29 @@ export const fetchProjectsFirstLetters =
 
 		return letterObjects.map((obj) => obj.first_letter);
 	}, ["projects-filters-all-letters"]);
+
+export const createProject = (data: ProjectFormData): CreateProjectResult => {
+	return prisma.project.create({
+		data: {
+			name: data.name,
+			clientId: data.countryCode,
+			industryId: data.address,
+		},
+	});
+};
+
+export const updateProject = async (
+	id: string,
+	data: ProjectFormData,
+): UpdateProjectResult => {
+	return prisma.project.update({
+		where: { id },
+		data,
+	});
+};
+
+export async function deleteProject(id: string): DeleteProjectResult {
+	return prisma.project.delete({
+		where: { id },
+	});
+}

@@ -9,3 +9,7 @@ export type FetchPaginatedAndFilteredProjectsResult = Promise<{
 }>;
 
 export type FetchProjectsFirstLettersResult = Promise<string[]>;
+export type FetchProjectByIdResult = Promise<Project>;
+export type CreateProjectResult = Promise<Project>;
+export type UpdateProjectResult = Promise<Project>;
+export type DeleteProjectResult = Promise<Project>;

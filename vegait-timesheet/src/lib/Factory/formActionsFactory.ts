@@ -10,6 +10,11 @@ import {
 	deleteClientAction,
 	updateClientAction,
 } from "@/src/server-actions/clients/actions";
+import {
+	createProjectAction,
+	deleteProjectAction,
+	updateProjectAction,
+} from "@/src/server-actions/projects/actions";
 
 type EntityHandlersMap = {
 	[K in EntityType]: {
@@ -36,11 +41,11 @@ export const formActionsFactory = <E extends EntityType>({
 			update: (data) => updateClientAction(entityId, data),
 			delete: () => deleteClientAction(entityId),
 		},
-		// project: {
-		// 	create: (data) => createProjectAction(data),
-		// 	update: (data) => updateProjectAction(entityId, data),
-		// 	delete: () => deleteProjectAction(entityId),
-		// },
+		project: {
+			create: (data) => createProjectAction(data),
+			update: (data) => updateProjectAction(entityId, data),
+			delete: () => deleteProjectAction(entityId),
+		},
 	};
 
 	const handler = handlersMap[entityType];
