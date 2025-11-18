@@ -143,7 +143,7 @@ export async function deleteClientAction<T>(
 		};
 
 		revalidatePath(APP_ROUTES.CLIENTS);
-		revalidatePath(`/clients/${id}`);
+		revalidatePath(`${APP_ROUTES.CLIENTS}/${id}`);
 		return { isSuccessful: true, data: deletedClient };
 	} catch (error) {
 		return {
