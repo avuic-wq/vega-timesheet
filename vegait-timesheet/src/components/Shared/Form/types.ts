@@ -10,9 +10,14 @@ export interface SelectField extends BaseField {
 	type: "select";
 	options: SelectOption[];
 }
+
+export interface DateField extends BaseField {
+	type: "date";
+}
+
 export type SelectOption = { value: string; label: string };
 
-export type FormField = TextField | SelectField;
+export type FormField = TextField | SelectField | DateField;
 
 export type FieldValue = string;
 

@@ -1,4 +1,5 @@
 import type { JSX } from "react";
+import DateField from "@/src/components/Shared/DateField/DateField";
 import type {
 	BaseFormData,
 	FieldValue,
@@ -43,6 +44,19 @@ export const FormField = <T extends BaseFormData>({
 				value={formValues[field.name]}
 				options={field.options}
 				onChange={onChange}
+			/>
+		);
+	}
+
+	if (field.type === "date") {
+		return (
+			<DateField
+				key={field.name}
+				name={field.name}
+				placeholder={field.placeholder}
+				value={formValues[field.name]}
+				onChange={onChange}
+				rightIcon="calendar"
 			/>
 		);
 	}

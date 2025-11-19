@@ -33,7 +33,7 @@ const OptionsDropdown = ({
 				<div className={resultsDropdownStyle}>
 					{options.map((option) => {
 						const isSelected = option.value === selectedOption?.value;
-						const isSelectedStyles = "bg-orange/70 hover:bg-orange/70";
+						const isSelectedStyles = "bg-orange/50 hover:bg-orange/50";
 						return (
 							<button
 								name={name}
