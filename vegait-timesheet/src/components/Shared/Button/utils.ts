@@ -5,7 +5,7 @@ export const getButtonStyle = (
 	variant: ButtonVariant,
 	isDisabled = false,
 ): string => {
-	const commonStyle = `flex items-center justify-center m-auto px-20 py-3 rounded-3xl text-white`;
+	const commonStyle = `flex items-center justify-center m-auto px-20 py-3 rounded-3xl text-white cursor-pointer`;
 
 	const variantSpecificStyle = {
 		primary: "bg-black",
