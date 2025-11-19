@@ -20,6 +20,7 @@ interface Props {
 }
 
 // TO-DO: Lazy load if a dropdown list is big
+// TO-DO: Add clear input button
 // TO-DO: Fix bug where dropdown width decreases when searching (e.g: "Serb")
 const SelectField = ({
 	name,
@@ -81,8 +82,7 @@ const SelectField = ({
 						position: "absolute",
 						pointerEvents: "none",
 						right: "29px",
-						top: "25px",
-						transform: "translateY(-50%)",
+						top: "14px",
 					}}
 				/>
 			</div>
