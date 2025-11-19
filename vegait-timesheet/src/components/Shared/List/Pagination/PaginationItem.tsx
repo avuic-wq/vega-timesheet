@@ -24,7 +24,7 @@ const PaginationItem = ({ value, currentPage, totalPages }: Props) => {
 		<button
 			type="button"
 			onClick={() => handlePageChange(value)}
-			className={`min-w-[24px] h-[24px] rounded-[12px] cursor-pointer ${isSelected ? "bg-black text-white" : ""}
+			className={`min-w-[24px] h-[24px] rounded-xl cursor-pointer ${isSelected ? "bg-black text-white" : ""}
 					`}
 		>
 			{value}

@@ -55,7 +55,7 @@ const TextField = ({
 
 	return (
 		<div className="flex flex-col">
-			<div className="flex items-center border-2 border-grey-500 rounded-[24px] focus-within:border-black px-6">
+			<div className="flex items-center border-2 border-grey-500 rounded-3xl focus-within:border-black px-6">
 				{!isPasswordField && leftIcon && (
 					<Icon name={leftIcon} style={{ opacity: isFocused ? 1 : 0.5 }} />
 				)}
