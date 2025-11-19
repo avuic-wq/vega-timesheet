@@ -2,10 +2,10 @@ import type { Project } from "@prisma/client";
 import type { SelectOption } from "@/src/components/Shared/Form/types";
 
 export const getProjectSelectOptions = (
-	industries: Project[],
+	projects: Project[],
 ): SelectOption[] => {
-	return industries.map((industry) => ({
-		label: industry.name,
-		value: industry.id,
+	return projects.map((project) => ({
+		label: project.name,
+		value: project.id,
 	}));
 };
