@@ -15,11 +15,6 @@ interface Props {
 
 const DropdownOptions = ({ name, value, onChange, onClose }: Props) => {
 	const handleDateSelect = (date: Date | undefined) => {
-		console.log({
-			string: date?.toString(),
-			dateStr: date?.toDateString(),
-		});
-
 		if (date) {
 			onChange(name, format(date, "yyyy-MM-dd"));
 			onClose();
