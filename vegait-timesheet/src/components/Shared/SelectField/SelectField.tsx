@@ -61,7 +61,7 @@ const SelectField = ({
 				<input
 					ref={inputRef}
 					type="text"
-					value={!isDropdownVisible ? selectedOption?.label : searchText}
+					value={!isDropdownVisible ? selectedOption?.label || "" : searchText}
 					onChange={(e) => {
 						setSearchText(e.target.value);
 						setIsDropdownVisible(true);
