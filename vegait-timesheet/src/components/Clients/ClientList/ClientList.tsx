@@ -1,5 +1,6 @@
 import { List } from "@/src/components/Shared/List/List";
-import { getPaginatedAndFileterdClientsAction } from "@/src/server-actions/clients/actions";
+import { ITEMS_PER_PAGE } from "@/src/lib/consts";
+import { getPaginatedAndFilteredClientsAction } from "@/src/server-actions/clients/actions";
 
 interface Props {
 	currentPage: number;
@@ -15,8 +16,8 @@ export async function ClientList({
 	// Artifical delay for list
 	// await new Promise((resolve) => setTimeout(resolve, 3000));
 
-	const { clients, totalPages } = await getPaginatedAndFileterdClientsAction(
-		currentPage,
+	const { clients, totalPages } = await getPaginatedAndFilteredClientsAction(
+		{ page: currentPage, itemsPerPage: ITEMS_PER_PAGE.DEFAULT },
 		searchInput,
 		letterFilter,
 	);

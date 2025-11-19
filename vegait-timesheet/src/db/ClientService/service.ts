@@ -2,6 +2,7 @@ import type { Client, Prisma } from "@prisma/client";
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/prisma/prisma";
 import type { ClientFormData } from "@/src/components/Shared/Form/types";
+import type { QueryPageSettings } from "@/src/lib/types";
 import type {
 	FetchAllClientsResult,
 	FetchClientsFirstLettersResult,
@@ -25,12 +26,12 @@ export const fetchClientsFirstLetters =
 	}, ["clients-filters-all-letters"]);
 
 export const fetchPaginatedAndFilteredClients = async (
-	page: number,
-	itemsPerPage: number,
+	pageSettings: QueryPageSettings,
 	searchInput?: string,
 	letterFilter?: string,
 ): FetchPaginatedAndFilteredClientsResult => {
 	const conditions: Prisma.ClientWhereInput[] = [];
+	const { page, itemsPerPage } = pageSettings;
 
 	if (searchInput) {
 		conditions.push({

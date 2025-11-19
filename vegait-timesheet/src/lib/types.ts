@@ -6,3 +6,8 @@ export type SearchParams = Promise<{
 }>;
 
 export type ButtonVariant = "primary" | "secondary" | "danger" | "custom";
+
+export type QueryPageSettings = {
+	page: number;
+	itemsPerPage: number;
+};

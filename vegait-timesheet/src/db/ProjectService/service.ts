@@ -2,11 +2,13 @@ import type { Prisma } from "@prisma/client";
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/prisma/prisma";
 import type { ProjectFormData } from "@/src/components/Shared/Form/types";
+import type { QueryPageSettings } from "@/src/lib/types";
 import type {
 	CreateProjectResult,
 	DeleteProjectResult,
 	FetchAllProjcetsResult,
 	FetchPaginatedAndFilteredProjectsResult,
+	FetchProjectByIdResult,
 	FetchProjectsFirstLettersResult,
 	UpdateProjectResult,
 } from "./types";
@@ -18,12 +20,12 @@ export const fetchAllProjects = async (): FetchAllProjcetsResult => {
 };
 
 export const fetchPaginatedAndFilteredProjects = async (
-	page: number,
-	itemsPerPage: number,
+	pageSettings: QueryPageSettings,
 	searchInput?: string,
 	letterFilter?: string,
 ): FetchPaginatedAndFilteredProjectsResult => {
 	const conditions: Prisma.ProjectWhereInput[] = [];
+	const { page, itemsPerPage } = pageSettings;
 
 	if (searchInput) {
 		conditions.push({

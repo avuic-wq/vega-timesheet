@@ -1,4 +1,5 @@
 import { List } from "@/src/components/Shared/List/List";
+import { ITEMS_PER_PAGE } from "@/src/lib/consts";
 import { getPaginatedAndFilteredProjectsAction } from "@/src/server-actions/projects/actions";
 
 interface Props {
@@ -16,7 +17,7 @@ export async function ProjectList({
 	// await new Promise((resolve) => setTimeout(resolve, 3000));
 
 	const { projects, totalPages } = await getPaginatedAndFilteredProjectsAction(
-		currentPage,
+		{ page: currentPage, itemsPerPage: ITEMS_PER_PAGE.DEFAULT },
 		searchInput,
 		letterFilter,
 	);

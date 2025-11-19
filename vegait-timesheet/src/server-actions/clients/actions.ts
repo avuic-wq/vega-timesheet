@@ -12,7 +12,8 @@ import {
 	fetchPaginatedAndFilteredClients,
 	updateClient,
 } from "@/src/db/ClientService/service";
-import { APP_ROUTES, ITEMS_PER_PAGE } from "@/src/lib/consts";
+import { APP_ROUTES } from "@/src/lib/consts";
+import type { QueryPageSettings } from "@/src/lib/types";
 import { clientsModalSchema } from "@/src/lib/validators/Clients/schemas";
 import type {
 	CreateClientActionResult,
@@ -36,16 +37,15 @@ export async function getClientsFirstLettersAction(): GetClientsFirstLettersActi
 	return fetchClientsFirstLetters();
 }
 
-export async function getPaginatedAndFileterdClientsAction(
-	page: number,
+export async function getPaginatedAndFilteredClientsAction(
+	pageSettings: QueryPageSettings,
 	searchInput?: string,
 	letterFilter?: string,
 ): GetPaginatedAndFilteredClientsActionResult {
-	const itemsPerPage = ITEMS_PER_PAGE.DEFAULT;
+	const { page, itemsPerPage } = pageSettings;
 
 	const { clients, totalCount } = await fetchPaginatedAndFilteredClients(
-		page,
-		itemsPerPage,
+		pageSettings,
 		searchInput,
 		letterFilter,
 	);

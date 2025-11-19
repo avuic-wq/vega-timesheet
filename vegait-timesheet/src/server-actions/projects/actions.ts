@@ -12,11 +12,8 @@ import {
 	fetchProjectsFirstLetters,
 	updateProject,
 } from "@/src/db/ProjectService/service";
-import {
-	APP_ROUTES,
-	ITEMS_PER_PAGE,
-	SEARCH_PARAMETERS,
-} from "@/src/lib/consts";
+import { APP_ROUTES, SEARCH_PARAMETERS } from "@/src/lib/consts";
+import type { QueryPageSettings } from "@/src/lib/types";
 import type {
 	CreateProjectActionResult,
 	DeleteProjectActionResult,
@@ -44,15 +41,14 @@ export async function getAllProjectsAction(): GetAllProjectsActionResult {
 }
 
 export async function getPaginatedAndFilteredProjectsAction(
-	page: number,
+	pageSettings: QueryPageSettings,
 	searchInput?: string,
 	letterFilter?: string,
 ): GetPaginatedAndFilteredProjectsActionResult {
-	const itemsPerPage = ITEMS_PER_PAGE.DEFAULT;
+	const { page, itemsPerPage } = pageSettings;
 
 	const { projects, totalCount } = await fetchPaginatedAndFilteredProjects(
-		page,
-		itemsPerPage,
+		pageSettings,
 		searchInput,
 		letterFilter,
 	);
