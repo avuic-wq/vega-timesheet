@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import { twMerge } from "tailwind-merge";
 import type { FieldValue } from "@/src/components/Shared/Form/types";
@@ -20,7 +21,7 @@ const DropdownOptions = ({ name, value, onChange, onClose }: Props) => {
 		});
 
 		if (date) {
-			onChange(name, date?.toDateString());
+			onChange(name, format(date, "yyyy-MM-dd"));
 			onClose();
 		}
 	};
