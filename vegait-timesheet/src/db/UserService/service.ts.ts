@@ -1,5 +1,6 @@
-import type { User, UserRole } from "@prisma/client";
+import type { User } from "@prisma/client";
 import { prisma } from "@/prisma/prisma";
+import type { UserFilters } from "@/src/db/UserService/types";
 
 export async function findUserByUsername(
 	username: string,
@@ -9,9 +10,7 @@ export async function findUserByUsername(
 	});
 }
 
-export async function getAllUsers(filters?: {
-	roles?: UserRole[];
-}): Promise<User[]> {
+export async function fetchAllUsers(filters?: UserFilters): Promise<User[]> {
 	return prisma.user.findMany({
 		where: {
 			...(filters?.roles && {

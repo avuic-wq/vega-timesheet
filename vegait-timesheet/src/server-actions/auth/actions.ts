@@ -2,6 +2,7 @@
 
 import { signIn, signOut } from "@/auth/auth";
 import type { LoginFormData } from "@/src/components/Shared/Form/types";
+import { fetchAllUsers } from "@/src/db/UserService/service.ts";
 import { APP_ROUTES, AUTH_PROVIDERS, HOME_PAGE_ROUTE } from "@/src/lib/consts";
 
 export async function loginAction(
@@ -25,4 +26,9 @@ export async function loginAction(
 
 export async function logoutAction() {
 	await signOut({ redirectTo: APP_ROUTES.LOGIN, redirect: true });
+}
+
+export async function getAllUsersAction() {
+	const users = await fetchAllUsers();
+	return users;
 }
