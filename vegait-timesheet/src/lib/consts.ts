@@ -19,7 +19,7 @@ export const APP_ROUTES = {
 	REPORTS: "/reports",
 };
 
-export const SEARCH_PARAMETERS = {
+export const SEARCH_PARAMETERS: Record<string, string> = {
 	SEARCH: "search",
 	LETTER_FILTER: "startsWith",
 	PAGINATION: "page",

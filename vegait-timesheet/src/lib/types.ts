@@ -3,6 +3,12 @@ export type SearchParams = Promise<{
 	search?: string;
 	startsWith?: string;
 	page?: string;
+	fromDate?: string;
+	toDate?: string;
+	clientId?: string;
+	projectId?: string;
+	userId?: string;
+	categoryId?: string;
 }>;
 
 export type ButtonVariant = "primary" | "secondary" | "danger" | "custom";
