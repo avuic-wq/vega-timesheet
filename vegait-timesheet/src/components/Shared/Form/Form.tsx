@@ -21,14 +21,17 @@ const Form = <T extends BaseFormData>({
 }: Props<T>) => {
 	const [formValues, setFormValues] = useState<T>(initialValues || ({} as T));
 
-	const handleValuesChange = (fieldName: string, value: FieldValue) => {
-		setFormValues((prev) => {
-			return {
-				...prev,
-				[fieldName]: value,
-			};
-		});
-	};
+	const handleValuesChange = useCallback(
+		(fieldName: string, value: FieldValue) => {
+			setFormValues((prev) => {
+				return {
+					...prev,
+					[fieldName]: value,
+				};
+			});
+		},
+		[],
+	);
 
 	const handleSubmit = useCallback(() => {
 		if (!formValues) return;
