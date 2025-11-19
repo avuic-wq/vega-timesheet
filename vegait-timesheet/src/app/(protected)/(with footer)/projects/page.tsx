@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import ProjectList from "@/src/components/Projects/ProjectList/ProjectList";
-import LetterFilters from "@/src/components/Shared/Filters/LetterFilters";
 import Header from "@/src/components/Shared/Header/Header";
+import LetterFilters from "@/src/components/Shared/LetterFilters/LetterFilters";
 import { ListSkeleton } from "@/src/components/Shared/Skeletons/ListSkeleton";
 import { APP_ROUTES, INITIAL_LIST_PAGE } from "@/src/lib/consts";
 import type { SearchParams } from "@/src/lib/types";
