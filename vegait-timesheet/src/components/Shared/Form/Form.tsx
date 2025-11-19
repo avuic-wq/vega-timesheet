@@ -84,7 +84,7 @@ const Form = <T extends BaseFormData>({
 					{hasResetButton && (
 						<Button
 							key="reset"
-							type="submit"
+							type="button"
 							variant="secondary"
 							onClick={handleReset}
 							className="w-2/5"
