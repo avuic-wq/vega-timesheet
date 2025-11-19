@@ -5,9 +5,9 @@ import type {
 import Text from "@/src/components/Shared/Text/Text";
 
 const resultsDropdownStyle =
-	"absolute z-50 left-[14px] rounded-[10px] bg-white border-[1.5px] border-grey-200 shadow-lg max-h-60 overflow-y-auto";
+	"absolute z-50 left-[14px] mt-1 rounded-[10px] bg-white border-[1.5px] border-grey-200 shadow-lg max-h-60 overflow-y-auto";
 const noResultDropdownStyle =
-	"absolute z-50 mt-1 w-full rounded-3xl bg-white border-[1.5px] border-grey-200 shadow-lg px-3 py-2 text-gray-400";
+	"absolute z-50 mt-1 w-full rounded-[10px] bg-white border-[1.5px] border-grey-200 shadow-lg px-3 py-2 text-gray-400";
 
 interface Props {
 	name: string;
