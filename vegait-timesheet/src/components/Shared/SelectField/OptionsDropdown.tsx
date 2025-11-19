@@ -30,25 +30,25 @@ const OptionsDropdown = ({
 		<>
 			{hasOptions ? (
 				<div className={resultsDropdownStyle}>
-					{options.map((option) => (
-						<button
-							name={name}
-							key={option.value}
-							value={option.value}
-							type="button"
-							onClick={(e) => {
-								onChange(name, option.value);
-								onClose();
-							}}
-							className={`w-full text-left px-3 py-2 cursor-pointer hover:bg-gray-100 ${
-								option.value === selectedOption?.value
-									? "bg-blue-50 font-medium"
-									: ""
-							}`}
-						>
-							{option.label}
-						</button>
-					))}
+					{options.map((option) => {
+						const isSelected = option.value === selectedOption?.value;
+						const isSelectedStyles = "bg-green/60 hover:bg-green/60";
+						return (
+							<button
+								name={name}
+								key={option.value}
+								value={option.value}
+								type="button"
+								onClick={(e) => {
+									onChange(name, option.value);
+									onClose();
+								}}
+								className={`w-full text-left px-3 py-2 cursor-pointer hover:bg-gray-100 ${isSelected ? isSelectedStyles : ""}`}
+							>
+								{option.label}
+							</button>
+						);
+					})}
 				</div>
 			) : (
 				<div className={noResultDropdownStyle}>
