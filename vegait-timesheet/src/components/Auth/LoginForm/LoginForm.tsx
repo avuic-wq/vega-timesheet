@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import Button from "@/src/components/Shared/Button/Button";
 import Form from "@/src/components/Shared/Form/Form";
@@ -16,7 +15,6 @@ interface Props {
 }
 
 const LoginForm = ({ callbackUrl }: Props) => {
-	const router = useRouter();
 	const formConfig = loginFormConfigFactory();
 
 	const handleOnSubmit = async (formValues: LoginFormData) => {
