@@ -1,8 +1,8 @@
 import type {
 	EntityDataMap,
+	EntityFormMode,
 	EntityType,
 	FormActions,
-	FormMode,
 	FormState,
 } from "@/src/components/Shared/Form/types";
 import {
@@ -25,7 +25,7 @@ type EntityHandlersMap = {
 };
 
 interface FactoryProps<E extends EntityType> {
-	mode: FormMode;
+	mode: EntityFormMode;
 	entityType: E;
 	entityId?: string;
 }

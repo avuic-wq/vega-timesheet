@@ -59,7 +59,8 @@ export type EntityDataMap = {
 };
 
 export type EntityType = "client" | "project";
-export type FormMode = "create" | "edit";
+export type EntityFormMode = "create" | "edit";
+export type AuthFormMode = "login" | "register";
 
 export type FormState<T> = {
 	isSuccessful?: boolean;

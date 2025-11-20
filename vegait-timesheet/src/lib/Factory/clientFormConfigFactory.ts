@@ -1,11 +1,11 @@
 import type {
+	EntityFormMode,
 	FormConfig,
-	FormMode,
 	SelectOption,
 } from "@/src/components/Shared/Form/types";
 
 type Props = {
-	mode: FormMode;
+	mode: EntityFormMode;
 	countryOptions: SelectOption[];
 };
 

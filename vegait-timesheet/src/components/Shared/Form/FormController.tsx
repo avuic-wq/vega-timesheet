@@ -5,13 +5,13 @@ import Button from "@/src/components/Shared/Button/Button";
 import Form from "@/src/components/Shared/Form/Form";
 import type {
 	BaseFormData,
+	EntityFormMode,
 	FormActions,
 	FormConfig,
-	FormMode,
 } from "@/src/components/Shared/Form/types";
 
 interface Props<T> {
-	mode: FormMode;
+	mode: EntityFormMode;
 	config: FormConfig;
 	actions: FormActions<T>;
 	initialValues: T;
