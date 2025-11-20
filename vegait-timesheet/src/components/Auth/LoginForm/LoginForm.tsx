@@ -34,8 +34,8 @@ const LoginForm = ({ callbackUrl }: Props) => {
 				initialValues={initialValues}
 			/>
 			<div className="flex flex-col items-center gap-1">
-				<div className="flex gap-0.5">
-					<Text value="Login with auth0 credentials" className="text-sm" />
+				<div className="flex gap-1">
+					<Text value="Login with auth0" className="text-sm" />
 					<Button onClick={(_e) => signIn("auth0")} variant="custom">
 						<Text
 							value="here."
