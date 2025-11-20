@@ -71,7 +71,7 @@ const Filters = <T extends BaseFilterData>({
 					variant="primary"
 					className="px-15"
 				>
-					<Text value="Generate" />
+					<Text value={config.buttonText.submit} />
 				</Button>
 
 				<Button
@@ -80,7 +80,7 @@ const Filters = <T extends BaseFilterData>({
 					variant="secondary"
 					onClick={handleOnReset}
 				>
-					<Text value="Reset" />
+					<Text value={config.buttonText.reset} />
 				</Button>
 			</div>
 		</form>

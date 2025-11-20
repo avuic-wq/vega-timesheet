@@ -52,4 +52,8 @@ export const reportFiltersConfigFactory = ({
 			options: userOptions,
 		},
 	],
+	buttonText: {
+		submit: "Generate",
+		reset: "Reset",
+	},
 });

@@ -33,4 +33,7 @@ export interface ReportFiltersData extends BaseFilterData {
 
 export type Filter = SelectFilter | DateFilter;
 
-export type FiltersConfig = { filters: Filter[] };
+export type FiltersConfig = {
+	filters: Filter[];
+	buttonText: { submit: string; reset: string };
+};
