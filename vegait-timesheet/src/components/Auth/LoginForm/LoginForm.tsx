@@ -32,7 +32,6 @@ const LoginForm = ({ callbackUrl }: Props) => {
 				config={formConfig}
 				onSubmit={handleOnSubmit}
 				initialValues={initialValues}
-				isLoginForm
 			/>
 			<div className="flex flex-col items-center">
 				<div className="flex gap-0.5">
