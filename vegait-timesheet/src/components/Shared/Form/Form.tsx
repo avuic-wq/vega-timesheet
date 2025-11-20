@@ -15,7 +15,6 @@ type Props<T> = {
 	onSubmit: (data: T) => Promise<void>;
 	initialValues: T;
 	hasResetButton?: boolean;
-	isLoginForm?: boolean;
 };
 
 const Form = <T extends BaseFormData>({
@@ -23,7 +22,6 @@ const Form = <T extends BaseFormData>({
 	onSubmit,
 	initialValues,
 	hasResetButton = false,
-	isLoginForm = false,
 }: Props<T>) => {
 	const [formValues, setFormValues] = useState<T>(initialValues || ({} as T));
 
