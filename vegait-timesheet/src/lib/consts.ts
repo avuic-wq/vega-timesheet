@@ -13,6 +13,7 @@ export const HOME_PAGE_ROUTE = "/clients";
 
 export const APP_ROUTES = {
 	LOGIN: "/login",
+	REGISTER: "/register",
 	CLIENTS: "/clients",
 	PROJECTS: "/projects",
 	TIMESHEET: "/timesheet",
