@@ -83,6 +83,7 @@ const SelectField = ({
 						pointerEvents: "none",
 						right: "29px",
 						top: "14px",
+						opacity: isDropdownVisible ? 1 : 0.5,
 					}}
 				/>
 			</div>
