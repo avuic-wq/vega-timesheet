@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signIn } from "@/auth/auth";
+import { signIn } from "next-auth/react";
 import Button from "@/src/components/Shared/Button/Button";
 import Form from "@/src/components/Shared/Form/Form";
 import type { LoginFormData } from "@/src/components/Shared/Form/types";
