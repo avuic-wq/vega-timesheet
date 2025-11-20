@@ -1,12 +1,12 @@
 "use server";
 
 import { signIn, signOut } from "@/auth/auth";
-import type { LoginFormData } from "@/src/components/Shared/Form/types";
+import type { AuthFormData } from "@/src/components/Shared/Form/types";
 import { fetchAllUsers } from "@/src/db/UserService/service.ts";
 import { APP_ROUTES, AUTH_PROVIDERS, HOME_PAGE_ROUTE } from "@/src/lib/consts";
 
 export async function loginAction(
-	formData: LoginFormData,
+	formData: AuthFormData,
 	callbackUrl?: string,
 ): Promise<void> {
 	const redirectUrl = callbackUrl || HOME_PAGE_ROUTE;

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { signIn } from "next-auth/react";
 import Button from "@/src/components/Shared/Button/Button";
 import Form from "@/src/components/Shared/Form/Form";
-import type { LoginFormData } from "@/src/components/Shared/Form/types";
+import type { AuthFormData } from "@/src/components/Shared/Form/types";
 import Text from "@/src/components/Shared/Text/Text";
 import { APP_ROUTES } from "@/src/lib/consts";
 import { loginFormConfigFactory } from "@/src/lib/Factory/loginFormConfigFactory";
@@ -17,11 +17,11 @@ interface Props {
 const LoginForm = ({ callbackUrl }: Props) => {
 	const formConfig = loginFormConfigFactory();
 
-	const handleOnSubmit = async (formValues: LoginFormData) => {
+	const handleOnSubmit = async (formValues: AuthFormData) => {
 		await loginAction(formValues, callbackUrl);
 	};
 
-	const initialValues: LoginFormData = {
+	const initialValues: AuthFormData = {
 		username: "",
 		password: "",
 	};

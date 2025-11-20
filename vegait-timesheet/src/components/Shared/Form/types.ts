@@ -35,7 +35,7 @@ export interface ProjectFormData extends BaseFormData {
 	industryId: string;
 }
 
-export interface LoginFormData extends BaseFormData {
+export interface AuthFormData extends BaseFormData {
 	username: string;
 	password: string;
 }
