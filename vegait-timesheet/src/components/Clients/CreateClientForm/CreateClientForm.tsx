@@ -5,8 +5,8 @@ import type {
 	ClientFormData,
 	SelectOption,
 } from "@/src/components/Shared/Form/types";
-import { clientFormConfigFactory } from "@/src/lib/Factory/clientFormConfigFactory";
-import { formActionsFactory } from "@/src/lib/Factory/formActionsFactory";
+import { clientFormConfigFactory } from "@/src/lib/Factory/Entity/clientFormConfigFactory";
+import { entityFormActionsFactory } from "@/src/lib/Factory/Entity/entityFormActionsFactory";
 
 interface Props<T> {
 	countryOptions: SelectOption[];
@@ -18,7 +18,7 @@ const CreateClientForm = <T,>({ countryOptions }: Props<T>) => {
 		countryOptions,
 	});
 
-	const formActions = formActionsFactory({
+	const formActions = entityFormActionsFactory({
 		mode: "create",
 		entityType: "client",
 	});

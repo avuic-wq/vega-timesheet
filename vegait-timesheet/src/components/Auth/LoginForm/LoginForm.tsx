@@ -7,7 +7,7 @@ import Form from "@/src/components/Shared/Form/Form";
 import type { AuthFormData } from "@/src/components/Shared/Form/types";
 import Text from "@/src/components/Shared/Text/Text";
 import { APP_ROUTES } from "@/src/lib/consts";
-import { loginFormConfigFactory } from "@/src/lib/Factory/loginFormConfigFactory";
+import { authFormConfigFactory } from "@/src/lib/Factory/Auth/authFormConfigFactory";
 import { loginAction } from "@/src/server-actions/auth/actions";
 
 interface Props {
@@ -15,7 +15,7 @@ interface Props {
 }
 
 const LoginForm = ({ callbackUrl }: Props) => {
-	const formConfig = loginFormConfigFactory();
+	const formConfig = authFormConfigFactory({ mode: "login" });
 
 	const handleOnSubmit = async (formValues: AuthFormData) => {
 		await loginAction(formValues, callbackUrl);

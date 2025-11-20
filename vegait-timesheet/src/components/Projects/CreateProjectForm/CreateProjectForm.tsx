@@ -5,8 +5,8 @@ import type {
 	ProjectFormData,
 	SelectOption,
 } from "@/src/components/Shared/Form/types";
-import { formActionsFactory } from "@/src/lib/Factory/formActionsFactory";
-import { projectFormConfigFactory } from "@/src/lib/Factory/projectFormConfigFactory";
+import { entityFormActionsFactory } from "@/src/lib/Factory/Entity/entityFormActionsFactory";
+import { projectFormConfigFactory } from "@/src/lib/Factory/Entity/projectFormConfigFactory";
 
 interface Props {
 	clientOptions: SelectOption[];
@@ -20,7 +20,7 @@ const CreateProjectForm = ({ clientOptions, industryOptions }: Props) => {
 		industryOptions,
 	});
 
-	const formActions = formActionsFactory({
+	const formActions = entityFormActionsFactory({
 		mode: "create",
 		entityType: "project",
 	});

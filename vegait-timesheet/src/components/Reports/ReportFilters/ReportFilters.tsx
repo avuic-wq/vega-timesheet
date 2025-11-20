@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Filters from "@/src/components/Shared/Filter/Filters";
 import type { ReportFiltersData } from "@/src/components/Shared/Filter/types";
 import type { SelectOption } from "@/src/components/Shared/Form/types";
-import { reportFiltersConfigFactory } from "@/src/lib/Factory/reportFiltersConfigFactory";
+import { reportFiltersConfigFactory } from "@/src/lib/Factory/Entity/reportFiltersConfigFactory";
 
 interface Props {
 	clientOptions: SelectOption[];

@@ -30,7 +30,7 @@ interface FactoryProps<E extends EntityType> {
 	entityId?: string;
 }
 
-export const formActionsFactory = <E extends EntityType>({
+export const entityFormActionsFactory = <E extends EntityType>({
 	mode,
 	entityType,
 	entityId = "",
