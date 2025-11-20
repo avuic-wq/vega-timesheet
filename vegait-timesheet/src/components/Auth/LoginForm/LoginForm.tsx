@@ -26,6 +26,7 @@ const LoginForm = ({ callbackUrl }: Props) => {
 			config={formConfig}
 			onSubmit={handleOnSubmit}
 			initialValues={initialValues}
+			isLoginForm
 		/>
 	);
 };

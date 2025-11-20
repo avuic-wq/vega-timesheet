@@ -1,5 +1,6 @@
 "use client";
 
+import { signIn } from "next-auth/react";
 import { useCallback, useState } from "react";
 import Button from "@/src/components/Shared/Button/Button";
 import FormField from "@/src/components/Shared/Form/FormField";
@@ -11,6 +12,7 @@ type Props<T> = {
 	onSubmit: (data: T) => Promise<void>;
 	initialValues: T;
 	hasResetButton?: boolean;
+	isLoginForm?: boolean;
 };
 
 const Form = <T extends BaseFormData>({
@@ -18,6 +20,7 @@ const Form = <T extends BaseFormData>({
 	onSubmit,
 	initialValues,
 	hasResetButton = false,
+	isLoginForm = false,
 }: Props<T>) => {
 	const [formValues, setFormValues] = useState<T>(initialValues || ({} as T));
 
@@ -90,6 +93,17 @@ const Form = <T extends BaseFormData>({
 							className="w-2/5"
 						>
 							<Text value="Reset" />
+						</Button>
+					)}
+
+					{isLoginForm && (
+						<Button
+							key="login-auth0"
+							type="button"
+							variant="secondary"
+							onClick={(_e) => signIn("auth0")}
+						>
+							<Text value="Login with auth0" />
 						</Button>
 					)}
 				</div>
