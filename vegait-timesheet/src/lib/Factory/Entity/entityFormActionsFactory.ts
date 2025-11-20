@@ -1,8 +1,8 @@
 import type {
 	EntityDataMap,
+	EntityFormActions,
 	EntityFormMode,
 	EntityType,
-	FormActions,
 	FormState,
 } from "@/src/components/Shared/Form/types";
 import {
@@ -34,7 +34,7 @@ export const entityFormActionsFactory = <E extends EntityType>({
 	mode,
 	entityType,
 	entityId = "",
-}: FactoryProps<E>): FormActions<EntityDataMap[E]> => {
+}: FactoryProps<E>): EntityFormActions<EntityDataMap[E]> => {
 	const handlersMap: EntityHandlersMap = {
 		client: {
 			create: (data) => createClientAction(data),

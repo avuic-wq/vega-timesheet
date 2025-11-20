@@ -48,7 +48,7 @@ export interface FormConfig {
 	};
 }
 
-export interface FormActions<T> {
+export interface EntityFormActions<T> {
 	onSubmit: (data: T) => Promise<FormState<T>>;
 	onDelete?: () => Promise<FormState<T>>;
 }

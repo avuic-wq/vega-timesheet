@@ -33,7 +33,7 @@ const LoginForm = ({ callbackUrl }: Props) => {
 				onSubmit={handleOnSubmit}
 				initialValues={initialValues}
 			/>
-			<div className="flex flex-col items-center">
+			<div className="flex flex-col items-center gap-1">
 				<div className="flex gap-0.5">
 					<Text value="Login with auth0 credentials" className="text-sm" />
 					<Button onClick={(_e) => signIn("auth0")} variant="custom">
