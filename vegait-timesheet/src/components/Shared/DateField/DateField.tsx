@@ -16,8 +16,6 @@ interface Props {
 	rightIcon?: IconName;
 }
 
-// TO-DO: Lazy load if a dropdown list is big
-// TO-DO: Fix bug where dropdown width decreases when searching (e.g: "Serb")
 const DateField = ({
 	name,
 	placeholder,
