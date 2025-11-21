@@ -1,13 +1,29 @@
 import type {
 	AuthFormMode,
 	FormConfig,
+	FormField,
 } from "@/src/components/Shared/Form/types";
 
 interface Props {
 	mode: AuthFormMode;
 }
-export const authFormConfigFactory = ({ mode }: Props): FormConfig => ({
-	fields: [
+
+const fieldsMap: Record<AuthFormMode, FormField[]> = {
+	login: [
+		{
+			type: "text",
+			name: "username",
+			placeholder: "Username",
+			isRequired: true,
+		},
+		{
+			type: "password",
+			name: "password",
+			placeholder: "Password",
+			isRequired: true,
+		},
+	],
+	register: [
 		{
 			type: "text",
 			name: "username",
@@ -33,6 +49,10 @@ export const authFormConfigFactory = ({ mode }: Props): FormConfig => ({
 			isRequired: true,
 		},
 	],
+};
+
+export const authFormConfigFactory = ({ mode }: Props): FormConfig => ({
+	fields: fieldsMap[mode],
 	buttonText: {
 		submit: mode === "login" ? "Login" : "Register",
 	},
