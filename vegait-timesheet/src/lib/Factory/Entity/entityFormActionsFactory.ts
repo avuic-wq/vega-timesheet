@@ -1,6 +1,6 @@
 import type {
-	EntityDataMap,
 	EntityFormActions,
+	EntityFormDataMap,
 	EntityFormMode,
 	EntityType,
 	FormState,
@@ -18,9 +18,13 @@ import {
 
 type EntityHandlersMap = {
 	[K in EntityType]: {
-		create: (data: EntityDataMap[K]) => Promise<FormState<EntityDataMap[K]>>;
-		update: (data: EntityDataMap[K]) => Promise<FormState<EntityDataMap[K]>>;
-		delete: () => Promise<FormState<EntityDataMap[K]>>;
+		create: (
+			data: EntityFormDataMap[K],
+		) => Promise<FormState<EntityFormDataMap[K]>>;
+		update: (
+			data: EntityFormDataMap[K],
+		) => Promise<FormState<EntityFormDataMap[K]>>;
+		delete: () => Promise<FormState<EntityFormDataMap[K]>>;
 	};
 };
 
@@ -34,7 +38,7 @@ export const entityFormActionsFactory = <E extends EntityType>({
 	mode,
 	entityType,
 	entityId = "",
-}: FactoryProps<E>): EntityFormActions<EntityDataMap[E]> => {
+}: FactoryProps<E>): EntityFormActions<EntityFormDataMap[E]> => {
 	const handlersMap: EntityHandlersMap = {
 		client: {
 			create: (data) => createClientAction(data),

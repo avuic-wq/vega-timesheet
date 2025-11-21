@@ -14,6 +14,10 @@ const pages = [
 ];
 
 const Navigation = () => {
+	const handleOnLogout = async () => {
+		await logoutAction();
+	};
+
 	return (
 		<nav className="flex items-center justify-between bg-white gap-6 py-4 px-12">
 			<div>
@@ -34,7 +38,7 @@ const Navigation = () => {
 				})}
 			</div>
 			<div className="flex justify-between gap-5">
-				<form action={logoutAction}>
+				<form action={handleOnLogout}>
 					<Button type="submit" className="px-9">
 						<Text value={"Logout"} />
 					</Button>

@@ -35,9 +35,16 @@ export interface ProjectFormData extends BaseFormData {
 	industryId: string;
 }
 
-export interface AuthFormData extends BaseFormData {
+export interface LoginFormData extends BaseFormData {
 	username: string;
 	password: string;
+}
+
+export interface RegisterFormData extends BaseFormData {
+	username: string;
+	password: string;
+	firstName: string;
+	lastName: string;
 }
 
 export interface FormConfig {
@@ -53,9 +60,18 @@ export interface EntityFormActions<T> {
 	onDelete?: () => Promise<FormState<T>>;
 }
 
-export type EntityDataMap = {
+export interface AuthFormActions<T> {
+	onSubmit: (data: T) => Promise<FormState<T>>;
+}
+
+export type EntityFormDataMap = {
 	client: ClientFormData;
 	project: ProjectFormData;
+};
+
+export type AuthFormDataMap = {
+	login: LoginFormData;
+	register: RegisterFormData;
 };
 
 export type EntityType = "client" | "project";

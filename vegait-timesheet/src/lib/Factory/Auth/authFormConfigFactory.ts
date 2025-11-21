@@ -20,6 +20,18 @@ export const authFormConfigFactory = ({ mode }: Props): FormConfig => ({
 			placeholder: "Password",
 			isRequired: true,
 		},
+		{
+			type: "text",
+			name: "firstName",
+			placeholder: "First name",
+			isRequired: true,
+		},
+		{
+			type: "text",
+			name: "lastName",
+			placeholder: "Last name",
+			isRequired: true,
+		},
 	],
 	buttonText: {
 		submit: mode === "login" ? "Login" : "Register",
