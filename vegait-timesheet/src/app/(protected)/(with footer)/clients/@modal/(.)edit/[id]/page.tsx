@@ -3,7 +3,7 @@ import Modal from "@/src/components/Shared/Modal/Modal";
 import { getCountrySelectOptions } from "@/src/lib/utils/getCountrySelectOptions";
 import { getClientByIdAction } from "@/src/server-actions/clients/actions";
 
-const modalTitle = "Client";
+const modalTitle = "Edit";
 
 interface Props {
 	params: Promise<{ id: string }>;

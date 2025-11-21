@@ -6,7 +6,7 @@ import { getAllClientsAction } from "@/src/server-actions/clients/actions";
 import { getAllIndustriesAction } from "@/src/server-actions/industries/actions";
 import { getProjectByIdAction } from "@/src/server-actions/projects/actions";
 
-const modalTitle = "Project";
+const modalTitle = "Edit";
 
 interface Props {
 	params: Promise<{ id: string }>;
