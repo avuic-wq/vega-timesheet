@@ -3,7 +3,7 @@ import type { SelectOption } from "@/src/components/Shared/Form/types";
 
 export const getUserSelectOptions = (users: User[]): SelectOption[] => {
 	return users.map((user) => ({
-		label: user.username,
+		label: `${user.firstName} ${user.lastName}`,
 		value: user.id,
 	}));
 };
