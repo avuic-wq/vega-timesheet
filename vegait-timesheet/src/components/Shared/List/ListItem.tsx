@@ -1,6 +1,5 @@
 "use client";
 
-import { getCountryData, type TCountryCode } from "countries-list";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Icon from "@/src/components/Shared/Icon/Icon";
@@ -25,13 +24,6 @@ interface Props<T extends BaseItem> {
 
 const ListItem = <T extends BaseItem>({ item }: Props<T>) => {
 	const pathname = usePathname();
-	const isClient = isClientType(item);
-	const isProject = isProjectType(item);
-
-	const countryName = isClient
-		? getCountryData(item.countryCode as TCountryCode)?.name
-		: "";
-	const clientName = isProject ? item.clientName : "";
 
 	return (
 		<Link href={`${pathname}/edit/${item.id}`} scroll={false}>
