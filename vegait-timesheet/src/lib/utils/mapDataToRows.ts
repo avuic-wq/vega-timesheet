@@ -1,7 +1,8 @@
 import { format } from "date-fns";
+import type { ReportRowData } from "@/src/components/Shared/Table/types";
 import type { ReportsTimelog } from "@/src/db/TimelogService/types";
 
-export const mapDataToRows = (timelog: ReportsTimelog) => {
+export const mapDataToRows = (timelog: ReportsTimelog): ReportRowData => {
 	return {
 		date: format(timelog.date, "do MMMM yyyy"),
 		clientName: timelog.client.name,
