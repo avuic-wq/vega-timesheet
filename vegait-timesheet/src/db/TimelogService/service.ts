@@ -54,6 +54,6 @@ export const fetchPaginatedAndFilteredTimelogs = async (
 		}),
 		prisma.timeLog.count({ where }),
 	]);
-	console.log({ timeLogs });
+
 	return { timeLogs, totalCount };
 };
