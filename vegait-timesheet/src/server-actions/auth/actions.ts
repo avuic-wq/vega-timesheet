@@ -1,5 +1,6 @@
 "use server";
 
+import { redirect } from "next/navigation";
 import { signIn, signOut } from "@/auth/auth";
 import type {
 	LoginFormData,
@@ -74,7 +75,18 @@ export async function registerAction(
 
 export async function logoutAction() {
 	try {
-		await signOut({ redirectTo: APP_ROUTES.LOGIN, redirect: true });
+		await signOut({ redirect: false });
+
+		const loginUrl = `${process.env.BASE_RUL}${APP_ROUTES.LOGIN}`;
+
+		const auth0LogoutUrl =
+			`${process.env.AUTH0_ISSUER_BASE_URL}/v2/logout?` +
+			new URLSearchParams({
+				returnTo: loginUrl,
+				client_id: process.env.AUTH0_CLIENT_ID || "",
+			});
+
+		redirect(auth0LogoutUrl);
 	} catch (error) {
 		if (error instanceof Error && error.message === "NEXT_REDIRECT") {
 			throw error;
