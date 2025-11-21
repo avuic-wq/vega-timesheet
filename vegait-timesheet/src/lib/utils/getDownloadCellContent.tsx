@@ -1,8 +1,12 @@
+import type { CellContext } from "@tanstack/react-table";
 import Button from "@/src/components/Shared/Button/Button";
 import Icon from "@/src/components/Shared/Icon/Icon";
+import type { ReportRowData } from "@/src/components/Shared/Table/types";
 import Text from "@/src/components/Shared/Text/Text";
 
-export const getDownloadCellContent = () => {
+export const getDownloadCellContent = (
+	row: CellContext<ReportRowData, unknown>,
+) => {
 	const handleDownload = () => {
 		// TO-DO
 	};

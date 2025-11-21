@@ -1,4 +1,5 @@
 import ReportFilters from "@/src/components/Reports/ReportFilters/ReportFilters";
+import ReportsTable from "@/src/components/Reports/ReportsTable/ReportsTable";
 import Header from "@/src/components/Shared/Header/Header";
 import { APP_ROUTES, ITEMS_PER_PAGE } from "@/src/lib/consts";
 import type { SearchParams } from "@/src/lib/types";
@@ -6,6 +7,7 @@ import { getClientSelectOptions } from "@/src/lib/utils/getClientSelectOptions";
 import { getIndustrySelectOptions } from "@/src/lib/utils/getIndustrySelectOptions";
 import { getProjectSelectOptions } from "@/src/lib/utils/getProjectSelectOptions";
 import { getUserSelectOptions } from "@/src/lib/utils/getUserSelectOptions";
+import { mapDataToRows } from "@/src/lib/utils/mapDataToRows";
 import { getAllUsersAction } from "@/src/server-actions/auth/actions";
 import { getAllTimelogCategoriesAction } from "@/src/server-actions/categories/actions";
 import { getAllClientsAction } from "@/src/server-actions/clients/actions";
@@ -53,6 +55,8 @@ export default async function Reports({ searchParams }: Props) {
 		},
 	);
 
+	const rowsData = timeLogs.map(mapDataToRows);
+
 	// TO-DO: Suspense for filters
 	return (
 		<div className="flex flex-col gap-4">
@@ -64,7 +68,8 @@ export default async function Reports({ searchParams }: Props) {
 					userOptions={userOptions}
 				/>
 			</Header>
-			{/* <ReportsTable rows={timeLogs} totalPages={totalPages} /> */}
+			{/* // TO-DO: Suspense */}
+			<ReportsTable rows={rowsData} totalPages={totalPages} />
 		</div>
 	);
 }
