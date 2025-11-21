@@ -22,14 +22,14 @@ function ListItemSkeleton() {
 			<div className="flex justify-between items-center">
 				<div className="flex gap-2 flex-1">
 					<Skeleton
-						width={120}
+						width={180}
 						height={20}
 						baseColor="var(--color-grey-200)"
 						highlightColor="var(--color-grey-200)"
 					/>
 
 					<Skeleton
-						width={180}
+						width={40}
 						height={20}
 						baseColor="var(--color-grey-200)"
 						highlightColor="var(--color-grey-200)"
