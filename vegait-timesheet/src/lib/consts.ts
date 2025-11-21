@@ -28,4 +28,5 @@ export const SEARCH_PARAMETERS: Record<string, string> = {
 
 export const AUTH_PROVIDERS = {
 	CREDENTIALS: "credentials",
+	AUTH0: "auth0",
 };
