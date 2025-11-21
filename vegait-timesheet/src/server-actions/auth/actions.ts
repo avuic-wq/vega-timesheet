@@ -5,6 +5,7 @@ import type {
 	LoginFormData,
 	RegisterFormData,
 } from "@/src/components/Shared/Form/types";
+import { register } from "@/src/db/AuthService/service";
 import { fetchAllUsers } from "@/src/db/UserService/service.ts";
 import { APP_ROUTES, AUTH_PROVIDERS, HOME_PAGE_ROUTE } from "@/src/lib/consts";
 import type {
@@ -40,12 +41,31 @@ export async function registerAction(
 	formData: RegisterFormData,
 ): RegisterActionResult {
 	try {
-		await signIn(AUTH_PROVIDERS.CREDENTIALS, {
-			username: formData?.username,
-			password: formData?.password,
+		const newUser = await register({
+			username: formData.username,
+			password: formData.password,
+			firstName: formData.firstName,
+			lastName: formData.lastName,
 		});
-		return { isSuccessful: true };
+
+		if (!newUser) {
+			return {
+				errors: { general: "Registration failed" },
+			};
+		}
+
+		await loginAction(
+			{
+				username: formData.username,
+				password: formData.password,
+			},
+			HOME_PAGE_ROUTE,
+		);
 	} catch (error) {
+		if (error instanceof Error && error.message === "NEXT_REDIRECT") {
+			throw error;
+		}
+
 		return {
 			errors: {},
 		};
@@ -55,11 +75,10 @@ export async function registerAction(
 export async function logoutAction() {
 	try {
 		await signOut({ redirectTo: APP_ROUTES.LOGIN, redirect: true });
-		return { isSuccessful: true };
 	} catch (error) {
-		return {
-			errors: {},
-		};
+		if (error instanceof Error && error.message === "NEXT_REDIRECT") {
+			throw error;
+		}
 	}
 }
 
