@@ -1,4 +1,4 @@
-import type { User } from "@prisma/client";
+import { type User, UserRole } from "@prisma/client";
 import { prisma } from "@/prisma/prisma";
 import type { RegisterFormData } from "@/src/components/Shared/Form/types";
 import { DEFAULT_SALT_ROUNDS } from "@/src/lib/consts";
@@ -24,6 +24,7 @@ export const register = async (
 			password: hashedPassword,
 			firstName: data?.firstName,
 			lastName: data?.lastName,
+			roles: [UserRole.EMPLOYEE],
 		},
 	});
 
