@@ -6,8 +6,8 @@ import type {
 	ClientFormData,
 	SelectOption,
 } from "@/src/components/Shared/Form/types";
-import { clientFormConfigFactory } from "@/src/lib/Factory/Entity/clientFormConfigFactory";
-import { entityFormActionsFactory } from "@/src/lib/Factory/Entity/entityFormActionsFactory";
+import { clientFormConfigFactory } from "@/src/lib/Factory/EntityForm/clientFormConfigFactory";
+import { entityFormActionsFactory } from "@/src/lib/Factory/EntityForm/entityFormActionsFactory";
 
 interface Props<T> {
 	clientData: Client | null;

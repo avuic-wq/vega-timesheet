@@ -5,8 +5,8 @@ import type {
 	ProjectFormData,
 	SelectOption,
 } from "@/src/components/Shared/Form/types";
-import { entityFormActionsFactory } from "@/src/lib/Factory/Entity/entityFormActionsFactory";
-import { projectFormConfigFactory } from "@/src/lib/Factory/Entity/projectFormConfigFactory";
+import { entityFormActionsFactory } from "@/src/lib/Factory/EntityForm/entityFormActionsFactory";
+import { projectFormConfigFactory } from "@/src/lib/Factory/EntityForm/projectFormConfigFactory";
 
 interface Props {
 	clientOptions: SelectOption[];

@@ -8,7 +8,7 @@ import Form from "@/src/components/Shared/Form/Form";
 import type { RegisterFormData } from "@/src/components/Shared/Form/types";
 import Text from "@/src/components/Shared/Text/Text";
 import { APP_ROUTES, AUTH_PROVIDERS } from "@/src/lib/consts";
-import { authFormConfigFactory } from "@/src/lib/Factory/Auth/authFormConfigFactory";
+import { authFormConfigFactory } from "@/src/lib/Factory/AuthForm/authFormConfigFactory";
 import { registerAction } from "@/src/server-actions/auth/actions";
 
 const RegisterForm = () => {
