@@ -1,8 +1,8 @@
 import type {
-	FormState,
 	LoginFormData,
+	QueryState,
 	RegisterFormData,
 } from "@/src/components/Shared/Form/types";
 
-export type LoginActionResult = Promise<FormState<LoginFormData>>;
-export type RegisterActionResult = Promise<FormState<RegisterFormData>>;
+export type LoginActionResult = Promise<QueryState<LoginFormData>>;
+export type RegisterActionResult = Promise<QueryState<RegisterFormData>>;

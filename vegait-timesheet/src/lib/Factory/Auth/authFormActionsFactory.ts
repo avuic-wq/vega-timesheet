@@ -2,7 +2,7 @@ import type {
 	AuthFormActions,
 	AuthFormDataMap,
 	AuthFormMode,
-	FormState,
+	QueryState,
 } from "@/src/components/Shared/Form/types";
 import { loginAction, registerAction } from "@/src/server-actions/auth/actions";
 
@@ -10,7 +10,7 @@ type AuthHandlersMap = {
 	[K in AuthFormMode]: {
 		onSubmit: (
 			data: AuthFormDataMap[K],
-		) => Promise<FormState<AuthFormDataMap[K]>>;
+		) => Promise<QueryState<AuthFormDataMap[K]>>;
 	};
 };
 

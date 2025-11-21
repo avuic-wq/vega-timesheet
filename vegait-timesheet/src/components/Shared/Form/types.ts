@@ -56,12 +56,12 @@ export interface FormConfig {
 }
 
 export interface EntityFormActions<T> {
-	onSubmit: (data: T) => Promise<FormState<T>>;
-	onDelete?: () => Promise<FormState<T>>;
+	onSubmit: (data: T) => Promise<QueryState<T>>;
+	onDelete?: () => Promise<QueryState<T>>;
 }
 
 export interface AuthFormActions<T> {
-	onSubmit: (data: T) => Promise<FormState<T>>;
+	onSubmit: (data: T) => Promise<QueryState<T>>;
 }
 
 export type EntityFormDataMap = {
@@ -78,7 +78,7 @@ export type EntityType = "client" | "project";
 export type EntityFormMode = "create" | "edit";
 export type AuthFormMode = "login" | "register";
 
-export type FormState<T> = {
+export type QueryState<T> = {
 	isSuccessful?: boolean;
 	errors?: Record<string, string>;
 	data?: T;

@@ -3,7 +3,7 @@ import type {
 	EntityFormDataMap,
 	EntityFormMode,
 	EntityType,
-	FormState,
+	QueryState,
 } from "@/src/components/Shared/Form/types";
 import {
 	createClientAction,
@@ -20,11 +20,11 @@ type EntityHandlersMap = {
 	[K in EntityType]: {
 		create: (
 			data: EntityFormDataMap[K],
-		) => Promise<FormState<EntityFormDataMap[K]>>;
+		) => Promise<QueryState<EntityFormDataMap[K]>>;
 		update: (
 			data: EntityFormDataMap[K],
-		) => Promise<FormState<EntityFormDataMap[K]>>;
-		delete: () => Promise<FormState<EntityFormDataMap[K]>>;
+		) => Promise<QueryState<EntityFormDataMap[K]>>;
+		delete: () => Promise<QueryState<EntityFormDataMap[K]>>;
 	};
 };
 
