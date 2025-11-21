@@ -5,7 +5,7 @@ import NavigateButton from "./NavigateButton";
 import PaginationItem from "./PaginationItem";
 import { getPaginationElementKey, getPagingationElements } from "./utils";
 
-export const NAVIGATE_BUTTON_ORIENTATION = {
+export const NAVIGATE_BUTTON_TYPES = {
 	LEFT: "left",
 	RIGHT: "right",
 };
@@ -36,7 +36,7 @@ const Pagination = ({ currentPage, totalPages }: Props) => {
 	return (
 		<div className="flex items-center justify-center space-x-1">
 			<NavigateButton
-				orientation={NAVIGATE_BUTTON_ORIENTATION.LEFT}
+				orientation={NAVIGATE_BUTTON_TYPES.LEFT}
 				currentPage={currentPage}
 				totalPages={totalPages}
 			/>
@@ -64,7 +64,7 @@ const Pagination = ({ currentPage, totalPages }: Props) => {
 				);
 			})}
 			<NavigateButton
-				orientation={NAVIGATE_BUTTON_ORIENTATION.RIGHT}
+				orientation={NAVIGATE_BUTTON_TYPES.RIGHT}
 				currentPage={currentPage}
 				totalPages={totalPages}
 			/>

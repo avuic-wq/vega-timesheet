@@ -3,11 +3,11 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import Button from "@/src/components/Shared/Button/Button";
 import Icon from "@/src/components/Shared/Icon/Icon";
-import type { NAVIGATE_BUTTON_ORIENTATION } from "./Pagination";
+import type { NAVIGATE_BUTTON_TYPES } from "./Pagination";
 import { createPageParams } from "./utils";
 
 type NavigateButtonOrientation =
-	(typeof NAVIGATE_BUTTON_ORIENTATION)[keyof typeof NAVIGATE_BUTTON_ORIENTATION];
+	(typeof NAVIGATE_BUTTON_TYPES)[keyof typeof NAVIGATE_BUTTON_TYPES];
 
 interface Props {
 	orientation: NavigateButtonOrientation;
