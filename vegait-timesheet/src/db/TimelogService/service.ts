@@ -4,6 +4,21 @@ import type { ReportFiltersData } from "@/src/components/Shared/Filter/types";
 import type { FetchPaginatedAndFilteredTimelogsResult } from "@/src/db/TimelogService/types";
 import type { QueryPageSettings } from "@/src/lib/types";
 
+const include = {
+	client: {
+		select: { name: true },
+	},
+	project: {
+		select: { name: true },
+	},
+	category: {
+		select: { name: true },
+	},
+	user: {
+		select: { firstName: true, lastName: true },
+	},
+};
+
 export const fetchPaginatedAndFilteredTimelogs = async (
 	pageSettings: QueryPageSettings,
 	filters: ReportFiltersData,
@@ -32,12 +47,13 @@ export const fetchPaginatedAndFilteredTimelogs = async (
 	const [timeLogs, totalCount] = await Promise.all([
 		prisma.timeLog.findMany({
 			where,
+			include: include,
 			orderBy: { date: "asc" },
 			skip: (page - 1) * itemsPerPage,
 			take: itemsPerPage,
 		}),
 		prisma.timeLog.count({ where }),
 	]);
-
+	console.log({ timeLogs });
 	return { timeLogs, totalCount };
 };
