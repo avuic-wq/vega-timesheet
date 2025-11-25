@@ -18,10 +18,13 @@ interface Props {
 const NavigateButton = ({ orientation, currentPage, totalPages }: Props) => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
+
 	const isLeftNavigationButton = orientation === "left";
+
 	const isDisabled = isLeftNavigationButton
 		? currentPage === 1
 		: currentPage === totalPages;
+
 	const pageToNavigateTo = isLeftNavigationButton
 		? currentPage - 1
 		: currentPage + 1;
