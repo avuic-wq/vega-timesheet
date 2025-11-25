@@ -252,10 +252,16 @@ async function main() {
 		},
 	];
 
+	const epandedTimeLogsData = timeLogData.flatMap((item) => [
+		item,
+		item,
+		item,
+		item,
+	]);
 	await prisma.timeLog.createMany({
-		data: timeLogData,
+		data: epandedTimeLogsData,
 	});
-	console.log(`✅ Seeded ${timeLogData.length} time logs`);
+	console.log(`✅ Seeded ${epandedTimeLogsData.length} time logs`);
 
 	console.log("🎉 Seed completed successfully!");
 }
