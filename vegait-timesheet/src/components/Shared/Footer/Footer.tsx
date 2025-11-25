@@ -11,7 +11,7 @@ const Footer = () => {
 			<div className="flex items-left flex-col gap-8">
 				<Logo />
 				<Text value={footerText} />
-				<Text value={copyrightText} />
+				<Text value={copyrightText} className="text-grey-500" />
 			</div>
 		</div>
 	);
