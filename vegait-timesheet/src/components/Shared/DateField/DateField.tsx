@@ -49,7 +49,7 @@ const DateField = ({
 				<input
 					ref={inputRef}
 					type="text"
-					onChange={(e) => {
+					onChange={() => {
 						setIsDropdownVisible(true);
 					}}
 					onFocus={() => {
