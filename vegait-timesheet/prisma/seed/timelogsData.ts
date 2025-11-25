@@ -53,6 +53,15 @@ export const getMyTimeLogs = (
 		categoryId: categories[7].id,
 	},
 	{
+		date: new Date("2025-11-07"),
+		hours: 1,
+		description: "Development",
+		userId: user.id,
+		clientId: clients[3].id,
+		projectId: projects[3].id,
+		categoryId: categories[7].id,
+	},
+	{
 		date: new Date("2025-10-08"),
 		hours: 9,
 		description: "Major feature deployment",
