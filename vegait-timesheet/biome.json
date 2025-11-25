@@ -17,8 +17,16 @@
 		"rules": {
 			"recommended": true,
 			"correctness": {
-				"noUnusedVariables": "warn",
-				"noUnusedFunctionParameters": "warn"
+				"noUnusedVariables": {
+					"level": "warn",
+					"fix": "none",
+					"options": {}
+				},
+				"noUnusedFunctionParameters": {
+					"level": "warn",
+					"fix": "none",
+					"options": {}
+				}
 			}
 		}
 	},
