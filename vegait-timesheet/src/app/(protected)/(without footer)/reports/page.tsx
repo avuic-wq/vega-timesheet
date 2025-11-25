@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import ReportFilters from "@/src/components/Reports/ReportFilters/ReportFilters";
 import ReportsTable from "@/src/components/Reports/ReportsTable/ReportsTable";
 import Header from "@/src/components/Shared/Header/Header";
@@ -59,7 +60,7 @@ export default async function Reports({ searchParams }: Props) {
 
 	// TO-DO: Suspense for filters
 	return (
-		<div className="flex flex-col gap-4">
+		<>
 			<Header setting={APP_ROUTES.REPORTS}>
 				<ReportFilters
 					clientOptions={clientOptions}
@@ -69,7 +70,9 @@ export default async function Reports({ searchParams }: Props) {
 				/>
 			</Header>
 			{/* // TO-DO: Suspense */}
-			<ReportsTable rows={rowsData} totalPages={totalPages} />
-		</div>
+			<Suspense>
+				<ReportsTable rows={rowsData} totalPages={totalPages} />
+			</Suspense>
+		</>
 	);
 }

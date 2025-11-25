@@ -5,5 +5,5 @@ export default function WithoutFooterLayout({
 }) {
 	const headerConfig = [];
 
-	return <div className="mx-75 my-6">{children}</div>;
+	return <div className="flex flex-col gap-4 mx-75 my-6">{children}</div>;
 }

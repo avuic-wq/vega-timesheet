@@ -20,7 +20,7 @@ export default async function Projects({ searchParams }: Props) {
 	const filterData = await getProjectsFirstLettersAction();
 
 	return (
-		<div className="flex flex-col gap-4">
+		<>
 			<Header setting={APP_ROUTES.PROJECTS} />
 			<LetterFilters letters={filterData} />
 			<Suspense fallback={<ListSkeleton />}>
@@ -30,6 +30,6 @@ export default async function Projects({ searchParams }: Props) {
 					letterFilter={letterFilterParam}
 				/>
 			</Suspense>
-		</div>
+		</>
 	);
 }

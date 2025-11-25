@@ -20,7 +20,7 @@ export default async function Clients({ searchParams }: Props) {
 	const filterData = await getClientsFirstLettersAction();
 
 	return (
-		<div className="flex flex-col gap-4">
+		<>
 			<Header setting={APP_ROUTES.CLIENTS} />
 			<LetterFilters letters={filterData} />
 
@@ -31,6 +31,6 @@ export default async function Clients({ searchParams }: Props) {
 					letterFilter={letterFilterParam}
 				/>
 			</Suspense>
-		</div>
+		</>
 	);
 }

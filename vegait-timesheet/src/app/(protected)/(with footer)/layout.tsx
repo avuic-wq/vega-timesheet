@@ -7,7 +7,7 @@ export default function WithFooterLayout({
 }) {
 	return (
 		<>
-			<section className="mx-75 my-6">{children}</section>
+			<section className="flex flex-col gap-4 mx-75 my-6">{children}</section>
 
 			<section className="mx-5 my-6">
 				<Footer />
