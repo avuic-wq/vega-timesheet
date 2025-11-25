@@ -8,6 +8,7 @@ import {
 } from "@tanstack/react-table";
 import Button from "@/src/components/Shared/Button/Button";
 import Icon from "@/src/components/Shared/Icon/Icon";
+import Pagination from "@/src/components/Shared/List/Pagination/Pagination";
 import type {
 	BaseRowData,
 	TableConfig,
@@ -17,9 +18,16 @@ import Text from "@/src/components/Shared/Text/Text";
 interface Props<T extends BaseRowData> {
 	config: TableConfig;
 	rowsData: T[];
+	currentPage: number;
+	totalPages: number;
 }
 
-const Table = <T extends BaseRowData>({ config, rowsData }: Props<T>) => {
+const Table = <T extends BaseRowData>({
+	config,
+	rowsData,
+	currentPage,
+	totalPages,
+}: Props<T>) => {
 	const table = useReactTable({
 		data: rowsData,
 		columns: config.headers,
@@ -34,7 +42,7 @@ const Table = <T extends BaseRowData>({ config, rowsData }: Props<T>) => {
 	});
 
 	return (
-		<div className="w-full bg-white rounded-2xl p-6">
+		<div className="flex flex-col gap-6 w-full bg-white rounded-2xl p-6">
 			<table className="w-full">
 				<thead>
 					<tr className="">
@@ -81,6 +89,7 @@ const Table = <T extends BaseRowData>({ config, rowsData }: Props<T>) => {
 					))}
 				</tbody>
 			</table>
+			<Pagination currentPage={currentPage} totalPages={totalPages} />
 		</div>
 	);
 };

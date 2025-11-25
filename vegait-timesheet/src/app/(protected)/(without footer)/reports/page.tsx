@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import ReportFilters from "@/src/components/Reports/ReportFilters/ReportFilters";
 import ReportsTable from "@/src/components/Reports/ReportsTable/ReportsTable";
 import Header from "@/src/components/Shared/Header/Header";
@@ -21,7 +20,7 @@ interface Props {
 
 export default async function Reports({ searchParams }: Props) {
 	const params = await searchParams;
-	const currentPageParam = params?.page || 1;
+	const currentPageParam = Number(params?.page) || 1;
 	const fromDateParam = params?.fromDate || "";
 	const toDateParam = params?.toDate || "";
 	const clientIdParam = params?.clientId || "";
@@ -62,6 +61,7 @@ export default async function Reports({ searchParams }: Props) {
 	return (
 		<>
 			<Header setting={APP_ROUTES.REPORTS}>
+				{/* // TO-DO: Suspense */}
 				<ReportFilters
 					clientOptions={clientOptions}
 					projectOptions={projectOptions}
@@ -69,10 +69,13 @@ export default async function Reports({ searchParams }: Props) {
 					userOptions={userOptions}
 				/>
 			</Header>
-			{/* // TO-DO: Suspense */}
-			<Suspense>
-				<ReportsTable rows={rowsData} totalPages={totalPages} />
-			</Suspense>
+
+			{/* // TO-DO: Suspense? */}
+			<ReportsTable
+				rows={rowsData}
+				currentPage={currentPageParam}
+				totalPages={totalPages}
+			/>
 		</>
 	);
 }

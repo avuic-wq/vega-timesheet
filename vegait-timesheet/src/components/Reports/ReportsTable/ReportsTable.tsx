@@ -4,13 +4,21 @@ import { reportsTableConfigFactory } from "@/src/lib/Factory/ReportsTable/report
 
 interface Props {
 	rows: ReportRowData[];
+	currentPage: number;
 	totalPages: number;
 }
 
-const ReportsTable = async ({ rows }: Props) => {
+const ReportsTable = async ({ rows, currentPage, totalPages }: Props) => {
 	const tableConfig = reportsTableConfigFactory();
 
-	return <Table config={tableConfig} rowsData={rows} />;
+	return (
+		<Table
+			config={tableConfig}
+			rowsData={rows}
+			currentPage={currentPage}
+			totalPages={totalPages}
+		/>
+	);
 };
 
 export default ReportsTable;
