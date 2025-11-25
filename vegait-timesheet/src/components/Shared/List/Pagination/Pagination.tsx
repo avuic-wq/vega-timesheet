@@ -49,7 +49,7 @@ const Pagination = ({ currentPage, totalPages }: Props) => {
 						<Text
 							key={`${config.ELLIPSIS_VALUE}-${index}`}
 							value={config.ELLIPSIS_VALUE}
-							className="hover:cursor-default min-w-4 text-center"
+							className="min-w-4 text-center"
 						/>
 					);
 				}
