@@ -6,10 +6,13 @@ import {
 	getPaginationRowModel,
 	useReactTable,
 } from "@tanstack/react-table";
+import Button from "@/src/components/Shared/Button/Button";
+import Icon from "@/src/components/Shared/Icon/Icon";
 import type {
 	BaseRowData,
 	TableConfig,
 } from "@/src/components/Shared/Table/types";
+import Text from "@/src/components/Shared/Text/Text";
 
 interface Props<T extends BaseRowData> {
 	config: TableConfig;
@@ -51,11 +54,29 @@ const Table = <T extends BaseRowData>({ config, rowsData }: Props<T>) => {
 				<tbody>
 					{table.getRowModel().rows.map((row, index) => (
 						<tr key={row.id}>
-							{row.getVisibleCells().map((cell) => (
-								<td key={cell.id} className="text-sm text-gray-600 py-4 px-4">
-									{flexRender(cell.column.columnDef.cell, cell.getContext())}
-								</td>
-							))}
+							{row.getVisibleCells().map((cell) => {
+								if (cell.column.id === "download") {
+									return (
+										<td
+											key={cell.id}
+											className="text-sm text-gray-500 py-4 px-4"
+										>
+											<Button variant="custom" className="flex gap-3">
+												<Icon name="download" style={{ opacity: 0.5 }} />
+												<Text
+													value="Download"
+													className="flex flex-col justify-end"
+												/>
+											</Button>
+										</td>
+									);
+								}
+								return (
+									<td key={cell.id} className="text-sm text-gray-600 py-4 px-4">
+										{flexRender(cell.column.columnDef.cell, cell.getContext())}
+									</td>
+								);
+							})}
 						</tr>
 					))}
 				</tbody>

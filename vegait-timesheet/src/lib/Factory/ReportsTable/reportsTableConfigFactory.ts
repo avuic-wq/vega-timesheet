@@ -1,5 +1,4 @@
 import type { TableConfig } from "@/src/components/Shared/Table/types";
-import { getDownloadCellContent } from "@/src/lib/utils/getDownloadCellContent";
 
 export const reportsTableConfigFactory = (): TableConfig => {
 	return {
@@ -29,8 +28,8 @@ export const reportsTableConfigFactory = (): TableConfig => {
 				accessorKey: "createdAt",
 			},
 			{
-				id: "download",
-				cell: (row) => getDownloadCellContent(row),
+				header: "",
+				accessorKey: "download",
 			},
 		],
 	};

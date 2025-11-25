@@ -1,8 +1,12 @@
-import type { ColumnDef } from "@tanstack/react-table";
 import type { ReactNode } from "react";
 
+type TableHeader = {
+	header: string;
+	accessorKey: string;
+};
+
 export type TableConfig = {
-	headers: ColumnDef<ReportRowData>[];
+	headers: TableHeader[];
 };
 
 export type BaseRowData = {
