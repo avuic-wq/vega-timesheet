@@ -1,4 +1,5 @@
 import { PrismaClient, UserRole } from "@prisma/client";
+import { getMyTimeLogs } from "@/prisma/seed/timelogsData";
 import { DEFAULT_SALT_ROUNDS } from "@/src/lib/consts";
 import { saltAndHashPassword } from "@/src/lib/utils/saltAndHashPassword";
 import clientsData from "./clientsData";
@@ -252,12 +253,8 @@ async function main() {
 		},
 	];
 
-	const epandedTimeLogsData = timeLogData.flatMap((item) => [
-		item,
-		item,
-		item,
-		item,
-	]);
+	const myTimeLogs = getMyTimeLogs(adminUser, clients, projects, categories);
+	const epandedTimeLogsData = [...timeLogData, ...myTimeLogs];
 	await prisma.timeLog.createMany({
 		data: epandedTimeLogsData,
 	});
