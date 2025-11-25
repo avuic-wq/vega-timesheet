@@ -38,7 +38,6 @@ const Table = <T extends BaseRowData>({
 				pageSize: 10,
 			},
 		},
-		// TO-DO: sorting, filtering, pagination
 	});
 
 	return (
