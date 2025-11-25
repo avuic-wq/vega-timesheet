@@ -1,6 +1,7 @@
 import type { Prisma } from "@prisma/client";
 import { prisma } from "@/prisma/prisma";
 import type { ReportFiltersData } from "@/src/components/Shared/Filter/types";
+import type { CalendarFilters } from "@/src/components/Timesheet/Calendar/types";
 import type { FetchPaginatedAndFilteredTimelogsResult } from "@/src/db/TimelogService/types";
 import type { QueryPageSettings } from "@/src/lib/types";
 
@@ -56,4 +57,21 @@ export const fetchPaginatedAndFilteredTimelogs = async (
 	]);
 
 	return { timeLogs, totalCount };
+};
+
+export const fetchFilteredTimelogs = async (filters: CalendarFilters) => {
+	const timeLogs = await prisma.timeLog.findMany({
+		where: {
+			AND: {
+				date: {
+					gte: new Date(filters.fromDate),
+					lte: new Date(filters.toDate),
+				},
+			},
+		},
+		include: { project: { select: { name: true } } },
+		orderBy: { date: "asc" },
+	});
+
+	return timeLogs;
 };

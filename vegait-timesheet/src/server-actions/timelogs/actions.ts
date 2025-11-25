@@ -1,6 +1,10 @@
 import { redirect } from "next/navigation";
 import type { ReportFiltersData } from "@/src/components/Shared/Filter/types";
-import { fetchPaginatedAndFilteredTimelogs } from "@/src/db/TimelogService/service";
+import type { CalendarFilters } from "@/src/components/Timesheet/Calendar/types";
+import {
+	fetchFilteredTimelogs,
+	fetchPaginatedAndFilteredTimelogs,
+} from "@/src/db/TimelogService/service";
 import type { QueryPageSettings } from "@/src/lib/types";
 
 export async function getPaginatedAndFilteredTimelogsAction(
@@ -24,4 +28,10 @@ export async function getPaginatedAndFilteredTimelogsAction(
 	}
 
 	return { timeLogs, totalPages };
+}
+
+export async function getFilteredTimeLogsAction(filters: CalendarFilters) {
+	const timeLogs = await fetchFilteredTimelogs(filters);
+
+	return timeLogs;
 }
