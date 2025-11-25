@@ -13,7 +13,8 @@ export const config: Record<string, ConfigProps> = {
 		title: "Timesheet",
 		description:
 			"What did you work on today? Don't forget to add all working and overtime hours for each client. ",
-		actionText: "Create time log",
+		actionText: "Add time log",
+		hasActionButton: true,
 	},
 	[APP_ROUTES.CLIENTS]: {
 		title: "Clients",
