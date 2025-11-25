@@ -11,3 +11,7 @@ export type ReportsTimelog = TimeLog & {
 	category: { name: string };
 	user: { firstName: string; lastName: string };
 };
+
+export type TimesheetTimelog = TimeLog & {
+	project: { name: string };
+};
