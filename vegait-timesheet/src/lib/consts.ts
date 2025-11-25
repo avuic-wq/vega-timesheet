@@ -30,3 +30,5 @@ export const AUTH_PROVIDERS = {
 	CREDENTIALS: "credentials",
 	AUTH0: "auth0",
 };
+
+export const WORK_HOURS_PER_DAY = 8;

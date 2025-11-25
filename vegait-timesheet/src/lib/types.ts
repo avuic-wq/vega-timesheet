@@ -9,6 +9,8 @@ export type SearchParams = Promise<{
 	projectId?: string;
 	userId?: string;
 	categoryId?: string;
+	month?: string;
+	year?: string;
 }>;
 
 export type ButtonVariant = "primary" | "secondary" | "danger" | "custom";
