@@ -6,14 +6,16 @@ import {
 } from "date-fns";
 import type { TimesheetTimelog } from "@/src/db/TimelogService/types";
 
+type EachDayOfinterval = EachDayOfIntervalResult<
+	{
+		start: Date;
+		end: Date;
+	},
+	undefined
+>;
+
 export const mapTimelogsToDays = (
-	interval: EachDayOfIntervalResult<
-		{
-			start: Date;
-			end: Date;
-		},
-		undefined
-	>,
+	interval: EachDayOfinterval,
 	timelogs: TimesheetTimelog[],
 	activeMonthAndYear: Date,
 ) => {
