@@ -46,7 +46,8 @@ const RegisterForm = () => {
 					>
 						<Text
 							value="here."
-							className="text-sm text-orange hover:cursor-pointer"
+							isClickable
+							className="text-sm text-orange"
 						/>
 					</Button>
 				</div>
@@ -55,7 +56,8 @@ const RegisterForm = () => {
 					<Link href={APP_ROUTES.LOGIN} className="text-sm">
 						<Text
 							value="here."
-							className="text-sm text-orange hover:cursor-pointer"
+							isClickable
+							className="text-sm text-orange"
 						/>
 					</Link>
 				</div>

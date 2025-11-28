@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import { signIn } from "@/auth/auth";
 import Button from "@/src/components/Shared/Button/Button";
 import Form from "@/src/components/Shared/Form/Form";
 import type { LoginFormData } from "@/src/components/Shared/Form/types";
@@ -39,7 +39,8 @@ const LoginForm = ({ callbackUrl }: Props) => {
 					<Button onClick={(_e) => signIn("auth0")} variant="custom">
 						<Text
 							value="here."
-							className="text-sm text-orange hover:cursor-pointer"
+							isClickable
+							className="text-sm text-orange"
 						/>
 					</Button>
 				</div>
@@ -48,7 +49,8 @@ const LoginForm = ({ callbackUrl }: Props) => {
 					<Link href={APP_ROUTES.REGISTER} className="text-sm">
 						<Text
 							value="here."
-							className="text-sm text-orange hover:cursor-pointer"
+							isClickable
+							className="text-sm text-orange"
 						/>
 					</Link>
 				</div>
