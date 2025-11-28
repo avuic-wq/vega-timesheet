@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { signIn } from "@/auth/auth";
 import Button from "@/src/components/Shared/Button/Button";
 import Form from "@/src/components/Shared/Form/Form";
 import type { LoginFormData } from "@/src/components/Shared/Form/types";
@@ -9,6 +8,7 @@ import Text from "@/src/components/Shared/Text/Text";
 import { APP_ROUTES } from "@/src/lib/consts";
 import { authFormConfigFactory } from "@/src/lib/Factory/AuthForm/authFormConfigFactory";
 import { loginAction } from "@/src/server-actions/auth/actions";
+import { signIn } from "next-auth/react";
 
 interface Props {
 	callbackUrl?: string;
